@@ -3,9 +3,13 @@
 <h2>This is our fake users </h2>
 
 <% @user.each do |user| %>
-  <ul>
-    <li>
+  <dl>
+    <dt>
     <img src="<%= user.avatar_url %>" alt="profile_image">
-    <%= user.fname %></li>
-  </ul>
+    <h1><%= user.full_name %></h1>
+    <h2><%= user.age %> | <%= user.region %></h2>
+    <p><%= user.description %></p>
+    </dt>
+  </dl>
+  <hr>
 <% end %>
