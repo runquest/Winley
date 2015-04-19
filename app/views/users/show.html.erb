@@ -1,2 +1,12 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<img src="<%= @user.avatar_url %>" alt="profile picture">
+<h1><%= @user.full_name %></h1>
+
+
+  <dl>
+    <dt>
+    <h2><%= @user.age %> | <%= @user.region %></h2>
+    <p><%= @user.description %></p>
+    </dt>
+  </dl>
+
+ <%= link_to "edit profile page", edit_user_path %>
