@@ -1,2 +1,11 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h1>HERE AND NOW WE ARE BULDING VIRTUAL WINE LIBRARY</h1>
+
+<h2>This is our fake users </h2>
+
+  <% @user.each do |user| %>
+    <ul>
+      <li>
+      <img src="<%= user.avatar_url %>" alt="profile_image">
+      <%= user.fname %></li>
+    </ul>
+    <% end %>

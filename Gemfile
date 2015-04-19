@@ -32,7 +32,7 @@ group :doc do
 end
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby'
 
 # Use unicorn as the app server
 # gem 'unicorn'
@@ -42,3 +42,12 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# populates database Populator
+gem 'populator'
+gem 'faker'
+
+
+gem 'better_errors'
+gem "binding_of_caller"
+
