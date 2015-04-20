@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150419015603) do
+ActiveRecord::Schema.define(version: 20150420192831) do
+
+  create_table "bottles", force: true do |t|
+    t.string   "name"
+    t.string   "type"
+    t.string   "grape"
+    t.string   "vintage"
+    t.string   "winery"
+    t.string   "region"
+    t.string   "alcohol"
+    t.string   "price"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "events", force: true do |t|
     t.string   "event_title"
