@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+
+
 #postgres
 gem 'pg' 
 
@@ -51,3 +53,8 @@ gem 'faker'
 gem 'better_errors'
 gem "binding_of_caller"
 
+# use Bourbon sass
+gem 'bourbon'
+gem 'neat'
+gem 'refills'
+gem 'bitters'
