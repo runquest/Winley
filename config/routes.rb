@@ -1,5 +1,6 @@
 Tasteswing::Application.routes.draw do
- resources :users 
+  get "events/event_home"
+ resources :users , :events
 
  root to: 'users#index'
   # The priority is based upon order of creation: first created -> highest priority.

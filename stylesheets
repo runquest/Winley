@@ -1,0 +1,25 @@
+/*
+Errno::ENOTDIR: Not a directory @ rb_sysopen - stylesheets/sass
+
+Backtrace:
+/usr/local/rvm/gems/ruby-2.1.3/gems/sass-3.2.19/lib/sass/plugin/compiler.rb:360:in `read'
+/usr/local/rvm/gems/ruby-2.1.3/gems/sass-3.2.19/lib/sass/plugin/compiler.rb:360:in `update_stylesheet'
+/usr/local/rvm/gems/ruby-2.1.3/gems/sass-3.2.19/lib/sass/plugin/compiler.rb:203:in `block in update_stylesheets'
+/usr/local/rvm/gems/ruby-2.1.3/gems/sass-3.2.19/lib/sass/plugin/compiler.rb:201:in `each'
+/usr/local/rvm/gems/ruby-2.1.3/gems/sass-3.2.19/lib/sass/plugin/compiler.rb:201:in `update_stylesheets'
+/usr/local/rvm/gems/ruby-2.1.3/gems/sass-3.2.19/lib/sass/plugin/compiler.rb:235:in `watch'
+/usr/local/rvm/gems/ruby-2.1.3/gems/sass-3.2.19/lib/sass/plugin.rb:107:in `method_missing'
+/usr/local/rvm/gems/ruby-2.1.3/gems/sass-3.2.19/lib/sass/exec.rb:463:in `watch_or_update'
+/usr/local/rvm/gems/ruby-2.1.3/gems/sass-3.2.19/lib/sass/exec.rb:326:in `process_result'
+/usr/local/rvm/gems/ruby-2.1.3/gems/sass-3.2.19/lib/sass/exec.rb:41:in `parse'
+/usr/local/rvm/gems/ruby-2.1.3/gems/sass-3.2.19/lib/sass/exec.rb:21:in `parse!'
+/usr/local/rvm/gems/ruby-2.1.3/gems/sass-3.2.19/bin/sass:13:in `<top (required)>'
+/usr/local/rvm/gems/ruby-2.1.3/bin/sass:23:in `load'
+/usr/local/rvm/gems/ruby-2.1.3/bin/sass:23:in `<main>'
+/usr/local/rvm/gems/ruby-2.1.3/bin/ruby_executable_hooks:15:in `eval'
+/usr/local/rvm/gems/ruby-2.1.3/bin/ruby_executable_hooks:15:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Errno::ENOTDIR: Not a directory @ rb_sysopen - stylesheets/sass"; }

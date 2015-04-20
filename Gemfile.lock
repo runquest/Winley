@@ -33,6 +33,13 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bitters (1.0.0)
+      bourbon (>= 3.2)
+      sass (>= 3.2)
+      thor
+    bourbon (3.2.4)
+      sass (~> 3.2)
+      thor
     builder (3.1.4)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -62,6 +69,9 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.11.0)
+    neat (1.5.1)
+      bourbon (>= 3.1)
+      sass (~> 3.2.19)
     pg (0.18.1)
     polyglot (0.3.5)
     populator (1.0.0)
@@ -84,6 +94,7 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
+    refills (0.1.0)
     sass (3.2.19)
     sass-rails (4.0.5)
       railties (>= 4.0.0, < 5.0)
@@ -122,13 +133,17 @@ DEPENDENCIES
   bcrypt-ruby
   better_errors
   binding_of_caller
+  bitters
+  bourbon
   coffee-rails (~> 4.0.0)
   faker
   jbuilder (~> 1.2)
   jquery-rails
+  neat
   pg
   populator
   rails (= 4.0.0)
+  refills
   sass-rails (~> 4.0.0)
   sdoc
   turbolinks
