@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  my_rating: 1
+  my_comment: MyText
+  favorite: false
+
+two:
+  my_rating: 1
+  my_comment: MyText
+  favorite: false

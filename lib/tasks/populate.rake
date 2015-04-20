@@ -16,5 +16,16 @@ namespace :db do
       user.description = Populator.sentences(4)
       user.region = ["Okanagan", "Naramata Bench", "Prince Edward County"]
     end
+
+    Bottle.populate 5 do |bottle|
+      bottle.name = Faker::Name.name
+      bottle.type = ["red", "white"]
+      bottle.vintage = ["2011", "1999", "2008"]
+      bottle.region = ["Okanagan", "Naramata Bench", "Prince Edward County"]
+    end
+
+    Event.populate 3 do |event|
+      event.event_title = Faker::Name.name
+    end
   end
 end

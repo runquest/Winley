@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
 
+#pry
+gem 'pry'
+
 #postgres
 gem 'pg' 
 
