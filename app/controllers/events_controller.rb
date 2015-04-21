@@ -1,7 +1,5 @@
 class EventsController < ApplicationController
 
-    # before_filter :load_user
-
   def event_home
     @events = Event.all
   end
@@ -18,7 +16,6 @@ class EventsController < ApplicationController
     if @event.save
       current_user.events << @event
       redirect_to event_path(@event), notice: "#{@event.event_title}!"
-
     else
       render :new
     end
@@ -51,13 +48,8 @@ class EventsController < ApplicationController
 
   protected
 
-  # def load_user
-  #   @user = User.find(session[:user_id])
-  # end
-
   def event_params
     params.require(:event).permit(:event_title, :event_venue, :event_date, :duration, :description)
   end
-
 
 end

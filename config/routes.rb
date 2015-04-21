@@ -4,8 +4,9 @@ Tasteswing::Application.routes.draw do
  get "sessions/create"
  get "events/event_home"
  
- resources :users ,:events
+ resources :users ,:events, :bottles
  resources :sessions, only: [:new, :create, :destroy]
+ 
  root to: 'users#index'
  
   # The priority is based upon order of creation: first created -> highest priority.
