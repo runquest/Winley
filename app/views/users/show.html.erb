@@ -1,9 +1,11 @@
 <div id="profile-page">
+
+	<div id="edit-profile"><button> <%= link_to "edit profile page", edit_user_path %> </button>
+	</div>
 	
 	<div id="header">
 
 	 	<div id="social-icons">
-
 			<button>Follow ME</button>
 			<button>Twitter</button>
 			<button>Facebook</button>
@@ -15,6 +17,9 @@
 		</div>
 
 	</div>
+
+	<div id="middle">
+
 		<div id="personal">
 			<h1><%= @user.full_name %></h1>
 		  <dl>
@@ -29,11 +34,11 @@
 		</div>
 
 
-	<div id="my-collection">
-		<h2>my collection</h2>
-		<p>of my collections of wines. maybe we categorize or tag wines? I know I'm coming up with additional functionality ;)</p>
+		<div id="my-collection">
+			<h2>my collection</h2>
+			<p>of my collections of wines. maybe we categorize or tag wines? I know I'm coming up with additional functionality ;)</p>
+		</div>
 	</div>
-	
 
 	<div id="bottles-events-section">
 
@@ -45,12 +50,10 @@
 		<div id="events">
 			<p>2 links to future events</p>
 			<p>link to recent events</p>
-			<button>Add new event</button>
+			<button><%= link_to "Add a event", new_event_path(@user) %></button>
 		</div>
 	
 	</div>
 
-	<div id="edit-profile"><button> <%= link_to "edit profile page", edit_user_path %> </button>
-	</div>
 
 </div>
