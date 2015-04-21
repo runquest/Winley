@@ -1,12 +1,56 @@
-<img src="<%= @user.avatar_url %>" alt="profile picture">
-<h1><%= @user.full_name %></h1>
+<div id="profile-page">
+	
+	<div id="header">
+
+	 	<div id="social-icons">
+
+			<button>Follow ME</button>
+			<button>Twitter</button>
+			<button>Facebook</button>
+			<button>GooglePlus</button>
+		</div>
+
+		<div id="social-image"> 
+			<img src="<%= @user.avatar_url %>" alt="profile picture">
+		</div>
+
+	</div>
+		<div id="personal">
+			<h1><%= @user.full_name %></h1>
+		  <dl>
+		    <dt>
+		    <h2><%= @user.age %> | <%= @user.region %></h2>
+		    <p><%= @user.description %></p><br/>
+		    <p><%= @user.email %></p>
+		    <p>FAVORITE GRAPE</p>
+		    <p>FAVORITE WINE</p>
+		    </dt>
+		  </dl>
+		</div>
 
 
-  <dl>
-    <dt>
-    <h2><%= @user.age %> | <%= @user.region %></h2>
-    <p><%= @user.description %></p>
-    </dt>
-  </dl>
+	<div id="my-collection">
+		<h2>my collection</h2>
+		<p>of my collections of wines. maybe we categorize or tag wines? I know I'm coming up with additional functionality ;)</p>
+	</div>
+	
 
- <%= link_to "edit profile page", edit_user_path %>
+	<div id="bottles-events-section">
+
+		<div id="bottles">
+			<p>5 recently added bottles</p>
+			<button>Add new bottle</button>
+		</div>
+		
+		<div id="events">
+			<p>2 links to future events</p>
+			<p>link to recent events</p>
+			<button>Add new event</button>
+		</div>
+	
+	</div>
+
+	<div id="edit-profile"><button> <%= link_to "edit profile page", edit_user_path %> </button>
+	</div>
+
+</div>

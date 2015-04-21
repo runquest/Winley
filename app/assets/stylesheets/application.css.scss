@@ -26,15 +26,4 @@ $deep-wine: #610B0B;
 body {
   background: $deep-wine;
 
-  div{
-
-    section {
-
-      @include linear-gradient(to top, red, orange);
-    }
-  
-    div{
-      background-color: pink;
-    }
-  }
 }
