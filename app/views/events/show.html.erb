@@ -1,0 +1,16 @@
+<h3>Welcome !!!</h3>
+
+<div><h3>**** upcoming events **** </h3>
+   <div>
+
+<% @events.each do |event| %>
+   <%= event.event_title %>
+   <%= event.event_venue %>
+   <%= event.event_date %>
+   <%= event.duration %>
+   <%= event.description%>
+   -------------------------------
+   -------------------------------
+    <% end %>
+   </div>
+</div>

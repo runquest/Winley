@@ -1,6 +1,5 @@
 @import "bourbon";
 @import "neat";
-
 @import "events";
 @import "users";
 
@@ -19,11 +18,3 @@
  *
  *= require_self.
  */
-
-
-$deep-wine: #610B0B;
-
-body {
-  background: $deep-wine;
-
-}
