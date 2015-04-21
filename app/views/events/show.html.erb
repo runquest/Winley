@@ -4,13 +4,14 @@
    <div>
 
 <% @events.each do |event| %>
-   <%= event.event_title %>
-   <%= event.event_venue %>
-   <%= event.event_date %>
-   <%= event.duration %>
-   <%= event.description%>
-   -------------------------------
-   -------------------------------
+   <ul>
+      <li><%= event.event_title %></li>
+      <li><%= event.event_venue %></li>
+      <li><%= event.event_date %></li>
+      <li><%= event.duration %></li>
+      <li><%= event.description%></li>
+   </ul>
+   <hr>
     <% end %>
    </div>
 </div>
