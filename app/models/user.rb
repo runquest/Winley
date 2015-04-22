@@ -1,5 +1,6 @@
-class User < ActiveRecord::Base
-  has_and_belongs_to_many :events
+  class User < ActiveRecord::Base
+  has_many :attendances
+  has_many :events, :through => :attendances
   has_many :bottles, :through => :reviews
 
     

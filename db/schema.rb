@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422000056) do
+ActiveRecord::Schema.define(version: 20150422212022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attendances", id: false, force: true do |t|
+    t.integer "user_id",  null: false
+    t.integer "event_id", null: false
+  end
 
   create_table "bottles", force: true do |t|
     t.string   "name"
@@ -30,11 +35,6 @@ ActiveRecord::Schema.define(version: 20150422000056) do
     t.datetime "updated_at"
   end
 
-  create_table "bottles_events", id: false, force: true do |t|
-    t.integer "bottle_id", null: false
-    t.integer "event_id",  null: false
-  end
-
   create_table "events", force: true do |t|
     t.string   "event_title"
     t.string   "event_venue"
@@ -45,12 +45,12 @@ ActiveRecord::Schema.define(version: 20150422000056) do
     t.datetime "updated_at"
   end
 
-  create_table "events_users", id: false, force: true do |t|
-    t.integer "user_id",  null: false
-    t.integer "event_id", null: false
+  create_table "flights", id: false, force: true do |t|
+    t.integer "bottle_id", null: false
+    t.integer "event_id",  null: false
   end
 
-  create_table "user_reviews", force: true do |t|
+  create_table "reviews", force: true do |t|
     t.integer  "user_id"
     t.integer  "bottle_id"
     t.integer  "my_rating"
@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(version: 20150422000056) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "user_reviews", ["bottle_id"], name: "index_user_reviews_on_bottle_id", using: :btree
-  add_index "user_reviews", ["user_id"], name: "index_user_reviews_on_user_id", using: :btree
+  add_index "reviews", ["bottle_id"], name: "index_reviews_on_bottle_id", using: :btree
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.datetime "created_at"
