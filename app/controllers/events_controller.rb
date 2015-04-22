@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 
-  def event_home
+  def index
     @events = Event.all
   end
 
@@ -20,11 +20,8 @@ class EventsController < ApplicationController
   end
 
   def show
-     # @events= Event.all
      @event = Event.find(params[:id])     
-     # @user = User.find(params[:id])
   end
-
 
   def destroy
     @event = Event.find(params[:id])

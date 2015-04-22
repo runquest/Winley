@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_filter :restrict_access
 
   def new
     @user = User.new
@@ -15,6 +14,8 @@ class UsersController < ApplicationController
       render :new
     end
   end
+
+  # before_filter :restrict_access
 
   def index
     @user = User.all

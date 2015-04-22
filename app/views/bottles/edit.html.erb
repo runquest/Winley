@@ -1,75 +1,50 @@
-<div>
-  <h3> its time to party !!!Edit this Bottle</h3>
-
+<h3>Edit Bottle of Wine</h3>
+<%= form_for @bottle do |f| %>
+  <% if @bottle.errors.any? %>
+    <div>
+      <%= pluralize(@bottle.errors.count, "error") %> prevented the account from being created:
+      <ul>
+        <% @bottle.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div>
-
-    <%= form_for @bottle do |f| %>
-
-      <% if @bottle.errors.any? %>
-        <div>
-          <%= pluralize(@bottle.errors.count, "error") %> prevented the account from being created:
-          <ul>
-            <% @bottle.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-
-      <div>
-        <%= f.label "name" , "Bottle name"%><br>
-        <%= f.text_field "name" %>
-      </div>
-      <div>
-        <%= f.label "grape", "Grape" %><br>
-        <%= f.text_field "grape" %>
-      </div>
-      <div>
-        <%= f.label "vintage", "vintage" %><br>
-        <%= f.date_field "vintage" %>
-      </div>
-      <div>
-        <%= f.label "winery" ,"winery"%><br>
-        <%= f.text_field "winery" %>
-      </div>
-      <div>
-        <%= f.label "alcohol" ,"alcohol"%><br>
-        <%= f.text_field "alcohol" %>
-      </div>
-      <div>
-        <%= f.label "region", "Region" %><br>
-        <%= f.select(:region, options_for_select([["Okanagan", "Okanagan"], ["Naramata Bench", "Naramata Bench"], ["Prince Edward County", "Prince Edward County"]])) %>
-      </div>
-      <div>
-        <%= f.label "color" ,"color"%><br>
-        <%= f.text_field "color" %>
-      </div>
-      <div>
-        <%= f.label "price" ,"price"%><br>
-        <%= f.text_field "price" %>
-      </div>
-      <div>
-        <%= f.label "description", "Tell me a little bit more about your event" %><br>
-        <%= f.text_area "description" %>
-      </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-      <div><%= f.submit "Submit" %></div>
-
-    <% end %>
-
+    <%= f.label "name" , "Bottle name"%><br>
+    <%= f.text_field "name" %>
   </div>
-</div>
+  <div>
+    <%= f.label "grape", "Grape" %><br>
+    <%= f.text_field "grape" %>
+  </div>
+  <div>
+    <%= f.label "vintage", "vintage" %><br>
+    <%= f.date_field "vintage" %>
+  </div>
+  <div>
+    <%= f.label "winery" ,"winery"%><br>
+    <%= f.text_field "winery" %>
+  </div>
+  <div>
+    <%= f.label "alcohol" ,"alcohol"%><br>
+    <%= f.text_field "alcohol" %>
+  </div>
+  <div>
+    <%= f.label "region", "Region" %><br>
+    <%= f.select(:region, options_for_select([["Okanagan", "Okanagan"], ["Naramata Bench", "Naramata Bench"], ["Prince Edward County", "Prince Edward County"]])) %>
+  </div>
+  <div>
+    <%= f.label "color" ,"color"%><br>
+    <%= f.text_field "color" %>
+  </div>
+  <div>
+    <%= f.label "price" ,"price"%><br>
+    <%= f.text_field "price" %>
+  </div>
+  <div>
+    <%= f.label "description", "Tell me a little bit more about your event" %><br>
+    <%= f.text_area "description" %>
+  </div>
+  <div><%= f.submit "Submit" %></div>
+<% end %>

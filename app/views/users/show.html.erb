@@ -1,6 +1,7 @@
 <div id="profile-page">
 
-	<div id="edit-profile"><button> <%= link_to "edit profile page", edit_user_path %> </button>
+	<div id="edit-profile">
+		<button><%= link_to "edit profile page", edit_user_path %></button>
 	</div>
 	
 	<div id="header">
@@ -27,16 +28,20 @@
 		    <h2><%= @user.age %> | <%= @user.region %></h2>
 		    <p><%= @user.description %></p><br/>
 		    <p><%= @user.email %></p>
-		    <p>FAVORITE GRAPE</p>
-		    <p>FAVORITE WINE</p>
 		    </dt>
 		  </dl>
 		</div>
 
 
-		<div id="my-collection">
-			<h2>my collection</h2>
-			<p>of my collections of wines. maybe we categorize or tag wines? I know I'm coming up with additional functionality ;)</p>
+		<div id="my-event-collection">
+			<h2>My Events</h2>
+			<% if @user.events.all == [] %>
+				<p>"no events created"</p>
+			<% else %>
+				<% @user.events.each do |event| %>
+				<h3><%= link_to event.event_title, event_path(event) %></h3>
+				<% end %>
+			<% end %>
 		</div>
 	</div>
 
@@ -45,7 +50,6 @@
 		<div id="bottles">
 			<p>5 recently added bottles</p>
 			<strong>needs the connection through reviews to create new bottle.</strong>
-			<button><%#= link_to "Add a bottle", new_bottle_path %></button>
 		</div>
 		
 		<div id="events">
