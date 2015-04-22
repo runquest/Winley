@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  
+  before_filter :restrict_access
+
   def new
     @user = User.new
   end

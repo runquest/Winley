@@ -1,0 +1,16 @@
+<h1>Hello</h1>
+
+<div>
+   <% @bottles.each do |bottle| %>
+      <%= bottle.name %><br>
+      <%= bottle.grape %><br>
+      <%= bottle.vintage %><br>
+      <%= bottle.winery %><br>
+      <%= bottle.region %><br>
+      <%= bottle.alcohol %><br>
+      <%= bottle.price %><br>
+      <%= bottle.color %><br>
+      <%= bottle.description%><br>
+      <hr>
+   <% end %>
+</div>

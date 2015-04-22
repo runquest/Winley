@@ -6,12 +6,10 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-    # @event.users = current_user
   end
 
   def create
     @event = Event.new(event_params)
-
 
     if @event.save
       current_user.events << @event
@@ -22,7 +20,9 @@ class EventsController < ApplicationController
   end
 
   def show
-     @events= Event.all
+     # @events= Event.all
+     @event = Event.find(params[:id])     
+     # @user = User.find(params[:id])
   end
 
 

@@ -2,16 +2,15 @@
 
 <div><h3>**** upcoming events **** </h3>
    <div>
-
-<% @events.each do |event| %>
    <ul>
-      <li><%= event.event_title %></li>
-      <li><%= event.event_venue %></li>
-      <li><%= event.event_date %></li>
-      <li><%= event.duration %></li>
-      <li><%= event.description%></li>
+      <li><%= @event.event_title %></li>
+      <li><%= @event.event_venue %></li>
+      <li><%= @event.event_date %></li>
+      <li><%= @event.duration %></li>
+      <li><%= @event.description%></li>
    </ul>
    <hr>
-    <% end %>
    </div>
 </div>
+
+
