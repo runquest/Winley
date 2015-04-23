@@ -37,7 +37,7 @@ var displayBottle = function(data) {
 
 
 var req = new XMLHttpRequest();
-var link = "http://services.wine.com/api/beta2/service.svc/JSON/catalog?search=Mondavi&apikey=b1af7f1d65f1e1ebdb2faf060ad8fadd"
+var link = "http://services.wine.com/api/beta2/service.svc/JSON/catalog?search=ghostblock&apikey=b1af7f1d65f1e1ebdb2faf060ad8fadd"
 
 req.onreadystatechange = function() {
   console.log('state changed', req.readyState, req.status);
@@ -47,10 +47,16 @@ req.onreadystatechange = function() {
     var data = JSON.parse(req.responseText);
 
     displayBottle(data);
+
+    for (i = 0; data.Products.List.length; i++) {
+      $('.bottle').append(data.Products.List[i].Name + '<strong> Price:</strong> ' + data.Products.List[i].PriceRetail + '<br>');
+    }
+
   }
 }
 req.open("GET", link, true);
 req.send();
+
 
 // var wine = req.response;
 // console.log('wine is', wine);
