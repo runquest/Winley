@@ -6,25 +6,27 @@ class BottlesController < ApplicationController
 
   def new
     @bottle = Bottle.new
+    @review = Review.new
   end
 
   def create
     @bottle = Bottle.new(bottle_params)
-
-    if @bottle.save
-      if current_user == nil
-        redirect_to bottle_path(@bottle), notice: "#{@bottle.name}!"
-      else
-        current_user.bottles << @bottle
-        redirect_to bottle_path(@bottle), notice: "#{@bottle.name}!"
-      end
+    if current_user == nil
+      @bottle.save
+      redirect_to bottle_path(@bottle), notice: "#{@bottle.name}!"
     else
-      render :new
+      @bottle.save
+      @review = Review.new(review_params)
+      @review.save
+      @review.user = current_user
+      @bottle.reviews << @review
+      redirect_to bottle_path(@bottle), notice: "#{@bottle.name}!"
     end
   end
 
   def show
      @bottle = Bottle.find(params[:id])
+     @review = Review.find(params[:id])
   end
 
 
@@ -40,19 +42,22 @@ class BottlesController < ApplicationController
 
    def update
     @bottle = Bottle.find(params[:id])
+    @review = Review.new(review_params)
 
+    if @bottle.save
       if current_user == nil
-
-        if @bottle.update_attributes(bottle_params)
-          redirect_to bottle_path, notice: "#{@bottle.name}!"
-        else
-          render :edit
-        end
-
+        redirect_to bottle_path(@bottle), notice: "#{@bottle.name}!"
       else
-          current_user.bottles << @bottle
-          redirect_to bottle_path(@bottle), notice: "#{@bottle.name}!"
+        current_user.bottles << @bottle
+        @review.user = current_user
+        @review.bottle = @bottle
+        @review.save
+        redirect_to bottle_path(@bottle), notice: "#{@bottle.name}!"
       end
+    else
+      render :new
+    end
+
   end 
 
   protected
@@ -61,4 +66,7 @@ class BottlesController < ApplicationController
     params.require(:bottle).permit(:name, :grape, :vintage, :winery, :description)
   end
 
+  def review_params
+    params.require(:review).permit(:user_id, :bottle_id, :my_rating, :comment, :favorite)
+  end
 end

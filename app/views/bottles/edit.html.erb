@@ -30,5 +30,23 @@
     <%= f.label "description", "Tell me a little bit more about your event" %><br>
     <%= f.text_area "description" %>
   </div>
-  <div><%= f.submit "Submit" %></div>
+  <hr>
+  <h4>Edit Review</h4>
+  <div>
+    <%= fields_for :review, @review do |rf| %>
+  <div>
+    <%= rf.label :comment, 'Comments' %><br>
+    <%= rf.text_area :comment %>
+  </div>
+  <div>
+    <%= rf.label :my_rating, "Rate bottle" %><br>
+    <%= rf.number_field :my_rating %>
+  </div>
+  <div>
+    <%= rf.label :favorite, "Is it your favorite" %><br>
+    <%= rf.text_field :favorite %>
+  </div>
+  <% end %>
+  </div>
+  <div><%= f.submit "Uncork" %></div>
 <% end %>

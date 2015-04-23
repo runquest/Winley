@@ -42,3 +42,15 @@
 	<h2>Last bottle created</h2>
 	<h3>Last bottle review</h3>
 </div>
+
+<div id="review" class="flex-box">
+	<h1>All Reviews Related Data</h1>
+	<h2>Reviews created</h2>
+		<% if @user.reviews.all == [] %>
+						<p>"no reviews created"</p>
+					<% else %>
+						<% @user.reviews.each do |review| %>
+						<h3><%= review.comment %></h3>
+						<% end %>
+					<% end %>
+</div>

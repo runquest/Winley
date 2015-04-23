@@ -3,4 +3,5 @@ class Bottle < ActiveRecord::Base
 	has_many :flights
 	has_many :users, :through => :reviews
 	has_many :reviews
+
 end

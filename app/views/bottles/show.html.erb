@@ -7,3 +7,5 @@
 <%= @bottle.vintage %><br>
 <%= @bottle.winery %><br>
 <%= @bottle.description %><br>
+<h2>This is <%= current_user.full_name %> review</h2>
+<h1><%= @bottle.reviews.where(user_id: current_user.id).take.comment %></h1>
