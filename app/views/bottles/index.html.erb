@@ -1,0 +1,15 @@
+<h3>All Wine Bottles</h3>
+<div>
+  <% @bottles.each do |bottle| %>
+    <h1><%= link_to bottle.name, bottle_path(bottle) %></h1>
+    <%= bottle.grape %>
+    <%= bottle.vintage %>
+    <%= bottle.winery %>
+    <%= bottle.region %>
+    <%= bottle.alcohol %>
+    <%= bottle.price %>
+    <%= bottle.color %>
+    <%= bottle.description%>
+    <hr>
+  <% end %>
+</div>

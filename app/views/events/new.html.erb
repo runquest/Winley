@@ -1,0 +1,36 @@
+<h3>Edit This Event</h3>
+<%= form_for @event do |f| %>
+
+  <% if @event.errors.any? %>
+    <div>
+      <%= pluralize(@event.errors.count, "error") %> prevented the account from being created:
+      <ul>
+        <% @event.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label "event_title" , "Title"%><br>
+    <%= f.text_field "event_title" %>
+  </div>
+  <div>
+    <%= f.label "event_venue", "Where?" %><br>
+    <%= f.text_field "event_venue" %>
+  </div>
+  <div>
+    <%= f.label "event_date", "When?" %><br>
+    <%= f.date_field "event_date" %>
+  </div>
+  <div>
+    <%= f.label "duration" ,"what time?"%><br>
+    <%= f.time_field "duration" %>
+  </div>
+  <div>
+    <%= f.label "description", "Tell me a little bit more about your event" %><br>
+    <%= f.text_area "description" %>
+  </div>
+  <div><%= f.submit "Submit" %></div>
+<% end %>

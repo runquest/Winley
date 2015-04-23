@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   def new
     @user = User.new
   end
@@ -14,6 +14,8 @@ class UsersController < ApplicationController
       render :new
     end
   end
+
+  # before_filter :restrict_access
 
   def index
     @user = User.all
@@ -34,7 +36,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
   end
 
-   def update
+  def update
     @user = User.find(params[:id])
 
     if @user.update_attributes(user_params)
