@@ -1,7 +1,8 @@
 class Event < ActiveRecord::Base
     has_many :attendances
 	has_many :users, :through => :attendances
-	has_many :bottles, :through => :flights
+    has_many :bottles, :through => :flights
+    has_many :flights
 
     validates :title, 
     presence: true
