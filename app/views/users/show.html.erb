@@ -20,6 +20,9 @@
 				<h3><%= link_to event.title, event_path(event) %></h3>
 				<% end %>
 			<% end %>
+
+	<h2>Last Events I created</h2>
+	<p><%= @user.events.last.title %>		
 	<h2>Events I attended</h2>
 	<h3>Last event I attended</h3>
 	<h3>Last events attendees</h3>
@@ -36,10 +39,6 @@
 						<h3><%= link_to bottle.name, bottle_path(bottle) %></h3>
 						<% end %>
 					<% end %>
-
-
-
-
 	<h2>Last bottle created</h2>
 	<h3>Last bottle review</h3>
 </div>
