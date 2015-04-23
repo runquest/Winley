@@ -3,7 +3,6 @@ class CreateTableRegions < ActiveRecord::Migration
     create_table :table_regions do |t|
 
     	t.string :region 
-    	t.string :country
 
     end
   end

@@ -32,12 +32,6 @@
     <%= f.label "password_confirmation" %><br>
     <%= f.password_field "password_confirmation" %>
   </div>
-
-  <div>
-    <%= f.label "region", "Region" %><br>
-    <%= f.select(:region, options_for_select([["Okanagan", "Okanagan"], ["Naramata Bench", "Naramata Bench"], ["Prince Edward County", "Prince Edward County"]])) %>
-  </div>
-
   <div>
     <%= f.label "avatar_url", "Profile image (url)" %><br>
     <%= f.text_field "avatar_url" %>
@@ -49,8 +43,8 @@
   </div>
 
   <div>
-    <%= f.label "age", "Birthday" %><br>
-    <%= f.date_field "age" %>
+    <%= f.label "birthday", "Birthday" %><br>
+    <%= f.date_field "birthday" %>
   </div>
 
   <div><%= f.submit "Submit" %></div>

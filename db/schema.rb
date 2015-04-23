@@ -22,25 +22,21 @@ ActiveRecord::Schema.define(version: 20150423002216) do
   end
 
   create_table "bottles", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.string   "color",       limit: 255
-    t.string   "grape",       limit: 255
-    t.string   "vintage",     limit: 255
-    t.string   "winery",      limit: 255
-    t.string   "region",      limit: 255
-    t.string   "alcohol",     limit: 255
-    t.string   "price",       limit: 255
+    t.string   "name"
+    t.string   "grape"
+    t.string   "vintage"
+    t.string   "winery"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "events", force: :cascade do |t|
-    t.string   "event_title", limit: 255
-    t.string   "event_venue", limit: 255
-    t.date     "event_date"
-    t.time     "duration"
-    t.string   "description", limit: 255
+    t.string   "title"
+    t.string   "venue"
+    t.date     "date"
+    t.integer  "duration"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -65,21 +61,17 @@ ActiveRecord::Schema.define(version: 20150423002216) do
 
   create_table "table_regions", force: :cascade do |t|
     t.string "region"
-    t.string "country"
   end
 
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "email",           limit: 255
-    t.string   "fname",           limit: 255
-    t.string   "lname",           limit: 255
-    t.string   "password_digest", limit: 255
-    t.string   "region",          limit: 255
-    t.string   "avatar_url",      limit: 255
-    t.integer  "age"
-    t.text     "description"
-    t.integer  "organizer_id"
+    t.string  "email"
+    t.string  "fname"
+    t.string  "lname"
+    t.string  "password_digest"
+    t.string  "avatar_url"
+    t.date    "birthday"
+    t.text    "description"
+    t.integer "organizer_id"
   end
 
 end

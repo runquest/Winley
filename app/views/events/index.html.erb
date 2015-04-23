@@ -1,8 +1,8 @@
 <h3>All Events</h3>
   <% @events.each do |event| %>
-   <h1><%= link_to event.event_title, event_path(event) %></h1>
-		<%= event.event_venue %><br>
-		<%= event.event_date %><br>
+   <h1><%= link_to event.title, event_path(event) %></h1>
+		<%= event.venue %><br>
+		<%= event.date %><br>
 		<%= event.duration %><br>
 		<%= event.description%><br>
 		<hr>

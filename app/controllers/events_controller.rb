@@ -13,7 +13,7 @@ class EventsController < ApplicationController
 
     if @event.save
       current_user.events << @event
-      redirect_to event_path(@event), notice: "#{@event.event_title}!"
+      redirect_to event_path(@event), notice: "#{@event.title}!"
     else
       render :new
     end
@@ -46,7 +46,7 @@ class EventsController < ApplicationController
   protected
 
   def event_params
-    params.require(:event).permit(:event_title, :event_venue, :event_date, :duration, :description)
+    params.require(:event).permit(:title, :venue, :date, :duration, :description)
   end
 
 end

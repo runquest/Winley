@@ -2,7 +2,7 @@
 	<h1>All User Related Data</h1>
 	<!-- <img src="<%#= @user.avatar_url %>" alt="profile picture"> -->
 	<h1>Full name:<%= @user.full_name %></h1>
-	<h2>Age:<%= @user.age %> | Region: <%= @user.region %></h2>
+	<h2>Age:<%= @user.birthday %></h2>
 	<p>Description:<%= @user.description %></p>
 	<p>Email:<%= @user.email %></p>
 </div>
@@ -14,7 +14,7 @@
 				<p>"no events created"</p>
 			<% else %>
 				<% @user.events.each do |event| %>
-				<h3><%= link_to event.event_title, event_path(event) %></h3>
+				<h3><%= link_to event.title, event_path(event) %></h3>
 				<% end %>
 			<% end %>
 	<h2>Events I attended</h2>

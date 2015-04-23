@@ -3,13 +3,13 @@ class Event < ActiveRecord::Base
 	has_many :users, :through => :attendances
 	has_many :bottles, :through => :flights
 
-    validates :event_title, 
+    validates :title, 
     presence: true
 
-    validates :event_venue,
+    validates :venue,
     presence: true
 
-    validates :event_date,
+    validates :date,
     presence: true
 
     validates :duration,
