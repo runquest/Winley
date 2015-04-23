@@ -12,7 +12,12 @@ class BottlesController < ApplicationController
     @bottle = Bottle.new(bottle_params)
 
     if @bottle.save
-      redirect_to bottle_path(@bottle), notice: "#{@bottle.name}!"
+      if current_user == nil
+        redirect_to bottle_path(@bottle), notice: "#{@bottle.name}!"
+      else
+        current_user.bottles << @bottle
+        redirect_to bottle_path(@bottle), notice: "#{@bottle.name}!"
+      end
     else
       render :new
     end
@@ -36,11 +41,18 @@ class BottlesController < ApplicationController
    def update
     @bottle = Bottle.find(params[:id])
 
-    if @bottle.update_attributes(bottle_params)
-      redirect_to user_path
-    else
-      render :edit
-    end
+      if current_user == nil
+
+        if @bottle.update_attributes(bottle_params)
+          redirect_to bottle_path, notice: "#{@bottle.name}!"
+        else
+          render :edit
+        end
+
+      else
+          current_user.bottles << @bottle
+          redirect_to bottle_path(@bottle), notice: "#{@bottle.name}!"
+      end
   end 
 
   protected

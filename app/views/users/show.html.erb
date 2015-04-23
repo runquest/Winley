@@ -29,6 +29,17 @@
 	<h1>All Bottles Related Data</h1>
 	<%= link_to "Add an bottle", new_bottle_path %>
 	<h2>Bottles created</h2>
+		<% if @user.bottles.all == [] %>
+						<p>"no bottles created"</p>
+					<% else %>
+						<% @user.bottles.each do |bottle| %>
+						<h3><%= link_to bottle.name, bottle_path(bottle) %></h3>
+						<% end %>
+					<% end %>
+
+
+
+
 	<h2>Last bottle created</h2>
 	<h3>Last bottle review</h3>
 </div>

@@ -1,6 +1,5 @@
 class ReviewsController < ApplicationController
 
-	before_filter :restrict_access
 	before_filter :load_bottle
 
  def new
