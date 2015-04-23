@@ -31,13 +31,13 @@ console.log(xmlhttp);
 
 
 var displayBottle = function(data) {
-  // debugger
+  debugger
   console.log(data);
 }
 
 
 var req = new XMLHttpRequest();
-var link = "http://services.wine.com/api/beta2/service.svc/JSON/catalog?search=ghostblock&apikey=b1af7f1d65f1e1ebdb2faf060ad8fadd"
+var link = "http://services.wine.com/api/beta2/service.svc/JSON/catalog?search=pinot&apikey=b1af7f1d65f1e1ebdb2faf060ad8fadd"
 
 req.onreadystatechange = function() {
   console.log('state changed', req.readyState, req.status);
