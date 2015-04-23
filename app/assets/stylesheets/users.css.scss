@@ -2,63 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div#edit-profile {
-	@include outer-container;
-
-}
-
-div#header {
-
-	@include outer-container;
-
-	div#social-icons {
-		@include span-columns(6);
-		background-color: blue;
-			button {
-				display: block;
-			}
-	}
-
-	div#social-image {
-		@include span-columns(6);
-		background-color: red;
-		
-			img {
-				float: right;
-				// @include fill-parent;
-			}
-			
-	}
-
+.flex-box {
+	display: flex;
+	flex-direction: column;
+	max-width: 760px;
+	justify-content: center;
+	margin: 0 auto;
 }
 
 
-div#middle {
-	@include outer-container;
-
-	div#personal {
-		@include span-columns(6);
-		background-color: yellow;
-	}
-
-
-	div#my-event-collection {
-		@include span-columns(6);
-		background-color: green;
-	}
-
+div#user {
+	background-color: green;
 }
 
-div#bottles-events-section {
-	@include outer-container;
+div#event {
+	background-color: pink;
+}
 
-	div#bottles {
-		@include span-columns(6);
-		background-color: orange;
-	}
-	div#events {
-		@include span-columns(6);
-		background-color: pink;
-	}	
-
+div#bottle {
+	background-color: yellow;
 }

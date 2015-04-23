@@ -20,6 +20,15 @@
     <%= f.label "event_venue", "Where?" %><br>
     <%= f.text_field "event_venue" %>
   </div>
+
+
+
+  <select name="user[organizer_id]">
+    <% User.all.each do |user| %>
+        <option value="<%= user.id %>"><%= user.fname %></option>
+    <% end %>
+  </select>
+
   <div>
     <%= f.label "event_date", "When?" %><br>
     <%= f.date_field "event_date" %>

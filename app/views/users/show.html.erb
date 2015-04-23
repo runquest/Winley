@@ -1,66 +1,31 @@
-<div id="profile-page">
+<div id="user" class="flex-box">
+	<h1>All User Related Data</h1>
+	<!-- <img src="<%#= @user.avatar_url %>" alt="profile picture"> -->
+	<h1>Full name:<%= @user.full_name %></h1>
+	<h2>Age:<%= @user.age %> | Region: <%= @user.region %></h2>
+	<p>Description:<%= @user.description %></p>
+	<p>Email:<%= @user.email %></p>
+</div>
 
-	<div id="edit-profile">
-		<button><%= link_to "edit profile page", edit_user_path %></button>
-	</div>
-	
-	<div id="header">
-
-	 	<div id="social-icons">
-			<button>Follow ME</button>
-			<button>Twitter</button>
-			<button>Facebook</button>
-			<button>GooglePlus</button>
-		</div>
-
-		<div id="social-image"> 
-			<img src="<%= @user.avatar_url %>" alt="profile picture">
-		</div>
-
-	</div>
-
-	<div id="middle">
-
-		<div id="personal">
-			<h1><%= @user.full_name %></h1>
-		  <dl>
-		    <dt>
-		    <h2><%= @user.age %> | <%= @user.region %></h2>
-		    <p><%= @user.description %></p><br/>
-		    <p><%= @user.email %></p>
-		    </dt>
-		  </dl>
-		</div>
-
-
-		<div id="my-event-collection">
-			<h2>My Events</h2>
-			<% if @user.events.all == [] %>
+<div id="event" class="flex-box">
+	<h1>All Events Related Data</h1>
+	<h2>Events I created</h2>
+	<% if @user.events.all == [] %>
 				<p>"no events created"</p>
 			<% else %>
 				<% @user.events.each do |event| %>
 				<h3><%= link_to event.event_title, event_path(event) %></h3>
 				<% end %>
 			<% end %>
-		</div>
-	</div>
+	<h2>Events I attended</h2>
 
-	<div id="bottles-events-section">
+	<h3>Last event I attended</h3>
+	<h3>Last events attendees</h3>
+</div>
 
-		<div id="bottles">
-			<p>5 recently added bottles</p>
-			<strong>needs the connection through reviews to create new bottle.</strong>
-		</div>
-		
-		<div id="events">
-			<p>2 links to future events</p>
-			
-			<p>link to recent events</p>
-
-			<button><%= link_to "Add a event", new_event_path %></button>
-		</div>
-	
-	</div>
-
-
+<div id="bottle" class="flex-box">
+	<h1>All Bottles Related Data</h1>
+	<h2>Bottles created</h2>
+	<h2>Last bottle created</h2>
+	<h3>Last bottle review</h3>
 </div>

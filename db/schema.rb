@@ -11,46 +11,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422212022) do
+ActiveRecord::Schema.define(version: 20150423002216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "attendances", id: false, force: true do |t|
+  create_table "attendances", id: false, force: :cascade do |t|
     t.integer "user_id",  null: false
     t.integer "event_id", null: false
   end
 
-  create_table "bottles", force: true do |t|
-    t.string   "name"
-    t.string   "color"
-    t.string   "grape"
-    t.string   "vintage"
-    t.string   "winery"
-    t.string   "region"
-    t.string   "alcohol"
-    t.string   "price"
+  create_table "bottles", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.string   "color",       limit: 255
+    t.string   "grape",       limit: 255
+    t.string   "vintage",     limit: 255
+    t.string   "winery",      limit: 255
+    t.string   "region",      limit: 255
+    t.string   "alcohol",     limit: 255
+    t.string   "price",       limit: 255
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "events", force: true do |t|
-    t.string   "event_title"
-    t.string   "event_venue"
+  create_table "events", force: :cascade do |t|
+    t.string   "event_title", limit: 255
+    t.string   "event_venue", limit: 255
     t.date     "event_date"
     t.time     "duration"
-    t.string   "description"
+    t.string   "description", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "flights", id: false, force: true do |t|
+  create_table "flights", id: false, force: :cascade do |t|
     t.integer "bottle_id", null: false
     t.integer "event_id",  null: false
   end
 
-  create_table "reviews", force: true do |t|
+  create_table "reviews", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "bottle_id"
     t.integer  "my_rating"
@@ -63,17 +63,23 @@ ActiveRecord::Schema.define(version: 20150422212022) do
   add_index "reviews", ["bottle_id"], name: "index_reviews_on_bottle_id", using: :btree
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "table_regions", force: :cascade do |t|
+    t.string "region"
+    t.string "country"
+  end
+
+  create_table "users", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email"
-    t.string   "fname"
-    t.string   "lname"
-    t.string   "password_digest"
-    t.string   "region"
-    t.string   "avatar_url"
+    t.string   "email",           limit: 255
+    t.string   "fname",           limit: 255
+    t.string   "lname",           limit: 255
+    t.string   "password_digest", limit: 255
+    t.string   "region",          limit: 255
+    t.string   "avatar_url",      limit: 255
     t.integer  "age"
     t.text     "description"
+    t.integer  "organizer_id"
   end
 
 end
