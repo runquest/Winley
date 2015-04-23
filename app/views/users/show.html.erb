@@ -1,6 +1,8 @@
 <div id="user" class="flex-box">
 	<h1>All User Related Data</h1>
+	<%= link_to "Edit User", edit_user_path(current_user) %>
 	<!-- <img src="<%#= @user.avatar_url %>" alt="profile picture"> -->
+	
 	<h1>Full name:<%= @user.full_name %></h1>
 	<h2>Age:<%= @user.birthday %></h2>
 	<p>Description:<%= @user.description %></p>
@@ -9,6 +11,7 @@
 
 <div id="event" class="flex-box">
 	<h1>All Events Related Data</h1>
+	<%= link_to "Add an event", new_event_path %>
 	<h2>Events I created</h2>
 	<% if @user.events.all == [] %>
 				<p>"no events created"</p>
@@ -18,13 +21,13 @@
 				<% end %>
 			<% end %>
 	<h2>Events I attended</h2>
-
 	<h3>Last event I attended</h3>
 	<h3>Last events attendees</h3>
 </div>
 
 <div id="bottle" class="flex-box">
 	<h1>All Bottles Related Data</h1>
+	<%= link_to "Add an bottle", new_bottle_path %>
 	<h2>Bottles created</h2>
 	<h2>Last bottle created</h2>
 	<h3>Last bottle review</h3>

@@ -12,8 +12,13 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
 
     if @event.save
-      current_user.events << @event
-      redirect_to event_path(@event), notice: "#{@event.title}!"
+
+      if current_user == nil
+        redirect_to event_path(@event), notice: "#{@event.title}!"
+      else
+        current_user.events << @event
+        redirect_to event_path(@event), notice: "#{@event.title}!"
+      end
     else
       render :new
     end
@@ -36,11 +41,21 @@ class EventsController < ApplicationController
    def update
     @event = Event.find(params[:id])
 
-    if @event.update_attributes(user_params)
-      redirect_to user_path
+
+    if current_user == nil
+
+      if @event.update_attributes(event_params)
+        redirect_to event_path, notice: "#{@event.title}!"
+      else
+        render :edit
+      end
+
     else
-      render :edit
+        current_user.events << @event
+        redirect_to event_path(@event), notice: "#{@event.title}!"
     end
+
+
   end 
 
   protected
