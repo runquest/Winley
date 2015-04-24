@@ -2,14 +2,17 @@
 @import "neat";
 @import "events";
 @import "users";
+@import "welcome";
+@import "footer";
+@import "header";
+@import "template";
+@import "about";
+
 
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
-
-
-
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
  * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
  *
@@ -18,3 +21,46 @@
  *
  *= require_self.
  */
+
+
+ //body color
+ $base-body-color : tint(black,5%);
+
+@font-face {
+    font-family: chalk;
+    src: url('/assets/chalk/KGTenThousandReasons.ttf');
+}
+
+body{
+
+  font-family: chalk;
+  @include outer-container;
+  background-color: $base-body-color;
+  background-position: 10px 10px;
+
+ 
+  }
+  
+  
+  
+
+
+
+
+
+
+ //colors
+
+
+
+
+
+ //font color
+
+ //text link color
+
+
+ //border color
+
+ //flash color
+
