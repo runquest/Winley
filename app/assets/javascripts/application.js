@@ -15,6 +15,8 @@
 //= require turbolinks
 //= require_tree .
 
+var search = "ghost blo"
+
 var xmlhttp = new XMLHttpRequest();
 var url = "http://services.wine.com/api/beta2/service.svc/JSON/catalog?apikey=b1af7f1d65f1e1ebdb2faf060ad8fadd";
 
@@ -37,7 +39,7 @@ var displayBottle = function(data) {
 
 
 var req = new XMLHttpRequest();
-var link = "http://services.wine.com/api/beta2/service.svc/JSON/catalog?search=pinot&apikey=b1af7f1d65f1e1ebdb2faf060ad8fadd"
+var link = "http://services.wine.com/api/beta2/service.svc/JSON/catalog?search="+search+"&apikey=b1af7f1d65f1e1ebdb2faf060ad8fadd"
 
 req.onreadystatechange = function() {
   console.log('state changed', req.readyState, req.status);
@@ -49,7 +51,7 @@ req.onreadystatechange = function() {
     displayBottle(data);
 
     for (i = 0; data.Products.List.length; i++) {
-      $('.bottle').append(data.Products.List[i].Name + '<strong> Price:</strong> ' + data.Products.List[i].PriceRetail + '<br>');
+      $('.bottle').append(data.Products.List[i].Name + '<strong> Price:</strong> ' + data.Products.List[i].PriceRetail + '  '  + '<br>' + 'Add This To Your Library!' + '<br>');
     }
 
   }
