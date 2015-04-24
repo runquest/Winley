@@ -7,3 +7,8 @@
 <%= @event.date %><br>
 <%= @event.duration %><br>
 <%= @event.description%><br>
+<%= @event.flights.size %><br>
+	<% @event.bottles.each do |bottle| %>
+		<h2><%= bottle.name %></h2>
+		<p><%= bottle.vintage %></p><br>
+	<% end %>

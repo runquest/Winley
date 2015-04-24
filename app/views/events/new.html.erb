@@ -22,12 +22,59 @@
   </div>
 
 
+  <div>
+    <%= f.label "organizer_id", "Organizer" %><br>
+    <select name="user[organizer_id]">
+      <% User.all.each do |user| %>
+          <option value="<%= user.id %>"><%= user.fname %></option>
+      <% end %>
+    </select>
+  </div>
 
-  <select name="user[organizer_id]">
-    <% User.all.each do |user| %>
-        <option value="<%= user.id %>"><%= user.fname %></option>
-    <% end %>
-  </select>
+  <div>
+    <%= f.label "bottle_id", "Bottle" %><br>
+    <select name="bottle_id[]">
+      <% Bottle.all.each do |bottle| %>
+          <option value="<%= bottle.id %>"><%= bottle.name %></option>
+      <% end %>
+    </select>
+  </div>
+
+  <div>
+    <%= f.label "bottle_id", "Bottle" %><br>
+    <select name="bottle_id[]">
+      <% Bottle.all.each do |bottle| %>
+          <option value="<%= bottle.id %>"><%= bottle.name %></option>
+      <% end %>
+    </select>
+  </div>
+
+  <div>
+    <%= f.label "bottle_id", "Bottle" %><br>
+    <select name="bottle_id[]">
+      <% Bottle.all.each do |bottle| %>
+          <option value="<%= bottle.id %>"><%= bottle.name %></option>
+      <% end %>
+    </select>
+  </div>
+
+   <div>
+    <%= f.label "bottle_id", "Bottle" %><br>
+    <select name="bottle_id[]">
+      <% Bottle.all.each do |bottle| %>
+          <option value="<%= bottle.id %>"><%= bottle.name %></option>
+      <% end %>
+    </select>
+  </div>
+
+  <div>
+    <%= f.label "bottle_id", "Bottle" %><br>
+    <select name="bottle_id[]">
+      <% Bottle.all.each do |bottle| %>
+          <option value="<%= bottle.id %>"><%= bottle.name %></option>
+      <% end %>
+    </select>
+  </div>
 
   <div>
     <%= f.label "date", "When?" %><br>

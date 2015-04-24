@@ -38,24 +38,17 @@ class BottlesController < ApplicationController
 
   def edit
       @bottle = Bottle.find(params[:id])
+      @review = @bottle.reviews.where(user_id: current_user.id).take
   end
 
    def update
     @bottle = Bottle.find(params[:id])
-    @review = Review.new(review_params)
+    @review = @bottle.reviews.where(user_id: current_user.id).take
 
-    if @bottle.save
-      if current_user == nil
-        redirect_to bottle_path(@bottle), notice: "#{@bottle.name}!"
-      else
-        current_user.bottles << @bottle
-        @review.user = current_user
-        @review.bottle = @bottle
-        @review.save
-        redirect_to bottle_path(@bottle), notice: "#{@bottle.name}!"
-      end
+    if @bottle.update_attributes(bottle_params) && @review.update_attributes(review_params)
+      redirect_to bottle_path(@bottle)
     else
-      render :new
+      render :edit
     end
 
   end 
