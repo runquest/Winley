@@ -1,10 +1,10 @@
 <h3>All Events</h3>
   <% @events.each do |event| %>
-   <h1><%= link_to event.title, event_path(event) %></h1>
+		<%= link_to 'delete', delete_bottle_path %>
 		<%= event.venue %><br>
 		<%= event.date %><br>
 		<%= event.duration %><br>
 		<%= event.description%><br>
 		<hr>
   <% end %>
-</h1>
+</h1>=

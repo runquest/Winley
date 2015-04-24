@@ -10,5 +10,10 @@
 <%= @event.flights.size %><br>
 	<% @event.bottles.each do |bottle| %>
 		<h2><%= bottle.name %></h2>
+		<p><%= link_to 'delete',  {:controller => "events", :action => "delete_bottle", :bottle_id => bottle.id, :event_id => @event.id } %></p>
+
+
+
+
 		<p><%= bottle.vintage %></p><br>
 	<% end %>
