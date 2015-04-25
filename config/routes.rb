@@ -3,6 +3,7 @@ Tasteswing::Application.routes.draw do
  root 'welcome#index'
  
  get "welcome/index"
+ get "welcome/about"
  
  resources :users ,:events, :bottles
  resources :sessions, only: [:new, :create, :destroy]
