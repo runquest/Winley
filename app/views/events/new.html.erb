@@ -31,7 +31,9 @@
     </select>
   </div>
 
-  <div>
+  <!-- <button id="btn_add_bottle">ADD BOTTLE</button> -->
+
+  <div id="add_bottle_form">
     <%= f.label "bottle_id", "Bottle" %><br>
     <select name="bottle_id[]">
       <% Bottle.all.each do |bottle| %>

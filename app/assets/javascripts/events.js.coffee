@@ -21,3 +21,7 @@ $(document).ready ->
     return
   return
 
+
+
+  $('button#btn_add_bottle').on 'click', alert "Hello CoffeeScript!"
+

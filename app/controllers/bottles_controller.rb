@@ -28,8 +28,8 @@ class BottlesController < ApplicationController
     if current_user == nil
       @bottle = Bottle.find(params[:id])
     else 
-      @bottle = Bottle.find(params[:id])      
-      @review = Review.find(params[:id])
+      @bottle = Bottle.find(params[:id])
+      @review = @bottle.reviews.where(user_id: current_user.id).take
     end
   end
   
