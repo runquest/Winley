@@ -25,10 +25,12 @@ class BottlesController < ApplicationController
   end
 
   def show
-     @bottle = Bottle.find(params[:id])
-     if current_user != nil
+    if current_user == nil
+      @bottle = Bottle.find(params[:id])
+    else 
+      @bottle = Bottle.find(params[:id])      
       @review = Review.find(params[:id])
-     end
+    end
   end
   
   def destroy
@@ -38,22 +40,24 @@ class BottlesController < ApplicationController
   end
 
   def edit
-    @bottle = Bottle.find(params[:id])
-    if current_user != nil
+    if current_user == nil
+      @bottle = Bottle.find(params[:id])
+    else
+      @bottle = Bottle.find(params[:id])
       @review = @bottle.reviews.where(user_id: current_user.id).take
     end
   end
 
   def update
-    @bottle = Bottle.find(params[:id])
-    if current_user != nil 
+    if current_user == nil
+      @bottle = Bottle.find(params[:id])
+      redirect_to bottle_path(@bottle)
+    else
+      @bottle = Bottle.find(params[:id])
       @review = @bottle.reviews.where(user_id: current_user.id).take
       if @bottle.update_attributes(bottle_params) && @review.update_attributes(review_params)
         redirect_to bottle_path(@bottle)
       end
-    else
-      @bottle.update_attributes(bottle_params)
-      redirect_to bottle_path(@bottle)
     end
   end 
 
