@@ -59,7 +59,6 @@ class BottlesController < ApplicationController
       @bottle.update_attributes(bottle_params)
       @review.update_attributes(review_params)
       redirect_to bottle_path(@bottle)
-      end
     end
   end 
 
