@@ -31,6 +31,7 @@
     <%= f.text_area "description" %>
   </div>
   <hr>
+  <% if current_user != nil %>
   <h4>Add Review</h4>
   <div>
     <%= fields_for :review, @review do |rf| %>
@@ -46,10 +47,15 @@
     <%= rf.label :favorite, "Is it your favorite" %><br>
     <%= rf.text_field :favorite %>
   </div>
-    <div>
+  <div>
+    <% if current_user == nil %>
+    <% rf.hidden_field :user_id, :value => 0 %>
+    <% else %>
     <%= rf.hidden_field :user_id, :value => current_user.id%>
+    <% end %>
   </div>
   <% end %>
   </div>
+  <% end %>
   <div><%= f.submit "Uncork" %></div>
 <% end %>

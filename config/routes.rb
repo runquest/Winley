@@ -4,6 +4,7 @@ Tasteswing::Application.routes.draw do
  
  get "welcome/index"
  get "welcome/about"
+ get 'delete-bottle' => 'events#delete_bottle', as: :delete_bottle
  
  resources :users ,:events, :bottles
  resources :sessions, only: [:new, :create, :destroy]

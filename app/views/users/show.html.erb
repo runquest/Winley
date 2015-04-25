@@ -36,7 +36,7 @@
 						<p>"no bottles created"</p>
 					<% else %>
 						<% @user.bottles.each do |bottle| %>
-						<h3><%= link_to bottle.name, bottle_path(bottle) %></h3>
+						<p><%= link_to bottle.name, bottle_path(bottle) %></p>
 						<% end %>
 					<% end %>
 	<h2>Last bottle created</h2>
@@ -50,7 +50,7 @@
 						<p>"no reviews created"</p>
 					<% else %>
 						<% @user.reviews.each do |review| %>
-						<h3><%= review.comment %></h3>
+						<p><%= review.comment %></p>
 						<% end %>
 					<% end %>
 </div>
