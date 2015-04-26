@@ -14,28 +14,61 @@
           </a> -->
         </li>
         <li class="nav-link"><a href="javascript:void(0)">Testimonials</a></li>
+        <li class="nav-link">
+          <label for="modal-1"><a>Log in</a></label>
+        </li>
+         <li class="nav-link">
+         <a href="/users/new">Sign up</a>
+        </li>
         <li class="nav-link more"><a href="javascript:void(0)">More</a>
-          <ul class="submenu">
+            <ul class="submenu">
             <li><a href="javascript:void(0)">Submenu Item</a></li>
             <li><a href="javascript:void(0)">Another Item</a></li>
             <li class="more"><a href="javascript:void(0)">Item with submenu</a>
-              <ul class="submenu">
-                <li><a href="javascript:void(0)">Sub-submenu Item</a></li>
-                <li><a href="javascript:void(0)">Another Item</a></li>
-              </ul>
+            <ul class="submenu">
+            <li><a href="javascript:void(0)">Sub-submenu Item</a></li>
+            <li><a href="javascript:void(0)">Another Item</a></li>
+            </ul>
             </li>
             <li class="more"><a href="javascript:void(0)">Another submenu</a>
-              <ul class="submenu">
-                <li><a href="javascript:void(0)">Sub-submenu</a></li>
-                <li><a href="javascript:void(0)">An Item</a></li>
-              </ul>
+            <ul class="submenu">
+            <li><a href="javascript:void(0)">Sub-submenu</a></li>
+            <li><a href="javascript:void(0)">An Item</a></li>
+            </ul>
             </li>
-          </ul>
+            </ul>
         </li>
-        <li class="nav-link"><a href="javascript:void(0)">Sign up/Log in</a></li>
-      </ul>
+        
+        </ul>
     </nav>
   </div>
+  
+  <div class="modal">
+    <input class="modal-state" id="modal-1" type="checkbox" />
+    <div class="modal-fade-screen">
+      <div class="modal-inner">
+        <div class="modal-close" for="modal-1"></div>
+        <h1>Lets get you moving...</h1>
+        <%= form_tag sessions_path do %>
+        <div>
+          <%= label_tag "email" %><br/>
+          <%= text_field_tag "email" %>
+        </div>
+        <div>
+          <%= label_tag :password %><br/>
+          <%= password_field_tag :password %>
+        </div>
+        <div><%= submit_tag "Log In" %></div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
+
+ 
+  
+
 </header>
 
 
