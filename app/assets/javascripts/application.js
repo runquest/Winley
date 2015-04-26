@@ -15,51 +15,77 @@
 //= require turbolinks
 //= require_tree .
 
-var search = "ghost blo"
-
-var xmlhttp = new XMLHttpRequest();
-var url = "http://services.wine.com/api/beta2/service.svc/JSON/catalog?apikey=b1af7f1d65f1e1ebdb2faf060ad8fadd";
-
-xmlhttp.onreadystatechange = function() {
-  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-    var myArr = JSON.parse(xmlhttp.responseText);
-  }
-}
-xmlhttp.open("GET", url, true);
-xmlhttp.send();
+// var search = $('search')[0].value;
 
 
-console.log(xmlhttp);
+// var xmlhttp = new XMLHttpRequest();
+// var url = "http://services.wine.com/api/beta2/service.svc/JSON/catalog?apikey=b1af7f1d65f1e1ebdb2faf060ad8fadd";
+
+// xmlhttp.onreadystatechange = function() {
+//   if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+//     var myArr = JSON.parse(xmlhttp.responseText);
+//   }
+// }
+// xmlhttp.open("GET", url, true);
+// xmlhttp.send();
+
+
+// console.log(xmlhttp);
 
 
 var displayBottle = function(data) {
-  debugger
+  // debugger
   console.log(data);
 }
 
+$(function(){
+  // when the form is submitted
 
-var req = new XMLHttpRequest();
-var link = "http://services.wine.com/api/beta2/service.svc/JSON/catalog?search="+search+"&apikey=b1af7f1d65f1e1ebdb2faf060ad8fadd"
+  // grab the keyword from the input field
 
-req.onreadystatechange = function() {
-  console.log('state changed', req.readyState, req.status);
-  if (req.readyState == 4 && req.status == 200) {
+  // perform ajax search
 
-    console.log('received success response', req.responseText);
-    var data = JSON.parse(req.responseText);
 
-    displayBottle(data);
+  function getWineInfo(query) {
+    // var search = "ghost block"  // TODO: Url encode the search keywords
+    var req = new XMLHttpRequest();
+    var link = "http://services.wine.com/api/beta2/service.svc/JSON/catalog?search="+ query +"&apikey=b1af7f1d65f1e1ebdb2faf060ad8fadd"
 
-    for (i = 0; data.Products.List.length; i++) {
-      $('.bottle').append(data.Products.List[i].Name + '<strong> Price:</strong> ' + data.Products.List[i].PriceRetail + '  '  + '<br>' + 'Add This To Your Library!' + '<br>');
+    req.onreadystatechange = function() {
+      console.log('state changed', req.readyState, req.status);
+      if (req.readyState == 4 && req.status == 200) {
+
+        console.log('received success response', req.responseText);
+        var data = JSON.parse(req.responseText);
+
+        displayBottle(data);
+
+        for (i = 0; data.Products.List.length; i++) {
+          $('.bottle').append(data.Products.List[i].Name + '<strong> Price:</strong> ' + data.Products.List[i].PriceRetail + '  '  + '<br>' + 'Add This To Your Library!' + '<br>');
+        }
+
+      }
     }
-
+    req.open("GET", link, true);
+    req.send();
   }
-}
-req.open("GET", link, true);
-req.send();
+  
 
 
-// var wine = req.response;
-// console.log('wine is', wine);
+
+  $("form.search").on('submit', function(e){
+    // alert("submitting form");
+    e.preventDefault(); // don't submit the form
+    // debugger
+    var query = $(this.search).val();
+    getWineInfo(query);
+  });
+
+
+
+
+  // var wine = req.response;
+  // console.log('wine is', wine);
+
+});
 
