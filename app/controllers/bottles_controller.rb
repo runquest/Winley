@@ -28,8 +28,8 @@ class BottlesController < ApplicationController
     if current_user == nil
       @bottle = Bottle.find(params[:id])
     else 
-      @bottle = Bottle.find(params[:id])      
-      @review = Review.find(params[:id])
+      @bottle = Bottle.find(params[:id])
+      @review = @bottle.reviews.where(user_id: current_user.id).take
     end
   end
   
@@ -51,13 +51,14 @@ class BottlesController < ApplicationController
   def update
     if current_user == nil
       @bottle = Bottle.find(params[:id])
+      @bottle.update_attributes(bottle_params)
       redirect_to bottle_path(@bottle)
     else
       @bottle = Bottle.find(params[:id])
       @review = @bottle.reviews.where(user_id: current_user.id).take
-      if @bottle.update_attributes(bottle_params) && @review.update_attributes(review_params)
-        redirect_to bottle_path(@bottle)
-      end
+      @bottle.update_attributes(bottle_params)
+      @review.update_attributes(review_params)
+      redirect_to bottle_path(@bottle)
     end
   end 
 

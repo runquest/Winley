@@ -1,4 +1,4 @@
-<h3>Create Event</h3>
+<h1>CREATE THIS EVENT </h1>
 <%= form_for @event do |f| %>
 
   <% if @event.errors.any? %>
@@ -30,64 +30,10 @@
     </select>
   </div>
 
-
-
-  <div>
-    <% f.fields_for :bottles do |builder| %>
-      <p>
-        <%= builder.label :content, "Bottle" %><br>
-        <%= builder.text_area :content, :rows => 3 %>
-      </p>
-    <% end %> 
-    <%= f.label "bottle_id", "Bottle" %><br>
-    <select name="bottle_id[]">
-      <% Bottle.all.each do |bottle| %>
-          <option value="<%= bottle.id %>"><%= bottle.name %></option>
-      <% end %>
-    </select>
-    <%= f.check_box :_destroy %>
-
-  </div>
-
-
-
-
-
-
-  <div>
-    <%= f.label "bottle_id", "Bottle" %><br>
-    <select name="bottle_id[]">
-      <% Bottle.all.each do |bottle| %>
-          <option value="<%= bottle.id %>"><%= bottle.name %></option>
-      <% end %>
-    </select>
-  </div>
-
-  <div>
-    <%= f.label "bottle_id", "Bottle" %><br>
-    <select name="bottle_id[]">
-      <% Bottle.all.each do |bottle| %>
-          <option value="<%= bottle.id %>"><%= bottle.name %></option>
-      <% end %>
-    </select>
-  </div>
-
-   <div>
-    <%= f.label "bottle_id", "Bottle" %><br>
-    <select name="bottle_id[]">
-      <% Bottle.all.each do |bottle| %>
-          <option value="<%= bottle.id %>"><%= bottle.name %></option>
-      <% end %>
-    </select>
-  </div>
-
-  <div>
-    <%= f.label "bottle_id", "Bottle" %><br>
-    <select name="bottle_id[]">
-      <% Bottle.all.each do |bottle| %>
-          <option value="<%= bottle.id %>"><%= bottle.name %></option>
-      <% end %>
-    </select>
+    <div id="add_bottle_form">
+ 
+     <%= f.collection_select :bottle_ids, Bottle.all, :id, :name, {}, {multiple: true} %><br>
+   
   </div>
 
   <div>

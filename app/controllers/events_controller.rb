@@ -12,11 +12,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     if @event.save
-      params[:bottle_id].each do | bottle_id |
-        @bottle = Bottle.find(bottle_id)
-        @event.bottles << @bottle
-      end
-        redirect_to event_path(@event), notice: "#{@event.title}" 
+      redirect_to event_path(@event), notice: "#{@event.title}" 
     else
       render :new
     end
@@ -37,18 +33,10 @@ class EventsController < ApplicationController
   end
 
   def update
+    # binding.pry
     @event = Event.find(params[:id])
-
-    if current_user == nil
-      if @event.update_attributes(event_params)
-        redirect_to event_path, notice: "#{@event.title}!"
-      else
-        render :edit
-      end
-    else
-        current_user.events << @event
-        redirect_to event_path(@event), notice: "#{@event.title}!"
-    end
+    @event.update_attributes(event_params)
+    redirect_to event_path, notice: "#{@event.title}!"
   end
 
   def delete_bottle
@@ -60,7 +48,9 @@ class EventsController < ApplicationController
   protected
 
   def event_params
-    params.require(:event).permit(:title, :venue, :date, :duration, :description)
+    params.require(:event).permit(:title, :venue, :date, :duration, :description, bottle_ids:[], flights_attributes:[:bottle_id])
   end
+
+
 
 end

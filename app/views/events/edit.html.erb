@@ -1,4 +1,5 @@
-<h3>Edit This Event</h3>
+
+<h1>EDIT THIS EVENT</h1>
 <%= form_for @event do |f| %>
 
   <% if @event.errors.any? %>
@@ -20,6 +21,23 @@
     <%= f.label "venue", "Where?" %><br>
     <%= f.text_field "venue" %>
   </div>
+ 
+
+  <div>
+    <%= f.label "organizer_id", "Organizer" %><br>
+    <select name="user[organizer_id]">
+      <% User.all.each do |user| %>
+          <option value="<%= user.id %>"><%= user.fname %></option>
+      <% end %>
+    </select>
+  </div>
+
+   <div id="add_bottle_form">
+   
+      <%= f.collection_select :bottle_ids, Bottle.all, :id, :name, {}, {multiple: true} %><br>
+    
+  </div>
+
   <div>
     <%= f.label "date", "When?" %><br>
     <%= f.date_field "date" %>
@@ -32,6 +50,5 @@
     <%= f.label "description", "Tell me a little bit more about your event" %><br>
     <%= f.text_area "description" %>
   </div>
-  <hr> 
   <div><%= f.submit "Submit" %></div>
 <% end %>

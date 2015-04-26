@@ -22,7 +22,23 @@
 			<% end %>
 
 	<h2>Last Events I created</h2>
-	<p><%= @user.events.last.title %>		
+	<% if @user.events.all == [] %>
+				<p>"no events created"</p>
+			<% else %>
+	<p><%= @user.events.last.title %>	</p>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
 	<h2>Events I attended</h2>
 	<h3>Last event I attended</h3>
 	<h3>Last events attendees</h3>
