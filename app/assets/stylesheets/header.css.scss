@@ -97,6 +97,9 @@
     @include media($horizontal-bar-mode) {
       margin-left: $centered-navigation-item-nudge;
     }
+    .label{
+    display: inline;
+    }
   }
 
   ul li.nav-link {

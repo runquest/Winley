@@ -1,5 +1,7 @@
 @import "bourbon";
 @import "neat";
+@import "header";
+@import "base/base";
 @import "events";
 @import "users";
 @import "welcome";
@@ -7,6 +9,7 @@
 @import "header";
 @import "template";
 @import "about";
+@import "modal";
 
 
 
@@ -34,19 +37,44 @@
 body{
 
   font-family: chalk;
+  color:white;
   @include outer-container;
   background-color: $base-body-color;
   background-position: 10px 10px;
+//Input text box colors and on hover 
+  #{$all-text-inputs} {
+    border: 1px solid #ffb90f;
+  }
+
+  #{$all-text-inputs-focus},
+  #{$all-text-inputs-hover} {
+    border: 1px solid #ee7621;
+  }
 
  
+
+@mixin button-bg($bg) {
+  background: $bg;
+  &:hover {
+    background:darken($bg,8%);
+    transition: all 0.3s ease;
   }
-  
-  
-  
+  &:active {
+    background:darken($bg,25%);
+  } 
+}
 
+.button-yellow{
+  background-color:yellow;
+}
+ 
+ .btn-yellow{
+   @include button-bg(#f1c40f);
+}
+  }
 
-
-
+  //form
+ 
 
 
  //colors

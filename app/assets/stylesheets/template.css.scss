@@ -20,4 +20,23 @@
   padding-bottom: 5em;
   }
 
+  .center_with_shift{
+    @include span-columns(8);
+    @include shift(2);
+    
+    .grid_signup{
+    @include span-columns(3);
+    @include omega();
+    }
+    .x{
+     @include span-columns(3);
+    @include omega();
+    margin-bottom: 0.75em;
+    padding: 0em;
+    width: 35%;
+   
+    }
+
+  }
+
   }

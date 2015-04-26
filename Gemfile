@@ -61,3 +61,8 @@ gem 'bourbon'
 gem 'neat'
 gem 'refills'
 gem 'bitters'
+
+#to upload images
+gem 'rmagick'
+gem 'mini_magick', '3.8.0'
+gem 'carrierwave'
