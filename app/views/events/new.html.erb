@@ -34,12 +34,10 @@
   <!-- <button id="btn_add_bottle">ADD BOTTLE</button> -->
 
   <div id="add_bottle_form">
-    <%= f.label "bottle_id", "Bottle" %><br>
-    <select name="bottle_id[]">
-      <% Bottle.all.each do |bottle| %>
-          <option value="<%= bottle.id %>"><%= bottle.name %></option>
-      <% end %>
-    </select>
+  <% @event.flights.build %>
+  <%= f.fields_for :flights do |flight| %>
+      <%= flight.select :bottle_id, Bottle.all.map {|b| [b.name, b.id]}, {multiple: true} %>
+    <% end %>
   </div>
 
   <div>
