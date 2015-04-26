@@ -1,19 +1,23 @@
 class Event < ActiveRecord::Base
     has_many :attendances
 	has_many :users, :through => :attendances
-	has_many :bottles, :through => :flights
+    has_many :bottles, :through => :flights
+    has_many :flights
 
-    validates :event_title, 
+    accepts_nested_attributes_for :bottles, :allow_destroy => true
+
+
+    validates :title, 
     presence: true
 
-    validates :event_venue,
+    validates :venue,
     presence: true
 
-    validates :event_date,
+    validates :date,
     presence: true
 
-    validates :duration,
-    presence: true 
+    # validates :duration,
+    # presence: true 
     
     validates :description,
     presence: true

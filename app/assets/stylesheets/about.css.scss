@@ -1,0 +1,37 @@
+.outer{
+  @include outer-container;
+  
+  .triplet{
+  @include span-columns(4);
+  @include pad();
+  text-align: center;
+  padding: 2em;
+
+    .priya {
+    width: 300px;
+    height: 300px;
+    border-radius: 100px;
+    -webkit-border-radius: 150px;
+    -moz-border-radius: 150px;
+    background: url(/assets/priya.jpg) no-repeat;
+    }
+    .aiste {
+    width: 300px;
+    height: 300px;
+    border-radius: 100px;
+    -webkit-border-radius: 150px;
+    -moz-border-radius: 150px;
+    background: url(/assets/aiste.jpg) no-repeat;
+    }
+     .dakota {
+    width: 300px;
+    height: 300px;
+    border-radius: 100px;
+    -webkit-border-radius: 150px;
+    -moz-border-radius: 150px;
+    background: url(/assets/priya.jpg) no-repeat;
+    }
+  }
+
+
+}

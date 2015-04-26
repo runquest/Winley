@@ -1,10 +1,13 @@
+
+<%= link_to "Edit Bottle", edit_bottle_path(@bottle) %>
+
 <h1><%= @bottle.name %></h1>
 <hr>
-<%= @bottle.color %><br>
 <%= @bottle.grape %><br>
 <%= @bottle.vintage %><br>
 <%= @bottle.winery %><br>
-<%= @bottle.region %><br>
-<%= @bottle.alcohol %><br>
-<%= @bottle.price %><br>
 <%= @bottle.description %><br>
+<% if current_user != nil %>
+<h2>This is <%= current_user.full_name %> review</h2>
+<h1><%= @bottle.reviews.where(user_id: current_user.id).take.comment %></h1>
+<% end %>

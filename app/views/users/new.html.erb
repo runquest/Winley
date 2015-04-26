@@ -1,9 +1,11 @@
-<h1>Users sign up page</h1>
+<div class="outer">
+<div class ="center_with_shift">
+<div><h1>Lets get you started...</h1></div>
 
 <%= form_for @user do |f| %>
 
   <% if @user.errors.any? %>
-    <div>
+    <div class="center_with_shift">
       <%= pluralize(@user.errors.count, "error") %> prevented the account from being created:
       <ul>
         <% @user.errors.full_messages.each do |msg| %>
@@ -13,46 +15,59 @@
     </div>
   <% end %>
 
-  <div>
-    <%= f.label "email" %><br>
-    <%= f.text_field "email" %>
-  </div>
-  <div>
-    <%= f.label "fname", "First Name" %><br>
-    <%= f.text_field "fname" %>
-  </div>
-  <div>
-    <%= f.label "lname", "Last Name" %><br>
-    <%= f.text_field "lname" %>
-  </div>
-  <div>
-    <%= f.label "password" %><br>
-    <%= f.password_field "password" %>
-  </div>
-  <div>
-    <%= f.label "password_confirmation" %><br>
-    <%= f.password_field "password_confirmation" %>
-  </div>
+<table class="table-minimal">
 
-  <div>
-    <%= f.label "region", "Region" %><br>
-    <%= f.select(:region, options_for_select([["Okanagan", "Okanagan"], ["Naramata Bench", "Naramata Bench"], ["Prince Edward County", "Prince Edward County"]])) %>
-  </div>
-
-  <div>
-    <%= f.label "avatar_url", "Profile image (url)" %><br>
-    <%= f.text_field "avatar_url" %>
-  </div>
-
-  <div>
-    <%= f.label "description", "Profile description" %><br>
-    <%= f.text_area "description" %>
-  </div>
-
-  <div>
-    <%= f.label "age", "Birthday" %><br>
-    <%= f.date_field "age" %>
-  </div>
-
-  <div><%= f.submit "Submit" %></div>
+ 
+  <tbody>
+    <tr>
+      <td><%= f.label "email" %></td>
+      <td><%= f.text_field "email" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label "fname", "First Name" %></td>
+      <td><%= f.text_field "fname" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label "lname", "Last Name" %></td>
+      <td><%= f.text_field "lname" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label "password" %></td>
+      <td><%= f.password_field "password" %></td>
+    </tr>
+    <tr>
+        <td><%= f.label "Re-type password" %></td>
+      <td><%= f.password_field "password_confirmation" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label "avatar_url", "Profile image (url)" %></td>
+      <td> <%= f.text_field "avatar_url" %></td>
+    </tr>
+     <tr>
+      <td><%= f.label "description", "Profile description" %></td>
+      <td><%= f.text_area "description" %></td>
+    </tr>
+     <tr>
+      <td> <%= f.label "birthday", "Birthday" %></td>
+      <td> <%= f.date_field "birthday" %></td>
+    </tr>
+  </tbody>
+</table>
+ <div><%= f.submit "Submit", :class => '"btn btn-yellow"' %></div>
 <% end %>
+</div>
+</div>
+
+
+
+
+<!-- 
+ <div>
+      <div class="">
+        <img id="uploadedImage" src="" alt="" class="img-rounded" style="max-width: 200px" placeholder="image\n uploaded"/>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputFile">File input</label>
+        <input type="file" id="exampleInputFile">
+      </div>
+      </div> -->

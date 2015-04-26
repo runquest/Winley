@@ -1,0 +1,26 @@
+<%= link_to "Back to bottle", bottle_path(@bottle) %><br/>
+
+<h2>Write a review of <em><%= @bottle.name %></em>.</h2>
+
+<%= form_for([@bottle, @review]) do |f| %>
+  <% if @review.errors.any? %>
+    <div>
+      <%= pluralize(@review.errors.count, "error") %> prevented the review from being saved:
+      <ul>
+        <% @review.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label "review" %><br>
+    <%= f.text_area "review" %>
+  </div>
+  <div>
+    <%= f.label "rating_out_of_five" %><br>
+    <%= f.number_field "rating_out_of_five" %>
+  </div>
+  <div><%= f.submit "Submit" %></div>
+<% end %>

@@ -2,6 +2,12 @@
   has_many :attendances
   has_many :events, :through => :attendances
   has_many :bottles, :through => :reviews
+  has_many :reviews
+
+
+
+  has_many :attendees, class_name: "User", foreign_key: "organizer_id"
+  belongs_to :organizer, class_name: "User"
 
     
   has_secure_password

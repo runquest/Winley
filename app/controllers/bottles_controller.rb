@@ -6,23 +6,33 @@ class BottlesController < ApplicationController
 
   def new
     @bottle = Bottle.new
+    @review = Review.new
   end
 
   def create
     @bottle = Bottle.new(bottle_params)
-
-    if @bottle.save
+    if current_user == nil
+      @bottle.save
       redirect_to bottle_path(@bottle), notice: "#{@bottle.name}!"
     else
-      render :new
+      @bottle.save
+      @review = Review.new(review_params)
+      @review.save
+      @review.user = current_user
+      @bottle.reviews << @review
+      redirect_to bottle_path(@bottle), notice: "#{@bottle.name}!"
     end
   end
 
   def show
-     @bottle = Bottle.find(params[:id])
+    if current_user == nil
+      @bottle = Bottle.find(params[:id])
+    else 
+      @bottle = Bottle.find(params[:id])
+      @review = @bottle.reviews.where(user_id: current_user.id).take
+    end
   end
-
-
+  
   def destroy
     @bottle = Bottle.find(params[:id])
     @bottle.destroy
@@ -30,23 +40,35 @@ class BottlesController < ApplicationController
   end
 
   def edit
+    if current_user == nil
       @bottle = Bottle.find(params[:id])
+    else
+      @bottle = Bottle.find(params[:id])
+      @review = @bottle.reviews.where(user_id: current_user.id).take
+    end
   end
 
-   def update
-    @bottle = Bottle.find(params[:id])
-
-    if @bottle.update_attributes(bottle_params)
-      redirect_to user_path
+  def update
+    if current_user == nil
+      @bottle = Bottle.find(params[:id])
+      @bottle.update_attributes(bottle_params)
+      redirect_to bottle_path(@bottle)
     else
-      render :edit
+      @bottle = Bottle.find(params[:id])
+      @review = @bottle.reviews.where(user_id: current_user.id).take
+      @bottle.update_attributes(bottle_params)
+      @review.update_attributes(review_params)
+      redirect_to bottle_path(@bottle)
     end
   end 
 
   protected
 
   def bottle_params
-    params.require(:bottle).permit(:name, :color, :grape, :vintage, :winery, :region, :alcohol, :price, :description)
+    params.require(:bottle).permit(:name, :grape, :vintage, :winery, :description)
   end
 
+  def review_params
+    params.require(:review).permit(:user_id, :bottle_id, :my_rating, :comment, :favorite)
+  end
 end

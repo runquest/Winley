@@ -1,15 +1,21 @@
 @import "bourbon";
 @import "neat";
+@import "header";
+@import "base/base";
 @import "events";
 @import "users";
+@import "welcome";
+@import "footer";
+@import "header";
+@import "template";
+@import "about";
+@import "modal";
+
 
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
-
-
-
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
  * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
  *
@@ -18,3 +24,71 @@
  *
  *= require_self.
  */
+
+
+ //body color
+ $base-body-color : tint(black,5%);
+
+@font-face {
+    font-family: chalk;
+    src: url('/assets/chalk/KGTenThousandReasons.ttf');
+}
+
+body{
+
+  font-family: chalk;
+  color:white;
+  @include outer-container;
+  background-color: $base-body-color;
+  background-position: 10px 10px;
+//Input text box colors and on hover 
+  #{$all-text-inputs} {
+    border: 1px solid #ffb90f;
+  }
+
+  #{$all-text-inputs-focus},
+  #{$all-text-inputs-hover} {
+    border: 1px solid #ee7621;
+  }
+
+ 
+
+@mixin button-bg($bg) {
+  background: $bg;
+  &:hover {
+    background:darken($bg,8%);
+    transition: all 0.3s ease;
+  }
+  &:active {
+    background:darken($bg,25%);
+  } 
+}
+
+.button-yellow{
+  background-color:yellow;
+}
+ 
+ .btn-yellow{
+   @include button-bg(#f1c40f);
+}
+  }
+
+  //form
+ 
+
+
+ //colors
+
+
+
+
+
+ //font color
+
+ //text link color
+
+
+ //border color
+
+ //flash color
+

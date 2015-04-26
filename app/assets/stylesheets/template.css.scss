@@ -1,0 +1,42 @@
+.outer{
+  @include outer-container;
+
+  //adding hero image with blackboard
+  .bg{  
+  $base-border-radius: 3px !default;
+  $action-color: #477DCA !default;
+  $large-screen: em(860) !default;
+  $hero-background-top: #7F99BE; 
+  $hero-background-bottom: #20392B;
+  $hero-color: white;
+  $gradient-angle: 10deg;
+  $hero-image: '/assets/plain.jpg';
+
+  @include background(url($hero-image));
+  background-color: #324766;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 5em;
+  }
+
+  .center_with_shift{
+    @include span-columns(8);
+    @include shift(2);
+    
+    .grid_signup{
+    @include span-columns(3);
+    @include omega();
+    }
+    .x{
+     @include span-columns(3);
+    @include omega();
+    margin-bottom: 0.75em;
+    padding: 0em;
+    width: 35%;
+   
+    }
+
+  }
+
+  }
