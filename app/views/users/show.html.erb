@@ -1,72 +1,83 @@
 <div id="user" class="flex-box">
-	<h1>All User Related Data</h1>
-	<%= link_to "Edit User", edit_user_path(current_user) %>
-	<!-- <img src="<%#= @user.avatar_url %>" alt="profile picture"> -->
-	
-	<h1>Full name:<%= @user.full_name %></h1>
-	<h2>Age:<%= @user.birthday %></h2>
-	<p>Description:<%= @user.description %></p>
-	<p>Email:<%= @user.email %></p>
-</div>
 
-<div id="event" class="flex-box">
-	<h1>All Events Related Data</h1>
-	<%= link_to "Add an event", new_event_path %>
-	<h2>Events I created</h2>
-	<% if @user.events.all == [] %>
+	<div class="section">
+		
+		<div class="icon-link">
+			<div class="svg">
+				<%= link_to image_tag("/assets/create_event.svg"), new_event_path %>
+				<%= link_to "Create an event", new_event_path %>
+			</div>
+		</div>
+
+		<div class="new">
+			<h2>Events I created</h2>
+			<% if @user.events.all == [] %>
 				<p>"no events created"</p>
 			<% else %>
 				<% @user.events.each do |event| %>
-				<h3><%= link_to event.title, event_path(event) %></h3>
+					<img  class="event-img" src="http://bit.ly/1OtrDxf" alt="event picture">
+					<h3><%= link_to event.title, event_path(event) %></h3>
+					<p><%= event.description %></p>
 				<% end %>
 			<% end %>
+		</div>
 
-	<h2>Last Events I created</h2>
-	<% if @user.events.all == [] %>
+		<div class="e-other">
+			<h2>Last Events I created</h2>
+			<% if @user.events.all == [] %>
 				<p>"no events created"</p>
 			<% else %>
-	<p><%= @user.events.last.title %>	</p>
-<% end %>
+				<p><%= @user.events.last.title %>	</p>
+			<% end %>
+		</div>
+	</div>
 
+<hr>
 
+	<div class="section">
+		<div class="icon-link">
+			<div class="svg">
+				<%= link_to image_tag("/assets/add_bottle.svg"), new_bottle_path %>
+				<%= link_to "Add a bottle", new_bottle_path %>
+			</div>
+		</div>
 
+		<div class="new">
+			<h2>Bottles added</h2>
+			<% if @user.bottles.all == [] %>
+				<p>"no bottles created"</p>
+			<% else %>
+				<%@user.bottles.each do |bottle|  %>
+					<h3><%= link_to bottle.name, bottle_path(bottle) %></h3>
+				<% end %>
+			<% end %>
+		</div>
 
+		<div class="e-other">
+			<h2>Reviews created</h2>
+			<% if @user.reviews.all == [] %>
+				<p>"no reviews created"</p>
+			<% else %>
+				<% @user.reviews.each do |review| %>
+					<p><%= review.comment %></p>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+		<hr>
 
+	<div class="section">
+		<div class="icon-link">
+			<div class="svg">
+				<%= link_to image_tag("/assets/profile_default.svg"), edit_user_path(current_user) %>
+				<%= link_to "Edit Profile", edit_user_path(current_user) %>
+			</div>
+		</div>
 
-
-
-
-
-
-
-	<h2>Events I attended</h2>
-	<h3>Last event I attended</h3>
-	<h3>Last events attendees</h3>
-</div>
-
-<div id="bottle" class="flex-box">
-	<h1>All Bottles Related Data</h1>
-	<%= link_to "Add an bottle", new_bottle_path %>
-	<h2>Bottles created</h2>
-		<% if @user.bottles.all == [] %>
-						<p>"no bottles created"</p>
-					<% else %>
-						<% @user.bottles.each do |bottle| %>
-						<p><%= link_to bottle.name, bottle_path(bottle) %></p>
-						<% end %>
-					<% end %>
-	<h2>Last bottle created</h2>
-	<h3>Last bottle review</h3>
-</div>
-
-<div id="review" class="flex-box">
-	<h1>All Reviews Related Data</h1>
-	<h2>Reviews created</h2>
-		<% if @user.reviews.all == [] %>
-						<p>"no reviews created"</p>
-					<% else %>
-						<% @user.reviews.each do |review| %>
-						<p><%= review.comment %></p>
-						<% end %>
-					<% end %>
+		<div class="p-descr">
+			<h3><%= @user.fname %> is...</h3>
+			<p>Description:<%= @user.description %></p>
+		</div>
+	</div>
+	
 </div>

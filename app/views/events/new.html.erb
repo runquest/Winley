@@ -31,9 +31,9 @@
   </div>
 
     <div id="add_bottle_form">
- 
-     <%= f.collection_select :bottle_ids, Bottle.all, :id, :name, {}, {multiple: true} %><br>
-   
+     <% f.fields_for :flights do |builder| %>
+     <%= builder.collection_select :bottle_ids, Bottle.all, :id, :name, {}, {multiple: true} %><br>
+   <% end %>
   </div>
 
   <div>
