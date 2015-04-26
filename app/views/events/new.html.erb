@@ -34,10 +34,9 @@
   <!-- <button id="btn_add_bottle">ADD BOTTLE</button> -->
 
   <div id="add_bottle_form">
-  <% @event.flights.build %>
-  <%= f.fields_for :flights do |flight| %>
-      <%= flight.select :bottle_id, Bottle.all.map {|b| [b.name, b.id]}, {multiple: true} %>
-    <% end %>
+ 
+     <%= f.collection_select :bottle_ids, Bottle.all, :id, :name, {}, {multiple: true} %><br>
+   
   </div>
 
   <div>

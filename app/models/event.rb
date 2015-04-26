@@ -3,7 +3,6 @@ class Event < ActiveRecord::Base
 	has_many :users, :through => :attendances
     has_many :bottles, :through => :flights
     has_many :flights
-    accepts_nested_attributes_for :flights
 
     validates :title, 
     presence: true
