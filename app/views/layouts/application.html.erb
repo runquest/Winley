@@ -9,9 +9,11 @@
 <body>
 <div class="bkground">
   <%= render 'layouts/header' %>
+  
   <% flash.each do |key, value| %>
     <%= content_tag(:div, value) %>
   <% end %>
+  
   <%= yield %>
    <%= render 'layouts/footer' %>
 

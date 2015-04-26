@@ -6,21 +6,30 @@
     <a href="javascript:void(0)" id="js-centered-navigation-mobile-menu" class="centered-navigation-mobile-menu">MENU</a>
     <nav role="navigation">
       <ul id="js-centered-navigation-menu" class="centered-navigation-menu show">
-        <li class="nav-link"><a href="javascript:void(0)">About Us</a></li>
+        <li class="nav-link"><%= link_to "About",welcome_about_path %></li>
         <li class="nav-link"><a href="javascript:void(0)">Contact</a></li>
-        <li class="nav-link logo">
-          <!-- <a href="javascript:void(0)" class="logo">
-            <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_3_dark.png" alt="Logo image">
-          </a> -->
-        </li>
         <li class="nav-link"><a href="javascript:void(0)">Testimonials</a></li>
+        
+        <% if current_user %>
+       
+    
+     
+
+      
+      <li class="nav-link"><%= link_to "Profile", user_path(current_user) %></li>
+      <li class="nav-link"><%= link_to "Create event", new_event_path %></li>
+      <li class="nav-link"><%= link_to "Add bottle", new_bottle_path %></li>
+      <li class="nav-link"><%= link_to "Log out", session_path("current"), method: :delete %></li>
+      <li class="nav-link"><%= current_user.fname %></li>
+      <% else %>
+      <li class="nav-link"><%= link_to "Taste Swing",  welcome_index_path %></li>
+   
+       
         <li class="nav-link">
-          <label for="modal-1"><a>Log in</a></label>
+          <label for="modal-1"><%= link_to "Log In", new_session_path %></label>
         </li>
-         <li class="nav-link">
-         <a href="/users/new">Sign up</a>
-        </li>
-        <li class="nav-link more"><a href="javascript:void(0)">More</a>
+         <li class="nav-link"><%= link_to "Sign Up", new_user_path %></li>
+       <!--  <li class="nav-link more"><a href="javascript:void(0)">More</a>
             <ul class="submenu">
             <li><a href="javascript:void(0)">Submenu Item</a></li>
             <li><a href="javascript:void(0)">Another Item</a></li>
@@ -37,8 +46,8 @@
             </ul>
             </li>
             </ul>
-        </li>
-        
+        </li> -->
+         <% end %>
         </ul>
     </nav>
   </div>
@@ -72,19 +81,3 @@
 </header>
 
 
-
-<!-- 
-<footer>
- 
- <small>
-
-		<% if current_user %>
-      Signed in as <%= current_user.email %> <%= link_to "(Log out)", session_path("current"), method: :delete %> <%= link_to "Home Page",  welcome_index_path %> <%= link_to "Show User Profile", user_path(current_user) %>
-      <% else %>
-      <%= link_to "Log In", new_session_path %> | <%= link_to "Sign Up", new_user_path %> | <%= link_to "Home Page", welcome_index_path %>
-    <% end %>
-       <%= link_to "Add an event", new_event_path %> | <%= link_to "Add an bottle", new_bottle_path %>
-
-    <hr>
-  </small>  
-</footer> -->
