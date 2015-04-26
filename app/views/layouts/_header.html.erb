@@ -1,32 +1,58 @@
-<header class="centered-navigation" role="banner">
-  <div class="centered-navigation-wrapper">
-    <a href="javascript:void(0)" class="mobile-logo">
-      <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_3_dark.png" alt="Logo image">
-    </a>
-    <a href="javascript:void(0)" id="js-centered-navigation-mobile-menu" class="centered-navigation-mobile-menu">MENU</a>
+
+<header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+      <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
     <nav role="navigation">
-      <ul id="js-centered-navigation-menu" class="centered-navigation-menu show">
+      <ul id="js-navigation-menu" class="navigation-menu show">
         <li class="nav-link"><%= link_to "About",welcome_about_path %></li>
         <li class="nav-link"><a href="javascript:void(0)">Contact</a></li>
-        <li class="nav-link"><a href="javascript:void(0)">Testimonials</a></li>
-        
+               
         <% if current_user %>
-       
-    
-     
 
+       
+      <li class="nav-link">
+      <div class="navigation-tools">
+      <div class="search-bar">
+        <form role="search">
+          <input type="search" placeholder="Enter Search" />
+          <button type="submit">
+            <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png" alt="Search Icon">
+          </button>
+        </form>
+      </div
+      </li>
       
-      <li class="nav-link"><%= link_to "Profile", user_path(current_user) %></li>
+      
       <li class="nav-link"><%= link_to "Create event", new_event_path %></li>
       <li class="nav-link"><%= link_to "Add bottle", new_bottle_path %></li>
-      <li class="nav-link"><%= link_to "Log out", session_path("current"), method: :delete %></li>
-      <li class="nav-link"><%= current_user.fname %></li>
+      <li class="nav-link more"><%= current_user.fname %>
+            <ul class="submenu">
+            <li><%= link_to "Log out", session_path("current"), method: :delete %></li>
+            <li><%= link_to "Profile", user_path(current_user) %></li>
+            </ul>
+      </li>
+
+<!-- // adding slide toggle -->
+        <button type="button" class="js-menu-trigger sliding-panel-button">
+        <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/menu-white.png" alt="Menu Icon">
+        </button>
+
+          <nav class="js-menu sliding-panel-content">
+            <ul>
+              <li><a href="javascript:void(0)">Item 1</a></li>
+              <li><a href="javascript:void(0)">Item 2</a></li>
+              <li><a href="javascript:void(0)">Item 3</a></li>
+            </ul>
+          </nav>
+
+          <div class="js-menu-screen sliding-panel-fade-screen"></div>
+<!-- //ending slide toggle -->
       <% else %>
       <li class="nav-link"><%= link_to "Taste Swing",  welcome_index_path %></li>
    
        
         <li class="nav-link">
-          <label for="modal-1"><%= link_to "Log In", new_session_path %></label>
+          <label for="modal-1"><a>Log In </a></label>
         </li>
          <li class="nav-link"><%= link_to "Sign Up", new_user_path %></li>
        <!--  <li class="nav-link more"><a href="javascript:void(0)">More</a>
@@ -57,8 +83,9 @@
     <div class="modal-fade-screen">
       <div class="modal-inner">
         <div class="modal-close" for="modal-1"></div>
-        <h1>Lets get you moving...</h1>
+        
         <%= form_tag sessions_path do %>
+        <h1>Log in</h1>
         <div>
           <%= label_tag "email" %><br/>
           <%= text_field_tag "email" %>
