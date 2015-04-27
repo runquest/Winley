@@ -66,3 +66,4 @@ gem 'bitters'
 gem 'rmagick'
 gem 'mini_magick', '3.8.0'
 gem 'carrierwave'
+gem "paperclip", "~> 4.2"
