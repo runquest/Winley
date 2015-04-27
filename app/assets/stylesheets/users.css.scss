@@ -1,24 +1,93 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-.flex-box {
+ .flex-box {
 	display: flex;
 	flex-direction: column;
-	max-width: 760px;
 	justify-content: center;
 	margin: 0 auto;
+	max-width: 760px;
 }
 
-
-div#user {
-	background-color: green;
+.section {
+	display: flex;
+	display-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
+	flex-wrap: wrap;
 }
 
-div#event {
-	background-color: pink;
+	.new {
+		margin: 20px auto;
+
+	}
+
+
+	.p-descr {
+		padding: 20px;
+		color: darkgrey; 
+		font-size: 12px;
+		flex: 1;
+	}
+
+	.icon-link {
+		padding-top: 20px;
+		font-size: 14px;
+		text-align: center;
+		margin: 10px;
+	}
+
+button {
+
+	width: 250px;
+	margin: 20px;
+
+	a {
+		color: black;
+	}
+
+	border: 1px solid black;
+	border-radius: 10px;
 }
 
-div#bottle {
-	background-color: yellow;
+.section {
+	display: flex;
+	display-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
+	flex-wrap: wrap;
 }
+
+	.svg {
+		width: 100px;
+		height: 100px; 
+	}
+
+	img.event-img {
+		width: 250px;
+		height: 120px;
+	}
+
+@media screen and (max-width: 650px) {
+	
+.section {
+		display: block;
+		max-width: 650px;
+		margin: 0 auto;
+		text-align: center; 
+	}
+
+		.icon-link {
+			margin: 10px auto;
+			text-align: center;
+		}
+
+			.svg {
+				margin: 10px auto;
+				margin-bottom: 50px;
+			}
+
+		.new-item {
+			border: 1px solid orange;
+			margin-bottom: 10px; 
+		}
+	
+}
+
