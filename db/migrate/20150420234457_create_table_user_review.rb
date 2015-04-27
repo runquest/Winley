@@ -8,7 +8,6 @@ class CreateTableUserReview < ActiveRecord::Migration
       t.text :comment
       t.boolean :favorite
       
-
       t.timestamps null: false
     end
   end
