@@ -19,15 +19,15 @@
     <%= f.text_field "grape" %>
   </div>
   <div>
-    <%= f.label "vintage", "vintage" %><br>
+    <%= f.label "vintage", "Vintage (Year)" %><br>
     <%= f.date_field "vintage" %>
   </div>
   <div>
-    <%= f.label "winery" ,"winery"%><br>
+    <%= f.label "winery" ,"Winery"%><br>
     <%= f.text_field "winery" %>
   </div>
   <div>
-    <%= f.label "description", "Tell me a little bit more about your event" %><br>
+    <%= f.label "description", "Bottle Label (Story)" %><br>
     <%= f.text_area "description" %>
   </div>
   <hr>
@@ -36,12 +36,13 @@
   <div>
     <%= fields_for :review, @review do |rf| %>
   <div>
-    <%= rf.label :comment, 'Comments' %><br>
-    <%= rf.text_area :comment %>
-  </div>
   <div>
     <%= rf.label :my_rating, "Rate bottle" %><br>
-    <%= rf.number_field :my_rating %>
+
+    <%= rf.select :my_rating, [1, 2, 3, 4, 5] %>
+  </div>
+    <%= rf.label :comment, 'Comments' %><br>
+    <%= rf.text_area :comment %>
   </div>
   <div>
     <%= rf.label :favorite, "Is it your favorite" %><br>
