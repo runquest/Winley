@@ -55,24 +55,6 @@
           <label for="modal-1"><a>Log In </a></label>
         </li>
          <li class="nav-link"><%= link_to "Sign Up", new_user_path %></li>
-       <!--  <li class="nav-link more"><a href="javascript:void(0)">More</a>
-            <ul class="submenu">
-            <li><a href="javascript:void(0)">Submenu Item</a></li>
-            <li><a href="javascript:void(0)">Another Item</a></li>
-            <li class="more"><a href="javascript:void(0)">Item with submenu</a>
-            <ul class="submenu">
-            <li><a href="javascript:void(0)">Sub-submenu Item</a></li>
-            <li><a href="javascript:void(0)">Another Item</a></li>
-            </ul>
-            </li>
-            <li class="more"><a href="javascript:void(0)">Another submenu</a>
-            <ul class="submenu">
-            <li><a href="javascript:void(0)">Sub-submenu</a></li>
-            <li><a href="javascript:void(0)">An Item</a></li>
-            </ul>
-            </li>
-            </ul>
-        </li> -->
          <% end %>
         </ul>
     </nav>
@@ -100,30 +82,4 @@
       </div>
     </div>
   </div>
-
-
- 
-  
-
 </header>
-
-
-<<<<<<< HEAD
-=======
-
-
-<footer>
- 
- <small>
-
-		<% if current_user %>
-      Signed in as <%= current_user.email %> <%= link_to "(Log out)", session_path("current"), method: :delete %> <%= link_to "Home Page",  welcome_index_path %> <%= link_to "Show User Profile", user_path(current_user) %>
-      <% else %>
-      <%= link_to "Log In", new_session_path %> | <%= link_to "Sign Up", new_user_path %> | <%= link_to "Home Page", welcome_index_path %>
-    <% end %>
-       <%= link_to "Add an event", new_event_path %> | <%= link_to "Add an bottle", new_bottle_path %>
-
-    <hr>
-  </small>  
-</footer>
->>>>>>> april_23_development

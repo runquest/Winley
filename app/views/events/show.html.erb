@@ -3,7 +3,10 @@
 	<section> 
 		<h2><%= @event.title %></h2>
 		<%= link_to "Edit Event", edit_event_path(@event) %>
-		<img class="one" src="http://bit.ly/1A3L9UY">
+
+		<img src="<%= @event.event_image %>" alt="profile picture">
+
+
 		<p><%= @event.venue %></p>
 		<p><%= @event.date.strftime("%m/%d/%Y") %></p>
 		<p>Currently in a flight <%= @event.flights.size %> bottles.<br>

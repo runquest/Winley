@@ -1,13 +1,35 @@
 <div id="user" class="flex-box">
 
+
 	<div class="section">
-		
+
 		<div class="icon-link">
 			<div class="svg">
 				<%= link_to image_tag("/assets/create_event.svg"), new_event_path %>
 				<%= link_to "Create an event", new_event_path %>
 			</div>
 		</div>
+
+		<div class="icon-link">
+			<div class="svg">
+				<%= link_to image_tag("/assets/add_bottle.svg"), new_bottle_path %>
+				<%= link_to "Add a bottle", new_bottle_path %>
+			</div>
+		</div>
+
+		<div class="icon-link">
+			<div class="svg">
+	      <%= link_to image_tag("/assets/search.svg"), bottles_path %>
+	      
+	      <%= link_to "Search", bottles_path %>
+	    </div>
+	  </div>
+	</div>
+	<hr>
+
+	<div class="section">
+		
+
 
 		<div class="new">
 			<h2>MY EVENTS</h2>
@@ -33,6 +55,18 @@
 					<li><%= @user.events.last.title %></li>
 				</ol>
 			<% end %>
+
+
+			<h2>FAVORITES</h2>
+			<% if @user.bottles.all == [] %>
+					<p>"no bottles in collection"</p>
+			<% else %>
+				<ol>
+					<% @user.reviews.where(favorite: true).each do |review| %>
+						<li>Bottles with ID: <%= a = review.bottle_id %></li>
+					<% end %>
+				</ol>
+			<% end %>
 		</div>
 	</div>
 
@@ -40,14 +74,11 @@
 
 		<div class="section">
 
-			<div class="icon-link">
-				<div class="svg">
-					<%= link_to image_tag("/assets/add_bottle.svg"), new_bottle_path %>
-					<%= link_to "Add a bottle", new_bottle_path %>
-				</div>
-			</div>
+
 
 			<div class="new">
+
+
 				<h2>RECENT NEW BOTTLES</h2>
 				<% if @user.bottles.all == [] %>
 					<p>"no bottles created"</p>
@@ -60,6 +91,8 @@
 						</div>
 					<% end %>
 				<% end %>
+
+
 			</div>
 
 			<div class="new">
@@ -72,6 +105,11 @@
 					<% end %>
 				<% end %>
 			</div>
+
+
+
+
+
 		</div>
 	</div>
 </div>
