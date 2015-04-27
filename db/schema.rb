@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20150427082000) do
   create_table "bottles", force: :cascade do |t|
     t.string   "name"
     t.string   "grape"
-    t.integer  "vintage"
+    t.date     "vintage"
     t.string   "winery"
     t.text     "description"
     t.datetime "created_at"

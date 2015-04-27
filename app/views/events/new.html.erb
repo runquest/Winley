@@ -28,6 +28,15 @@
       <%= f.text_field "event_image" %>
     </div>
 
+      <select name="user[organizer_id]">
+    <% User.all.each do |user| %>
+        <option value="<%= user.id %>"><%= user.fname %></option>
+    <% end %>
+  </select>
+
+
+
+
     <div id="add_bottle_form" class="form-group">
       <%= f.label "bottle_id", "Select Bottles" %>
       <%= f.fields_for :flights do |builder| %>
