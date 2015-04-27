@@ -74,14 +74,19 @@ $(function(){
           ).append(
             $('<p>').text(data.Products.List[i].Name)
               .append(
-                $('<span>').text('Price: ').css('weight', 'bold')
-              ).append(
-                $('<p>').text('$' + data.Products.List[i].PriceRetail)
+                $('<br/>')
               )
-          ).append(
-            $('<button>')
+              // .append(
+              //   $('<span>').text(('Price: ').css('weight', 'bold'), ('Price: $' + data.Products.List[i].PriceRetail))
+              // )
+              .append(
+                $('<div>').text(('Price: $' + data.Products.List[i].PriceRetail)).css('weight', 'bold')
+              )
+              .append(
+                $('<button>').text("Add Me To Your Library!!")
+              )
           )
-        )
+      )
 
         // $('.bottle').append(
         //   $('button').text("Iam button")
