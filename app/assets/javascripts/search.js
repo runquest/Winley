@@ -42,9 +42,9 @@ $(function(){
       var data = JSON.parse(req.responseText);
 
       displayBottle(data);
-      $('.cards').empty();
+      $('.bottle').empty();
 
-       for (i = 0; data.Products.List.length; i++) {
+      for (i = 0; data.Products.List.length; i++) {
         var imgSrc;
         if(data.Products.List[i] && data.Products.List[i].Labels && data.Products.List[i].Labels.length > 0) {
           imgSrc = data.Products.List[i].Labels[0].Url;
@@ -52,19 +52,58 @@ $(function(){
           imgSrc = "";
         }
         $('.bottle').append(
-          $('<div class="card">').append(
+          $('<div>').append(
             $('<img>').attr('src', imgSrc)
           ).append(
             $('<p>').text(data.Products.List[i].Name)
               .append(
-                $('<span>').text('Price: ').css('weight', 'bold')
-              ).append(
-                $('<p>').text('$' + data.Products.List[i].PriceRetail)
+                $('<br/>')
               )
-          ).append(
-            $('<button>')
+              // .append(
+              //   $('<span>').text(('Price: ').css('weight', 'bold'), ('Price: $' + data.Products.List[i].PriceRetail))
+              // )
+              .append(
+                $('<div>').text(('Price: $' + data.Products.List[i].PriceRetail)).css('weight', 'bold')
+              )
+              .append(
+                $('<button>').text("Add Me To Your Library!!")
+              )
           )
-        )
+      )
+
+        // $('.bottle').append(
+        //   $('button').text("Iam button")
+        // )
+
+          // + " " + data.Products.List[i].Name + '<strong> Price:</strong> ' 
+          // + '$'+ data.Products.List[i].PriceRetail + '  '  + '<br>' 
+          // + '<button type="button">Add This To Your Library!</button>' + '<br>');
+      }
+
+    }
+  }
+  req.open("GET", link, true);
+  req.send();
+}
+  
+
+
+
+  $("form.search").on('submit', function(e){
+    e.preventDefault(); // don't submit the form
+    // debugger
+    var query = $(this.search).val();
+    getWineInfo(query);
+  });
+
+
+
+
+
+  // var wine = req.response;
+  // console.log('wine is', wine);
+
+});
 
 
 
