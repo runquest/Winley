@@ -1,9 +1,9 @@
 <header class="navigation" role="banner">
   <div class="navigation-wrapper">
-    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+    <!-- <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a> -->
     <nav role="navigation">
       <ul id="js-navigation-menu" class="navigation-menu show">
-        <li class="nav-link"><%= link_to "About",welcome_about_path %></li>
+        <li class="nav-link"><%= link_to "About", welcome_about_path %></li>
         <li class="nav-link"><a href="javascript:void(0)">Contact</a></li>       
         <% if current_user %>       
           <li class="nav-link">
@@ -34,10 +34,10 @@
               <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/menu-white.png" alt="Menu Icon">
             </button>
 
-            
-            <!-- end of sliding toggle bar -->
           </li>
 
+            
+            <!-- end of sliding toggle bar -->
         <% else %>
           <li class="nav-link">
             <%= link_to "Taste Swing",  welcome_index_path %>
@@ -120,13 +120,5 @@
   <div class="js-menu-screen sliding-panel-fade-screen"></div>
 
  <!-- sliding nav bar -->
-
-
-
    
 </header>
-
-
-
-
-

@@ -1,20 +1,35 @@
-
-
-
-
-
-
-
 <div id="user" class="flex-box">
 
+
 	<div class="section">
-		
+
 		<div class="icon-link">
 			<div class="svg">
 				<%= link_to image_tag("/assets/create_event.svg"), new_event_path %>
 				<%= link_to "Create an event", new_event_path %>
 			</div>
 		</div>
+
+		<div class="icon-link">
+			<div class="svg">
+				<%= link_to image_tag("/assets/add_bottle.svg"), new_bottle_path %>
+				<%= link_to "Add a bottle", new_bottle_path %>
+			</div>
+		</div>
+
+		<div class="icon-link">
+			<div class="svg">
+	      <%= link_to image_tag("/assets/search.svg"), bottles_path %>
+	      
+	      <%= link_to "Search", bottles_path %>
+	    </div>
+	  </div>
+	</div>
+	<hr>
+
+	<div class="section">
+		
+
 
 		<div class="new">
 			<h2>MY EVENTS</h2>
@@ -23,7 +38,7 @@
 			<% else %>
 				<% @user.events.each do |event| %>
 				<div class="new-item">
-					<img  class="event-img" src="http://bit.ly/1OtrDxf" alt="event picture">
+					<img src="http://bit.ly/1OtrDxf" alt="event picture" class="event-img" >
 					<h3><%= link_to event.title, event_path(event) %></h3>
 					<p><%= event.description %></p>
 				</div>
@@ -40,57 +55,61 @@
 					<li><%= @user.events.last.title %></li>
 				</ol>
 			<% end %>
-		</div>
-	</div>
 
-<hr>
 
-	<div class="section">
-		<div class="icon-link">
-			<div class="svg">
-				<%= link_to image_tag("/assets/add_bottle.svg"), new_bottle_path %>
-				<%= link_to "Add a bottle", new_bottle_path %>
-			</div>
-		</div>
-
-		<div class="new">
-			<h2>RECENT NEW BOTTLES</h2>
+			<h2>FAVORITES</h2>
 			<% if @user.bottles.all == [] %>
-				<p>"no bottles created"</p>
+					<p>"no bottles in collection"</p>
 			<% else %>
-				<%@user.bottles.each do |bottle|  %>
-					<div class="new-item">
-					<img  class="event-img" src="http://bit.ly/1OtrDxf" alt="event picture">
-					<h3><%= link_to bottle.name, bottle_path(bottle) %></h3>
-				<% end %>
-			<% end %>
-		</div>
-
-		<div class="new">
-			<h2>Reviews created</h2>
-			<% if @user.reviews.all == [] %>
-				<p>"no reviews created"</p>
-			<% else %>
-				<% @user.reviews.each do |review| %>
-					<p><%= review.comment %></p>
-				<% end %>
+				<ol>
+					<% @user.reviews.where(favorite: true).each do |review| %>
+						<li>Bottles with ID: <%= review.bottle_id %></li>
+					<% end %>
+				</ol>
 			<% end %>
 		</div>
 	</div>
-		<hr>
 
-	<div class="section">
-		<div class="icon-link">
-			<div class="svg">
-				<%= link_to image_tag("/assets/profile_default.svg"), edit_user_path(current_user) %>
-				<%= link_to "Edit Profile", edit_user_path(current_user) %>
+	<hr>
+
+		<div class="section">
+
+
+
+			<div class="new">
+
+
+				<h2>RECENT NEW BOTTLES</h2>
+				<% if @user.bottles.all == [] %>
+					<p>"no bottles created"</p>
+				<% else %>
+					<%@user.bottles.each do |bottle|  %>
+						<div class="new-item">
+							<img  class="event-img" src="http://bit.ly/1OtrDxf" alt="event picture">
+							<h3><%= link_to bottle.name, bottle_path(bottle) %></h3>
+							<p><%= bottle.description %></p>
+						</div>
+					<% end %>
+				<% end %>
+
+
 			</div>
-		</div>
 
-		<div class="p-descr">
-			<h3><%= @user.fname %> is...</h3>
-			<p>Description:<%= @user.description %></p>
+			<div class="new">
+				<h2>RECENT REVIEWS</h2>
+				<% if @user.reviews.all == [] %>
+					<p>"no reviews created"</p>
+				<% else %>
+						<% @user.reviews.each do |review| %>
+						<p><%= review.comment %></p>
+					<% end %>
+				<% end %>
+			</div>
+
+
+
+
+
 		</div>
 	</div>
-	
 </div>

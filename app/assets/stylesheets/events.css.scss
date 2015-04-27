@@ -1,6 +1,57 @@
-h1 a{
-	color: red;
+.form, .show {
+	max-width: 50%;
+	margin: 20px auto;
 }
+
+div.bottle {
+	width: 75%;
+	margin: 0 auto;
+}
+
+	div.bottle h3 {
+		padding: 0;
+		margin: 0;
+		font-size: 30px;
+	}
+
+div.bottle-item {
+	display: flex;
+	width: 75%;
+	margin: 0 auto;
+}
+
+div.bottle-details {
+	content-align: left;
+}
+
+img.thumbnail {
+	width: 100px;
+	height: 100px;
+}
+
+.bottle-thumb {
+	padding: 0 20px 0 0;
+}
+
+img.event-image {
+	width: 100%;
+
+}
+	
+.form-group {
+	width: 100%;
+}
+
+.form-group-spec {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+	div.fgs {
+			margin: 10px;
+	}
+
 
 // // Place all the styles related to the Events controller here.
 // // They will automatically be included in application.css.

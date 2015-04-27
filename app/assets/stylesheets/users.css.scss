@@ -6,6 +6,7 @@
 	max-width: 760px;
 }
 
+
 .section {
 	display: flex;
 	display-direction: column;
@@ -13,19 +14,6 @@
 	align-items: flex-start;
 	flex-wrap: wrap;
 }
-
-	.new {
-		margin: 20px auto;
-
-	}
-
-
-	.p-descr {
-		padding: 20px;
-		color: darkgrey; 
-		font-size: 12px;
-		flex: 1;
-	}
 
 	.icon-link {
 		padding-top: 20px;
@@ -34,30 +22,15 @@
 		margin: 10px;
 	}
 
-button {
-
-	width: 250px;
-	margin: 20px;
-
-	a {
-		color: black;
-	}
-
-	border: 1px solid black;
-	border-radius: 10px;
-}
-
-.section {
-	display: flex;
-	display-direction: column;
-	justify-content: space-between;
-	align-items: flex-start;
-	flex-wrap: wrap;
-}
-
 	.svg {
 		width: 100px;
 		height: 100px; 
+	}
+
+
+	.new {
+		margin: 20px auto;
+
 	}
 
 	img.event-img {
