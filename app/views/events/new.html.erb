@@ -40,7 +40,7 @@
     <div id="add_bottle_form" class="form-group">
       <%= f.label "bottle_id", "Select Bottles" %>
       <%= f.fields_for :flights do |builder| %>
-        <%= builder.collection_select :bottle_ids, Bottle.all, :id, :name, {}, {multiple: true} %>
+        <%= builder.collection_select :bottle_id, Bottle.all, :id, :name, {:include_blank => false}, {multiple: true} %>
      <% end %>
     </div>
 
