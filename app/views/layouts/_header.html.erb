@@ -26,6 +26,21 @@
               <li><%= link_to "Profile", user_path(current_user) %></li>
             </ul>
           </li>
+          <!-- // adding slide toggle -->
+        <button type="button" class="js-menu-trigger sliding-panel-button">
+        <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/menu-white.png" alt="Menu Icon">
+        </button>
+
+          <nav class="js-menu sliding-panel-content">
+            <ul>
+              <li><a href="javascript:void(0)">Item 1</a></li>
+              <li><a href="javascript:void(0)">Item 2</a></li>
+              <li><a href="javascript:void(0)">Item 3</a></li>
+            </ul>
+          </nav>
+
+          <div class="js-menu-screen sliding-panel-fade-screen"></div>
+<!-- //ending slide toggle -->
         <% else %>
           <li class="nav-link">
             <%= link_to "Taste Swing",  welcome_index_path %>
