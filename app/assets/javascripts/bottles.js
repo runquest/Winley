@@ -35,26 +35,27 @@ $(function(){
         } else {
           imgSrc = "";
         }
+        // Check out handlebars or jade as an alternative to 
         $('.bottle').append(
-          $('<div>').append(
+          $('<div class="bottlecard">')
+          .append(
+            $('<div class="bottle-card-image">').append(
             $('<img>').attr('src', imgSrc)
-          ).append(
-            $('<p>').text(data.Products.List[i].Name)
+            )).append(
+              $('<div class="bottle-card-header">').text(data.Products.List[i].Name)
+              ).append(
+                $('<div class="bottle-card-copy">').text(('Price: $' + data.Products.List[i].PriceRetail)).css('weight', 'bold')
+              
               .append(
-                $('<br/>')
-              )
-              .append(
-                $('<div>').text(('Price: $' + data.Products.List[i].PriceRetail)).css('weight', 'bold')
-              )
-              .append(
-                $('<button>').text("Add Me To Your Library!!")
-              )
-          )
-      )
-
+                $('<button>').text("+")
+              ) )
+           
+         
+        )
       }
 
     }
+
   }
   req.open("GET", link, true);
   req.send();

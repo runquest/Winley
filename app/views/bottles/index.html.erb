@@ -1,12 +1,47 @@
-:24
+
 <h3>All Wine Bottles</h3>
-<div>
+<div class= "outercontainer">
+   <div class="outerbottle">
+     
+    <% @bottles.each do |bottle| %>
+     <div class="bottlecard">
+       <div class="bottle-card-image">
+         <img src="<%= bottle.label_image%>">
+       </div>
+       <div class="bottle-card-header">
+         <%= link_to bottle.name, bottle_path(bottle) %> 
+       </div>
+       <div class="bottle-card-copy">
+         <%= bottle.vintage %>
+         <%= bottle.grape %>
+         <%= bottle.winery %>
+         <p><%= bottle.description%></p>
+       </div>
+     </div>
+      <% end %>
+   </div>
+
+   <div class="search-bottle">
+
+   <form class="search">
+   Search Wine Database:<br>
+   <input type="text" name="search">
+   </form>
+   <div class="bottle">
+   </div>
+
+   </div>
+</div>
+
+.....................................
+
  <% @bottles.each do |bottle| %>
-   <h1><%= link_to bottle.name, bottle_path(bottle) %></h1>
-   <%= bottle.grape %>
-   <%= bottle.vintage %>
-   <%= bottle.winery %>
-   <%= bottle.description%>
+   <h4><%= link_to bottle.name, bottle_path(bottle) %></h4>
+   <h4><%= bottle.grape %></h4>
+   <h4><%= bottle.vintage %></h4>
+   <h4><%= bottle.winery %></h4>
+   <p><%= bottle.description%></p>
+   <img class="imgsize" src="<%= bottle.label_image%>" >
    <hr>
  <% end %>
 </div>
@@ -15,8 +50,7 @@
 Search Wine Database:<br>
 <input type="text" name="search">
 </form>
-<div  
-   class="bottle">
+<div class="bottle">
 </div>
 
 <div><strong>Your Favorites</strong></div>
