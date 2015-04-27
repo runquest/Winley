@@ -14,19 +14,6 @@
 	flex-wrap: wrap;
 }
 
-	.new {
-		margin: 20px auto;
-
-	}
-
-
-	.p-descr {
-		padding: 20px;
-		color: darkgrey; 
-		font-size: 12px;
-		flex: 1;
-	}
-
 	.icon-link {
 		padding-top: 20px;
 		font-size: 14px;
@@ -34,18 +21,16 @@
 		margin: 10px;
 	}
 
-button {
-
-	width: 250px;
-	margin: 20px;
-
-	a {
-		color: black;
+	.svg {
+		width: 100px;
+		height: 100px; 
 	}
 
-	border: 1px solid black;
-	border-radius: 10px;
-}
+
+	.new {
+		margin: 20px auto;
+
+	}
 
 .section {
 	display: flex;
