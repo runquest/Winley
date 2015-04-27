@@ -1,52 +1,47 @@
-<h1>CREATE THIS EVENT </h1>
-<%= form_for @event do |f| %>
+<div class="form">
+  <h3>CREATE THIS EVENT </h3>
 
-  <% if @event.errors.any? %>
+  <%= form_for @event do |f| %>
+
+    <% if @event.errors.any? %>
+      <div>
+        <%= pluralize(@event.errors.count, "error") %> prevented the account from being created:
+        <ul>
+          <% @event.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
     <div>
-      <%= pluralize(@event.errors.count, "error") %> prevented the account from being created:
-      <ul>
-        <% @event.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+      <%= f.label "title" , "Title"%><br>
+      <%= f.text_field "title" %>
     </div>
-  <% end %>
-
-  <div>
-    <%= f.label "title" , "Title"%><br>
-    <%= f.text_field "title" %>
-  </div>
-  <div>
-    <%= f.label "venue", "Where?" %><br>
-    <%= f.text_field "venue" %>
-  </div>
-
-  <div>
-    <%= f.label "organizer_id", "Organizer" %><br>
-    <select name="user[organizer_id]">
-      <% User.all.each do |user| %>
-          <option value="<%= user.id %>"><%= user.fname %></option>
-      <% end %>
-    </select>
-  </div>
+    <div>
+      <%= f.label "venue", "Venue" %><br>
+      <%= f.text_field "venue" %>
+    </div>
 
     <div id="add_bottle_form">
- 
-     <%= f.collection_select :bottle_ids, Bottle.all, :id, :name, {}, {multiple: true} %><br>
-   
-  </div>
+      <%= f.label "bottle_id", "Bottles" %>
+      <%= f.fields_for :flights do |builder| %>
+        <%= builder.collection_select :bottle_ids, Bottle.all, :id, :name, {}, {multiple: true} %><br>
+     <% end %>
+    </div>
 
-  <div>
-    <%= f.label "date", "When?" %><br>
-    <%= f.date_field "date" %>
-  </div>
-  <div>
-    <%= f.label "duration" ,"what time?"%><br>
-    <%= f.time_field "duration" %>
-  </div>
-  <div>
-    <%= f.label "description", "Tell me a little bit more about your event" %><br>
-    <%= f.text_area "description" %>
-  </div>
-  <div><%= f.submit "Submit" %></div>
-<% end %>
+    <div>
+      <%= f.label "date", "When?" %><br>
+      <%= f.date_field "date" %>
+    </div>
+    <div>
+      <%= f.label "duration" ,"Duration"%><br>
+      <%= f.text_field "duration" %>
+    </div>
+    <div>
+      <%= f.label "description", "Tell me a little bit more about your event" %><br>
+      <%= f.text_area "description" %>
+    </div>
+    <div><%= f.submit "Submit" %></div>
+  <% end %>
+</div>
