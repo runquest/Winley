@@ -1,16 +1,17 @@
 @import "bourbon";
 @import "base/base";
 @import "neat";
-
+@import "header";
 @import "texture";
 @import "header";
 @import "events";
 @import "users";
 @import "welcome";
 @import "footer";
-@import "header";
+
 @import "template";
 @import "sliding-panel-content";
+@import "accordion-tabs";
 
 
 @import "about";
