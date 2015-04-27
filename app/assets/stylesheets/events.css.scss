@@ -2,6 +2,26 @@
 	max-width: 70%;
 	margin: 20px auto;
 }
+
+div.bottle-item {
+	display: flex;
+	width: 75%;
+	background-color: red;
+	margin: 0 auto;
+}
+
+img.thumbnail {
+	width: 100px;
+	height: 100px;
+}
+
+.bottle-thumb {
+	padding: 0 20px 0 0;
+}
+
+.bottle-details {
+
+}
 	
 
 // // Place all the styles related to the Events controller here.
