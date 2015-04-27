@@ -1,19 +1,30 @@
-<h1>SHOW EVENT </h1>
-<%= link_to "Edit Event", edit_event_path(@event) %>
+<div class="show">
 
-<h1><%= @event.title %></h1>
-<hr>
-<%= @event.venue %><br>
-<%= @event.date %><br>
-<%= @event.duration %><br>
-<%= @event.description%><br>
-<%= @event.flights.size %><br>
-	<% if @event.flights.size > 0 %>
-		<% @event.bottles.each do |bottle| %>
-			<h2><%= bottle.name %></h2>
-			<p><%= link_to 'delete',  {:controller => "events", :action => "delete_bottle", :bottle_id => bottle.id, :event_id => @event.id } %></p>
-			<p><%= bottle.vintage %></p><br>
-		<% end %>
-	<% else %>
-		<p>ADD BOTTLE</p>
-	<% end %>
+	<section> 
+		<h3><%= @event.title %></h3>
+		<img class="one" src="http://bit.ly/1A3L9UY">
+		<p><%= link_to "Edit Event", edit_event_path(@event) %></p>
+		<p><%= @event.venue %></p>
+		<p><%= @event.date.strftime("%m/%d/%Y") %></p>
+		<p>Currently in a flight <%= @event.flights.size %> bottles.<br>
+		<% if @event.flights.size > 0 %>
+					<% @event.bottles.each do |bottle| %>
+					 <img src="", alt="label image">
+						<h3><%= bottle.name %></h3>
+						<p><%= link_to 'delete',  {:controller => "events", :action => "delete_bottle", :bottle_id => bottle.id, :event_id => @event.id } %></p>
+						<p><%= bottle.year %></p>
+						<p><%= bottle.grape %></p>
+						<p><%= bottle.year %></p>
+					<% end %>
+				<% else %>
+					<%= link_to "Add Bottle", edit_event_path(@event) %>	
+		<% end %> </section>
+</div>
+
+
+
+
+    t.string   "grape"
+    t.string   "winery"
+    t.text     "description"
+    t.string   "more_url"

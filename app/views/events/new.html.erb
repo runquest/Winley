@@ -24,8 +24,9 @@
     </div>
 
     <div id="add_bottle_form">
-      <% f.fields_for :flights do |builder| %>
-        <%= select_tag builder.collection_select :bottle_ids, Bottle.all, :id, :name, {}, {multiple: true} %><br>
+      <%= f.label "bottle_id", "Bottles" %>
+      <%= f.fields_for :flights do |builder| %>
+        <%= builder.collection_select :bottle_ids, Bottle.all, :id, :name, {}, {multiple: true} %><br>
      <% end %>
     </div>
 
