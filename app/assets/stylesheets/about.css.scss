@@ -6,32 +6,13 @@
   @include pad();
   text-align: center;
   padding: 2em;
-
-    .priya {
-    width: 200px;
-    height: 200px;
-    border-radius: 100px;
-    -webkit-border-radius: 150px;
-    -moz-border-radius: 150px;
-    background: url(/assets/priya.jpg) no-repeat;
-    }
-    .aiste {
-    width: 200px;
-    height: 200px;
-    border-radius: 100px;
-    -webkit-border-radius: 150px;
-    -moz-border-radius: 150px;
-    background: url(/assets/aiste.jpg) no-repeat;
-    }
-     .dakota {
-    width: 200px;
-    height: 200px;
-    border-radius: 100px;
-    -webkit-border-radius: 150px;
-    -moz-border-radius: 150px;
-    background: url(/assets/dakota_plane.jpg) no-repeat;
-    }
-  }
-
-
 }
+}
+   
+    .imgsize{
+    max-width: 178px;
+    max-height: 178 px;
+   
+ 
+    }
+
