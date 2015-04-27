@@ -1,7 +1,7 @@
 @import "bourbon";
 @import "base/base";
 @import "neat";
-@import "header";
+
 @import "texture";
 @import "header";
 @import "events";
@@ -11,10 +11,14 @@
 
 @import "template";
 @import "sliding-panel-content";
+@import "header";
 @import "accordion-tabs";
+@import "hover-tile-outer";
+@import "cards";
 
 
 @import "about";
+
 @import "modal";
 
 

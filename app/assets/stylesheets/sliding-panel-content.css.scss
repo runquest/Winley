@@ -65,12 +65,14 @@
 }
 
 .sliding-panel-button {
-  @include button(flat, #477DCA);
+  @include button(flat, orange);
   padding: 10px 16px;
   display: inline-block;
   cursor: pointer;
   position: relative;
   outline: none;
+  width: 60px;
+  margin: 0px;
 
   img {
     height: 1.3em;

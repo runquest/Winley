@@ -26,6 +26,15 @@
               <li><%= link_to "Profile", user_path(current_user) %></li>
             </ul>
           </li>
+          <!-- sliding toggle bar -->
+          <li class="nav-link">
+            <button type="button" class="js-menu-trigger sliding-panel-button">
+              <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/menu-white.png" alt="Menu Icon">
+            </button>
+
+            
+            <!-- end of sliding toggle bar -->
+          </li>
         <% else %>
           <li class="nav-link">
             <%= link_to "Taste Swing",  welcome_index_path %>
@@ -66,8 +75,18 @@
       </div>
     </div>
   </div> 
+  
+  <!-- sliding nav bar -->
+  <nav class="js-menu sliding-panel-content">
+    <ul>
+      <li><%= link_to "Create event", new_event_path %></li>
+      <li><%= link_to "Add bottle", new_bottle_path %></li>
+      <li><%= link_to "Search bottles", bottles_path %></li>
+    </ul>
+  </nav>
+  <div class="js-menu-screen sliding-panel-fade-screen"></div>
 
- 
+ <!-- sliding nav bar -->
 
 
    
