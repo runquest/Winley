@@ -48,9 +48,7 @@
             </label>
           </li>
           <li class="nav-link">
-           <label for="modal-2">
-              <a>Sign up</a>
-            </label>
+           <%= link_to "Sign up",  new_user_path %>
           </li>
         <% end %>
       </ul>
@@ -88,18 +86,44 @@
     <div class="modal-fade-screen">
       <div class="modal-inner">
         <div class="modal-close" for="modal-2"></div>
-         <%= form_tag sessions_path do %>
-            <h1>Log in</h1>
+         <%= form_tag users_path,  methods=> :post do %>
+            <h1>sign up</h1>
             <div>
               <%= label_tag "email" %><br/>
               <%= text_field_tag "email" %>
             </div>
             <div>
-              <%= label_tag :password %><br/>
+              <%= label_tag "fname" %><br/>
+              <%= text_field_tag "fname" %>
+            </div>
+            <div>
+              <%= label_tag :lname, "last name" %><br/>
+              <%= text_field_tag "lname" %>
+            </div>
+            <div>
+              <%= label_tag :password, "password" %><br/>
               <%= password_field_tag :password %>
             </div>
             <div>
-              <%= submit_tag "Log In" %>
+              <%= label_tag "Re-type password" %><br/>
+              <%= password_field_tag "password_confirmation" %>
+            </div>
+            <div>
+              <%= label_tag "avatar_url", "Profile image (url)" %><br/>
+              <%= text_field_tag "avatar_url" %>
+            </div>
+
+            <div>
+              <%= label_tag "description", "Profile description" %><br/>
+              <%= text_field_tag "description" %>
+            </div>
+              <div>
+              <%= label_tag "birthday", "Birthday" %><br/>
+              <%= text_field_tag "birthday" %>
+            </div>
+
+            <div>
+              <%= submit_tag "sign up" %>
             </div>
           <% end %>
         </div>

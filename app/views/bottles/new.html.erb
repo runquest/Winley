@@ -1,4 +1,5 @@
-<h3>Add New Bottle of Wine</h3>
+<div class="form">
+<h2>Add New Bottle of Wine</h2>
 <%= form_for @bottle do |f| %>
   <% if @bottle.errors.any? %>
     <div>
@@ -10,19 +11,19 @@
       </ul>
     </div>
   <% end %>
-  <div>
+  <div class="form-group">
     <%= f.label "name" , "Bottle name"%><br>
     <%= f.text_field "name" %>
   </div>
-  <div>
+  <div class="form-group">
     <%= f.label "grape", "Grape" %><br>
     <%= f.text_field "grape" %>
   </div>
-  <div>
+  <div class="form-group">
     <%= f.label "vintage", "Vintage (Year)" %><br>
     <%= f.date_field "vintage" %>
   </div>
-  <div>
+  <div class="form-group">
     <%= f.label "winery" ,"Winery"%><br>
     <%= f.text_field "winery" %>
   </div>
@@ -30,7 +31,7 @@
     <%= f.label "label_image", "Label image" %><br>
     <%= f.text_field "label_image" %>
   </div>
-  <div>
+  <div class="form-group">
     <%= f.label "description", "Bottle Label (Story)" %><br>
     <%= f.text_area "description" %>
   </div>
@@ -40,14 +41,15 @@
   <div>
     <%= fields_for :review, @review do |rf| %>
   <div>
-  <div>
+  <div class="form-group">
     <%= rf.label :my_rating, "Rate bottle" %><br>
     <%= rf.select :my_rating, [1, 2, 3, 4, 5] %>
   </div>
-  <div>
+  <div class="form-group">
     <%= rf.label :favorite, "Is it your favorite" %><br>
-    <%= rf.select :favorite, ["true", "false"] %>
+    <%= rf.select :favorite, ["love", "hate"] %>
   </div>
+  <div class="form-group">
     <%= rf.label :comment, 'Comments' %><br>
     <%= rf.text_area :comment %>
   </div>
@@ -61,5 +63,6 @@
   <% end %>
   </div>
   <% end %>
-  <div><%= f.submit "Uncork" %></div>
+  <div class="form-group submit-button"><%= f.submit "Uncork" %></div>
 <% end %>
+</div>
