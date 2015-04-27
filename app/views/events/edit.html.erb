@@ -1,57 +1,58 @@
+<div class="form">
+  <h2>EDIT EVENT </h2>
 
-<h1>EDIT THIS EVENT</h1>
-<%= form_for @event do |f| %>
+  <%= form_for @event do |f| %>
 
-  <% if @event.errors.any? %>
-    <div>
-      <%= pluralize(@event.errors.count, "error") %> prevented the account from being created:
-      <ul>
-        <% @event.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+    <% if @event.errors.any? %>
+      <div>
+        <%= pluralize(@event.errors.count, "error") %> prevented the account from being created:
+        <ul>
+          <% @event.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label "title" , "Title"%><br>
+      <%= f.text_field "title" %>
     </div>
-  <% end %>
+    <div class="form-group">
+      <%= f.label "venue", "Venue" %><br>
+      <%= f.text_field "venue" %>
+    </div>
 
-  <div>
-    <%= f.label "title" , "Title"%><br>
-    <%= f.text_field "title" %>
-  </div>
-  <div>
-    <%= f.label "venue", "Where?" %><br>
-    <%= f.text_field "venue" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label "event_image", "Event image" %><br>
-    <%= f.text_field "event_image" %>
-  </div>
- 
-
-  <div>
-    <%= f.label "organizer_id", "Organizer" %><br>
-    <select name="user[organizer_id]">
-      <% User.all.each do |user| %>
-          <option value="<%= user.id %>"><%= user.fname %></option>
-      <% end %>
-    </select>
-  </div>
+    <div class="form-group">
+      <%= f.label "event_image", "Event image" %><br>
+      <%= f.text_field "event_image" %>
+    </div>
 
    <div id="add_bottle_form">
+      <%= link_to "Add a bottle", new_bottle_path %><br>
+      <%= f.label "bottle_id", "Select Bottles" %>
       <%= f.collection_select :bottle_ids, Bottle.all, :id, :name, {}, {multiple: true} %><br>
   </div>
 
-  <div>
-    <%= f.label "date", "When?" %><br>
-    <%= f.date_field "date" %>
-  </div>
-  <div>
-    <%= f.label "duration" ,"what time?"%><br>
-    <%= f.time_field "duration" %>
-  </div>
-  <div>
-    <%= f.label "description", "Tell me a little bit more about your event" %><br>
-    <%= f.text_area "description" %>
-  </div>
-  <div><%= f.submit "Submit" %></div>
-<% end %>
+    <div class="form-group-spec">
+      <div class="fgs">
+        <%= f.label "date", "Date (when?)" %>
+        <%= f.date_field "date" %>
+      </div>
+      <div class="fgs">
+        <%= f.label "duration" ,"Duration (minutes)"%>
+        <%= f.text_field "duration" %>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label "description", "Tell me a little bit more about your event" %><br>
+      <%= f.text_area "description" %>
+    </div>
+    
+    <div class="form-group submit-button">
+      <%= f.submit "Submit" %>
+    </div>
+  
+  <% end %>
+</div>
