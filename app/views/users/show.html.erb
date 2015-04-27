@@ -10,24 +10,28 @@
 		</div>
 
 		<div class="new">
-			<h2>Events I created</h2>
+			<h2>MY EVENTS</h2>
 			<% if @user.events.all == [] %>
 				<p>"no events created"</p>
 			<% else %>
 				<% @user.events.each do |event| %>
+				<div class="new-item">
 					<img  class="event-img" src="http://bit.ly/1OtrDxf" alt="event picture">
 					<h3><%= link_to event.title, event_path(event) %></h3>
 					<p><%= event.description %></p>
+				</div>
 				<% end %>
 			<% end %>
 		</div>
 
-		<div class="e-other">
-			<h2>Last Events I created</h2>
+		<div class="new">
+			<h2>RECENT EVENT</h2>
 			<% if @user.events.all == [] %>
 				<p>"no events created"</p>
 			<% else %>
-				<p><%= @user.events.last.title %>	</p>
+				<ol>
+					<li><%= @user.events.last.title %></li>
+				</ol>
 			<% end %>
 		</div>
 	</div>
@@ -43,17 +47,19 @@
 		</div>
 
 		<div class="new">
-			<h2>Bottles added</h2>
+			<h2>RECENT NEW BOTTLES</h2>
 			<% if @user.bottles.all == [] %>
 				<p>"no bottles created"</p>
 			<% else %>
 				<%@user.bottles.each do |bottle|  %>
+					<div class="new-item">
+					<img  class="event-img" src="http://bit.ly/1OtrDxf" alt="event picture">
 					<h3><%= link_to bottle.name, bottle_path(bottle) %></h3>
 				<% end %>
 			<% end %>
 		</div>
 
-		<div class="e-other">
+		<div class="new">
 			<h2>Reviews created</h2>
 			<% if @user.reviews.all == [] %>
 				<p>"no reviews created"</p>

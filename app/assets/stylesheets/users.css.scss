@@ -1,4 +1,4 @@
-.flex-box {
+ .flex-box {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -15,7 +15,7 @@
 }
 
 	.new {
-		margin: 20px;
+		margin: 20px auto;
 
 	}
 
@@ -31,7 +31,6 @@
 		padding-top: 20px;
 		font-size: 14px;
 		text-align: center;
-		min-width: 250px;
 		margin: 10px;
 	}
 
@@ -71,20 +70,24 @@ button {
 .section {
 		display: block;
 		max-width: 650px;
+		margin: 0 auto;
+		text-align: center; 
 	}
-		.img {
-			margin: 0 auto;
-		}
-		.p-descr, .icon-link {
-			margin: 0 auto;
+
+		.icon-link {
+			margin: 10px auto;
 			text-align: center;
 		}
 
-.section {
-		display: block;
-		margin: 0 auto;
-		text-align: center; 
+			.svg {
+				margin: 10px auto;
+				margin-bottom: 50px;
 			}
+
+		.new-item {
+			border: 1px solid orange;
+			margin-bottom: 10px; 
+		}
 	
 }
 
