@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
     has_many :bottles, :through => :flights
     has_many :flights
 
-    accepts_nested_attributes_for :bottles, :allow_destroy => true
+    accepts_nested_attributes_for :flights, :allow_destroy => true
 
 
     validates :title, 
