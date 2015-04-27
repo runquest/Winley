@@ -1,13 +1,18 @@
 @import "bourbon";
-@import "neat";
-@import "header";
 @import "base/base";
+@import "neat";
+
+@import "texture";
+@import "header";
 @import "events";
 @import "users";
 @import "welcome";
 @import "footer";
 @import "header";
 @import "template";
+@import "sliding-panel-content";
+
+
 @import "about";
 @import "modal";
 
@@ -27,7 +32,9 @@
 
 
  //body color
- $base-body-color : tint(black,5%);
+ $base-body-color : tint(black,20%);
+  $texture-top-background: lighten(black, 1%);
+  $texture-bottom-background: darken(black, 10%);
 
 @font-face {
     font-family: chalk;
@@ -36,11 +43,13 @@
 
 body{
 
-  font-family: chalk;
   color:white;
+  @include texture(180deg, $texture-top-background, $texture-bottom-background, 28, 1); 
+  
   @include outer-container;
   background-color: $base-body-color;
   background-position: 10px 10px;
+
 //Input text box colors and on hover 
   #{$all-text-inputs} {
     border: 1px solid #ffb90f;
@@ -51,44 +60,7 @@ body{
     border: 1px solid #ee7621;
   }
 
- 
 
-@mixin button-bg($bg) {
-  background: $bg;
-  &:hover {
-    background:darken($bg,8%);
-    transition: all 0.3s ease;
-  }
-  &:active {
-    background:darken($bg,25%);
-  } 
-}
-
-.button-yellow{
-  background-color:yellow;
-}
- 
- .btn-yellow{
-   @include button-bg(#f1c40f);
-}
   }
 
-  //form
- 
-
-
- //colors
-
-
-
-
-
- //font color
-
- //text link color
-
-
- //border color
-
- //flash color
 

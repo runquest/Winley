@@ -13,9 +13,12 @@
   $modal-padding: 3em;
   $modal-background: $base-background-color;
   $modal-close-color: $light-gray;
-  $modal-image-height: 135px;
+  $modal-image-height: auto;
   $modal-image-width: $modal-image-height;
   $modal-trigger-image-width: 300px;
+
+  color: orange;
+  $base-font-color: orange;
 
   label {
     cursor: pointer;
