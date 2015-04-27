@@ -9,6 +9,9 @@
 <%= @bottle.description %><br>
 <% if current_user != nil %>
 <h2>This is <%= current_user.full_name %> review</h2>
-<h1><%= @bottle.reviews.where(user_id: current_user.id).take.comment %></h1>
-<p><%= @bottle.reviews.take.my_rating %>
+	<h1><%= @bottle.reviews.where(user_id: current_user.id).take.comment %></h1>
+	<p><%= @bottle.reviews.take.my_rating %></p>
+	<% if @bottle.reviews.take.favorite == false %>
+		<p>hello</p>
+	<% end %>
 <% end %>

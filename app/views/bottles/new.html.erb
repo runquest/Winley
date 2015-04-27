@@ -38,15 +38,14 @@
   <div>
   <div>
     <%= rf.label :my_rating, "Rate bottle" %><br>
-
     <%= rf.select :my_rating, [1, 2, 3, 4, 5] %>
-  </div>
-    <%= rf.label :comment, 'Comments' %><br>
-    <%= rf.text_area :comment %>
   </div>
   <div>
     <%= rf.label :favorite, "Is it your favorite" %><br>
-    <%= rf.text_field :favorite %>
+    <%= rf.select :favorite, ["true", "false"] %>
+  </div>
+    <%= rf.label :comment, 'Comments' %><br>
+    <%= rf.text_area :comment %>
   </div>
   <div>
     <% if current_user == nil %>

@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
 
+
 	# before_filter :load_bottle
 
  # def new
