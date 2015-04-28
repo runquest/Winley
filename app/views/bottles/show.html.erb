@@ -1,17 +1,41 @@
+<div class="show">
 
-<%= link_to "Edit Bottle", edit_bottle_path(@bottle) %>
+	<section class="main">
 
-<h1><%= @bottle.name %></h1>
-<hr>
-<%= @bottle.grape %><br>
-<%= @bottle.vintage %><br>
-<%= @bottle.winery %><br>
-<%= @bottle.description %><br>
-<% if current_user != nil %>
-<h2>This is <%= current_user.full_name %> review</h2>
-	<h1><%= @bottle.reviews.where(user_id: current_user.id).take.comment %></h1>
-	<p><%= @bottle.reviews.take.my_rating %></p>
-	<% if @bottle.reviews.take.favorite == false %>
-		<p>hello</p>
-	<% end %>
+		<div class="block">
+			<img src="http://bit.ly/1OtrDxf" alt="event picture" class="event-img" >
+		</div>
+
+		<div class="block">
+			<h2><%= @bottle.name %></h2>
+			<%= link_to "Edit Bottle", edit_bottle_path(@bottle) %>
+			<ol>
+				<li><%= @bottle.grape %></li>
+				<li><%= @bottle.vintage %></li>
+				<li><%= @bottle.winery %></li>
+				<li><%= @bottle.description %></li>
+			</ol>
+		</div>
+
+	</section>
+
+	</hr>
+
+	<section class="main review">
+		<% if current_user != nil %>
+			<h3>This is what you think about it:</h3>
+				<div class="block">
+				<ol>
+					<li><h3>You have it: <%= @bottle.reviews.take.my_rating %></h3></li>
+				</ol>
+				</div>
+
+				<div class="block">
+					<h3>Your comment:</h3>
+					<p><%= @bottle.reviews.where(user_id: current_user.id).take.comment %></p>
+				</div>
+			</section>
+	</section>
 <% end %>
+
+</div>

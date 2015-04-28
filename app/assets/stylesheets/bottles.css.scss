@@ -124,3 +124,45 @@
   }
 }
 
+// Bottle Edit Page - Review section //
+
+section.review-table {
+  background-color: #DF7401;
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 1em;
+  border: 1px solid orange;
+  border-radius: 10px;
+}
+
+  div.small-entry {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  div.small-entry select {
+    width: 50%;
+  }
+
+///
+
+
+// Bottle Show Page - Review section //
+
+div.block {
+  margin: 1em;
+  display: inline-block;
+}
+
+section.review {
+  border: 1px solid orange;
+  width: 80%;
+  padding: 1em;
+  border-radius: 15px;
+}
+
+
+div.show {
+  margin: 0 auto;
+}
