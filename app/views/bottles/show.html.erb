@@ -1,6 +1,6 @@
 <div class="show">
-
-	<section class="main">
+<div class="show">
+	<section class="main bottle">
 
 		<div class="block">
 			<img src="http://bit.ly/1OtrDxf" alt="event picture" class="event-img" >
@@ -18,24 +18,20 @@
 		</div>
 
 	</section>
-
+</div>
 	</hr>
 
-	<section class="main review">
+	<section class="review-table">
+
 		<% if current_user != nil %>
-			<h3>This is what you think about it:</h3>
-				<div class="block">
-				<ol>
-					<li><h3>You have it: <%= @bottle.reviews.take.my_rating %></h3></li>
-				</ol>
+				<div class="block big-number">
+					<%= @bottle.reviews.take.my_rating %>
 				</div>
 
 				<div class="block">
-					<h3>Your comment:</h3>
 					<p><%= @bottle.reviews.where(user_id: current_user.id).take.comment %></p>
 				</div>
-			</section>
+		<% end %>
 	</section>
-<% end %>
 
 </div>

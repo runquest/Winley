@@ -12,17 +12,19 @@
           </li>         
             <!-- end of sliding toggle bar -->
         <% else %>
-          <li class="nav-link">
-            <%= link_to "TASTE SWING",  welcome_index_path %>
-          </li>       
-          <li class="nav-link">
-            <label for="modal-1">
-              <a>LOG IN</a>
-            </label>
-          </li>
-          <li class="nav-link">
-           <%= link_to "SIGN UP",  new_user_path %>
-          </li>
+          <ul id="index-navigation">
+            <li class="nav-link">
+              <%= link_to "TASTE SWING",  welcome_index_path %>
+            </li>       
+            <li class="nav-link">
+              <label for="modal-1">
+                <a>LOG IN</a>
+              </label>
+            </li>
+            <li class="nav-link">
+             <%= link_to "SIGN UP",  new_user_path %>
+            </li>
+          </ul>
         <% end %>
       </ul>
     </nav>
