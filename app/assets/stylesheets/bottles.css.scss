@@ -1,7 +1,7 @@
 // Place all the styles related to the bottles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+ $hero-image:'/assets/plain-chalk.jpg';
   
 .outercontainer{
     
@@ -12,7 +12,7 @@
     }
 
     .search-bottle{
-      background-color: rgb(177, 50, 50);
+       @include background(url($hero-image));
       width: 42.93617%;
       margin-top: 2em;
       margin-left: 0em;

@@ -1,9 +1,23 @@
+$hero-image:'/assets/plain-chalk.jpg';
+
+.cleanouter {
+	@include outer-container;
+		.triplet1{
+		@include span-columns(4);
+		background:green;
+		@include pad();
+		}
+}
+
+
+
+
  .flex-box {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	margin: 0 auto;
-	max-width: 760px;
+	max-width: 100%;
 }
 
 
@@ -23,7 +37,7 @@
 	}
 
 	.svg {
-		width: 100px;
+		width: 75px;
 		height: 100px; 
 	}
 
