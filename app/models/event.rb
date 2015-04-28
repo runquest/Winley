@@ -16,7 +16,7 @@ class Event < ActiveRecord::Base
     validates :date,
     presence: true
 
-    validates :duration, numericality: { only_integer: true }
+    # validates :duration, numericality: { only_integer: true }
     
     validates :description,
     presence: true

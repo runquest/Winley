@@ -63,7 +63,7 @@
 			<% else %>
 				<ol>
 					<% @user.reviews.where(favorite: true).each do |review| %>
-						<li>Bottles with ID: <%= review.bottle_id %></li>
+						<li><%= Bottle.find(review.bottle_id).name %></li>
 					<% end %>
 				</ol>
 			<% end %>

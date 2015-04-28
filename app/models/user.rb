@@ -27,7 +27,6 @@
   def full_name
     "#{fname} #{lname}"
   end
-    
 
 end
 

@@ -1,11 +1,22 @@
 .form, .show {
-	max-width: 50%;
+	max-width: 80%;
 	margin: 20px auto;
 }
 
 div.bottle {
-	width: 75%;
+	width: 100%;
 	margin: 0 auto;
+}
+
+div.event-info {
+	display: flex;
+	justify-content: space-around;
+	// align-self: flex-start;
+}
+
+section.event {
+	display: flex;
+  justify-content: space-around;
 }
 
 	div.bottle h3 {

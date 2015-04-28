@@ -1,39 +1,50 @@
 <div class="show">
 
-	<section> 
-		<h2><%= @event.title %></h2>
-		<%= link_to "Edit Event", edit_event_path(@event) %><br>
+	<div class="event-info">
+		<section class="event"> 
+			<img src="<%= @event.event_image %>" alt="profile picture" class="event-image">
+		</section>
 
-		<img src="<%= @event.event_image %>" alt="profile picture" class="event-image">
+		<section class="event">
+			<h2><%= @event.title %></h2>
+			<%= link_to "Edit Event", edit_event_path(@event) %><br>
+			<p><%= @event.venue %></p>
+			<p><%= @event.date.strftime("%m/%d/%Y") %></p>
+			<p>Currently in a flight <%= @event.flights.size %> bottles.</p>
+		</section>
+	</div>
 
-
-		<p><%= @event.venue %></p>
-		<p><%= @event.date.strftime("%m/%d/%Y") %></p>
-		<p>Currently in a flight <%= @event.flights.size %> bottles.<br>
 		<hr>
-		<% if @event.flights.size > 0 %>
 
-			<% @event.flights.each do |flight| %>
-				<div class="link"><%= link_to 'delete bottles', {:controller => "events", :action => "delete_bottle", :flight_id => flight.id, :event_id => @event.id } %>
-				</div>
-				<div class="bottle">
-					<h3><%= flight.bottle.name %></h3><br>
-				</div>
-				<div class="bottle-item">
-					<div class="bottle-thumb">
-						<img class="thumbnail" src="http://bit.ly/1A3L9UY", alt="label image">
+	<% if @event.flights.size > 0 %>
+		<% @event.flights.each do |flight| %>
+	
+		<div class="event-info">
+		<section class="event">
+					<div class="link"><%= link_to 'delete bottles', {:controller => "events", :action => "delete_bottle", :flight_id => flight.id, :event_id => @event.id } %>
 					</div>
-					<p><%= flight.bottle.description %></p>
+					<div>
+						<div class="bottle">
+							<h3><%= flight.bottle.name %></h3>
+						</div>
+						<div class="bottle-item">
+							<div class="bottle-thumb">
+								<img class="thumbnail" src="http://bit.ly/1A3L9UY", alt="label image">
+							</div>
+							<p><%= flight.bottle.description %></p>
+						</div>
+						<div class="bottle-item">
+							<div class="bottle-details">
+								<%= flight.bottle.year %> | <%= flight.bottle.grape %> | <%= flight.bottle.year %> | <%= flight.bottle.winery %>
+								<p><%= flight.bottle.more_url %></p>
+							</div>
+						</div>
+					<% end %>
+				<% else %>
+					<%= link_to "Add Bottle", edit_event_path(@event) %>	
+				<% end %>
 				</div>
-				<div class="bottle-item">
-					<div class="bottle-details">
-						<%= flight.bottle.year %> | <%= flight.bottle.grape %> | <%= flight.bottle.year %> | <%= flight.bottle.winery %><br>
-						<p><%= flight.bottle.more_url %></p>
-					</div>
-				</div>
-			<% end %>
-		<% else %>
-				<%= link_to "Add Bottle", edit_event_path(@event) %>	
-		<% end %>
-	</section>
+			</div>
+		</section>
+	</div>
 </div>
