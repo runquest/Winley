@@ -12,22 +12,24 @@
 		<p>Currently in a flight <%= @event.flights.size %> bottles.<br>
 		<hr>
 		<% if @event.flights.size > 0 %>
-			<% @event.bottles.each do |bottle| %>
+
+			<% @event.flights.each do |flight| %>
+				<div class="link"><%= link_to 'delete bottles', {:controller => "events", :action => "delete_bottle", :flight_id => flight.id, :event_id => @event.id } %>
+				</div>
 				<div class="bottle">
-					<div class="link"><%= link_to 'delete bottles',  {:controller => "events", :action => "delete_bottle", :bottle_id => bottle.id, :event_id => @event.id } %></div>
-					<h3><%= bottle.name %></h3><br>
+					<h3><%= flight.bottle.name %></h3><br>
 				</div>
 				<div class="bottle-item">
 					<div class="bottle-thumb">
 						<img class="thumbnail" src="http://bit.ly/1A3L9UY", alt="label image">
 					</div>
-					<p><%= bottle.description %></p>
+					<p><%= flight.bottle.description %></p>
 				</div>
 				<div class="bottle-item">
 					<div class="bottle-details">
-						<%= bottle.year %> | <%= bottle.grape %> | <%= bottle.year %> | <%= bottle.winery %><br>
-						<p><%= bottle.more_url %></p>
-				</div>
+						<%= flight.bottle.year %> | <%= flight.bottle.grape %> | <%= flight.bottle.year %> | <%= flight.bottle.winery %><br>
+						<p><%= flight.bottle.more_url %></p>
+					</div>
 				</div>
 			<% end %>
 		<% else %>
