@@ -63,6 +63,8 @@
 			<% else %>
 				<ol>
 					<% @user.reviews.where(favorite: true).each do |review| %>
+						<h3><%= link_to event.title, event_path(event) %></h3>
+						<li><%= Bottle.find(review.bottle_id).name %></li>
 						<li><%= Bottle.find(review.bottle_id).name %></li>
 					<% end %>
 				</ol>

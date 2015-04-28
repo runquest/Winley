@@ -28,25 +28,25 @@
       <%= f.text_field "event_image" %>
     </div>
 
-      <select name="user[organizer_id]">
-
-    <% User.all.each do |user| %>
+    <select name="user[organizer_id]" style="display: none">
+      <% User.all.each do |user| %>
         <option value="<%= user.id %>"><%= user.fname %></option>
-    <% end %>
-  </select>
+      <% end %>
+    </select>
 
 
-    <div id="add_bottle_form" class="form-group">
+    <div id="add_bottle_form" class="form-group" style="display: none">
       <%= f.label "bottle_id", "Select Bottles" %>
       <%= f.select :bottle_ids, Bottle.all.collect {|bottle| [bottle.name, bottle.id ] }%>
     </div>
 
-    <div class="form-group-spec">
-      <div class="fgs">
+    <div class="form-group">
+<!--       <div class="fgs"> -->
         <%= f.label "date", "Date (when?)" %>
         <%= f.date_field "date" %>
-      </div>
-      <div class="fgs">
+      <!-- </div> -->
+      
+      <div class="fgs" style="display: none">
         <%= f.label "duration" ,"Duration (minutes)"%>
         <%= f.text_field "duration" %>
       </div>
@@ -58,7 +58,7 @@
     </div>
     
     <div class="form-group submit-button">
-      <%= f.submit "Submit" %>
+      <%= f.submit "Uncork" %>
     </div>
   
   <% end %>
