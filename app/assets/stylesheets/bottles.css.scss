@@ -165,6 +165,7 @@ section.review-table {
 div.block {
   margin: 1em;
   display: inline-block;
+  max-width: 50%;
 }
 
 section.review {
@@ -177,4 +178,8 @@ section.review {
 
 div.show {
   margin: 0 auto;
+}
+
+div.big-number {
+  font-size: 4em;
 }

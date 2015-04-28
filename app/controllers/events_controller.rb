@@ -15,10 +15,12 @@ class EventsController < ApplicationController
     if @event.save
 
       if current_user == nil
-        redirect_to event_path(@event), notice: "#{@event.title}!"
+        redirect_to event_path(@event)
+        flash[:notice] = "You just added #{@event.title} event!"
       else
         current_user.events << @event
-        redirect_to event_path(@event), notice: "#{@event.title}!"
+        redirect_to event_path(@event)
+        flash[:notice] = "You just added #{@event.title} event!"
       end
     else
       render :new
@@ -44,7 +46,8 @@ def update
   @event = Event.find(params[:id])
   current_user.events << @event if current_user
   if @event.update_attributes(event_params)
-    redirect_to event_path, notice: "#{@event.title}!"
+    redirect_to event_path
+    flash[:notice] = "You just updated #{@event.title} event!"
   else
     render :edit
   end

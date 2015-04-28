@@ -1,4 +1,6 @@
-module ApplicationHelper
+module NoticeHelper
+
+
 
 def show_flash(options = {})
     output = ActiveSupport::SafeBuffer.new
@@ -13,6 +15,5 @@ def show_flash(options = {})
 
      output
 end
-
 
 end

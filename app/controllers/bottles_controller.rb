@@ -13,14 +13,16 @@ class BottlesController < ApplicationController
     @bottle = Bottle.new(bottle_params)
     if current_user == nil
       @bottle.save
-      redirect_to bottle_path(@bottle), notice: "#{@bottle.name}!"
+      redirect_to bottle_path(@bottle)
+      flash[:notice] = "You just created #{@bottle.name}!"
     else
       @bottle.save
       @review = Review.new(review_params)
       @review.save
       @review.user = current_user
       @bottle.reviews << @review
-      redirect_to bottle_path(@bottle), notice: "#{@bottle.name}!"
+      redirect_to bottle_path(@bottle)
+      flash[:notice] = "You just created #{@bottle.name}!"
     end
   end
 
