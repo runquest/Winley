@@ -7,7 +7,16 @@
     
     @include outer-container;
 
+    .spacemaker{
+    width:70px;
+    }
+
     .search-bottle{
+      background-color: rgb(177, 50, 50);
+      width: 42.93617%;
+      margin-top: 2em;
+      margin-left: 0em;
+      height: 1800px;
       .search {
         width: 100%;
         align : center;
@@ -44,8 +53,8 @@
       $base-spacing: .5em !default;
       $action-color: orange !default;
       $base-link-color: $action-color !default;
-      $dark-gray:white !default;
-      $base-font-color: orange;
+      $dark-gray:rgba(135, 43, 19, 0.97) !default;
+      $base-font-color: rgba(135, 43, 19, 0.97);
       $card-border-color: $base-border-color;
       $card-border: 1px solid $card-border-color;
       $card-background: lighten($card-border-color, 10%);
@@ -83,6 +92,7 @@
       }
 
       .bottle-card-header {
+        color:rgba(135, 43, 19, 0.97);
         @include transition (all 0.2s ease-in-out);
         background-color: $card-header-background;
         border-bottom: $card-border;

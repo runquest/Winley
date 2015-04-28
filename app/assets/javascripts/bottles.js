@@ -44,11 +44,11 @@ $(function(){
             )).append(
               $('<div class="bottle-card-header">').text(data.Products.List[i].Name)
               ).append(
+                $('<button>').text("+")
+              ).append(
                 $('<div class="bottle-card-copy">').text(('Price: $' + data.Products.List[i].PriceRetail)).css('weight', 'bold')
               
-              .append(
-                $('<button>').text("+")
-              ) )
+              )
            
          
         )
