@@ -4,7 +4,7 @@
 
 		<div class="block">
 			<!-- <img src="http://bit.ly/1OtrDxf" alt="event picture" class="event-img" > -->
-			<img class="event-img" src="<%= @bottle.label_image %>" alt="wine bottle image">
+			<img class="imagefit" src="<%= @bottle.label_image %>" alt="wine bottle image">
 		</div>
 
 		<div class="block">
@@ -26,9 +26,9 @@
 </div>
 	</hr>
 
+		<% if current_user != nil %>
 	<section class="review-table">
 
-		<% if current_user != nil %>
 				<div class="block big-number">
 					<%= @bottle.reviews.take.my_rating %>
 				</div>
