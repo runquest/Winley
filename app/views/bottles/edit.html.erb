@@ -1,61 +1,72 @@
-<h3>Edit Bottle of Wine</h3>
-<%= form_for @bottle do |f| %>
-  <% if @bottle.errors.any? %>
-    <div>
-      <%= pluralize(@bottle.errors.count, "error") %> prevented the account from being created:
-      <ul>
-        <% @bottle.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div>
-    <%= f.label "name" , "Bottle name"%><br>
-    <%= f.text_field "name" %>
-  </div>
-  <div>
-    <%= f.label "grape", "Grape" %><br>
-    <%= f.text_field "grape" %>
-  </div>
-  <div>
-    <%= f.label "vintage", "Vintage (Year)" %><br>
-    <%= f.date_field "vintage" %>
-  </div>
-  <div>
-    <%= f.label "winery" ,"Winery"%><br>
-    <%= f.text_field "winery" %>
-  </div>
-  <div>
-    <%= f.label "description", "Bottle Label (Story)" %><br>
-    <%= f.text_area "description" %>
-  </div>
-  <hr>
-  <% if current_user != nil %>
-  <h4>Add Review</h4>
-  <div>
-    <%= fields_for :review, @review do |rf| %>
-  <div>
-  <div>
-    <%= rf.label :my_rating, "Rate bottle" %><br>
-    <%= rf.select :my_rating, [1, 2, 3, 4, 5] %>
-  </div>
-  <div>
-    <%= rf.label :favorite, "Is it your favorite" %><br>
-    <%= rf.select :favorite, ["true", "false"] %>
-  </div>
-    <%= rf.label :comment, 'Comments' %><br>
-    <%= rf.text_area :comment %>
-  </div>
-  <div>
-    <% if current_user == nil %>
-    <% rf.hidden_field :user_id, :value => 0 %>
-    <% else %>
-    <%= rf.hidden_field :user_id, :value => current_user.id%>
+<div class="form">
+  <h2>EDIT BOTTLE OF WINE </h2>
+
+  <%= form_for @bottle do |f| %>
+    <% if @bottle.errors.any? %>
+      <div>
+        <%= pluralize(@bottle.errors.count, "error") %> prevented the account from being created:
+        <ul>
+          <% @bottle.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
-  </div>
+    <div class="form-group">
+      <%= f.label "name" , "Bottle name"%><br>
+      <%= f.text_field "name" %>
+    </div>
+    <div class="form-group">
+      <%= f.label "grape", "Grape" %><br>
+      <%= f.text_field "grape" %>
+    </div>
+    <div class="form-group">
+      <%= f.label "vintage", "Vintage (Year)" %><br>
+      <%= f.date_field "vintage" %>
+    </div>
+    <div class="form-group">
+      <%= f.label "winery" ,"Winery"%><br>
+      <%= f.text_field "winery" %>
+    </div>
+    <div class="form-group">
+      <%= f.label "description", "Bottle Label (Story)" %><br>
+      <%= f.text_area "description" %>
+    </div>
+    <hr>
+    <% if current_user != nil %>
+
+      <%= fields_for :review, @review do |rf| %>
+
+        <section class="review-table">
+          <h2>Add Review</h2  >
+          <div class="small-entry">
+            <div class="form-group">
+              <%= rf.label :my_rating, "Rate bottle" %><br>
+              <%= rf.select :my_rating, [1, 2, 3, 4, 5] %>
+            </div>
+
+            <div class="form-group">
+              <%= rf.label :favorite, "Favorite?" %><br>
+              <%= rf.select :favorite, ["Add to Favorites list", "Just Add to my Library"] %>
+            </div>
+          </div>
+
+        <div>
+          <%= rf.label :comment, 'Comments' %><br>
+          <%= rf.text_area :comment %>
+        </div>
+
+        <div>
+          <% if current_user == nil %>
+            <% rf.hidden_field :user_id, :value => 0 %>
+          <% else %>
+            <%= rf.hidden_field :user_id, :value => current_user.id%>
+          <% end %>
+        </div>
+
+      <% end %>
+          <%= f.submit "Uncork" %>
+    <% end %>
+    </section>
   <% end %>
-  </div>
-  <% end %>
-  <div><%= f.submit "Uncork" %></div>
-<% end %>
+</div>

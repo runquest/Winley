@@ -35,34 +35,41 @@
     <%= f.label "description", "Bottle Label (Story)" %><br>
     <%= f.text_area "description" %>
   </div>
-  <hr>
-  <% if current_user != nil %>
-  <h4>Add Review</h4>
-  <div>
-    <%= fields_for :review, @review do |rf| %>
-  <div>
-  <div class="form-group">
-    <%= rf.label :my_rating, "Rate bottle" %><br>
-    <%= rf.select :my_rating, [1, 2, 3, 4, 5] %>
-  </div>
-  <div class="form-group">
-    <%= rf.label :favorite, "Is it your favorite" %><br>
-    <%= rf.select :favorite, ["love", "hate"] %>
-  </div>
-  <div class="form-group">
-    <%= rf.label :comment, 'Comments' %><br>
-    <%= rf.text_area :comment %>
-  </div>
-  <div>
-    <% if current_user == nil %>
-    <% rf.hidden_field :user_id, :value => 0 %>
-    <% else %>
-    <%= rf.hidden_field :user_id, :value => current_user.id%>
+     <hr>
+    <% if current_user != nil %>
+
+      <%= fields_for :review, @review do |rf| %>
+
+        <section class="review-table">
+          <h2>Add Review</h2  >
+          <div class="small-entry">
+            <div class="form-group">
+              <%= rf.label :my_rating, "Rate bottle" %><br>
+              <%= rf.select :my_rating, [1, 2, 3, 4, 5] %>
+            </div>
+
+            <div class="form-group">
+              <%= rf.label :favorite, "Favorite?" %><br>
+              <%= rf.select :favorite, ["Add to Favorites list", "Just Add to my Library"] %>
+            </div>
+          </div>
+
+        <div>
+          <%= rf.label :comment, 'Comments' %><br>
+          <%= rf.text_area :comment %>
+        </div>
+
+        <div>
+          <% if current_user == nil %>
+            <% rf.hidden_field :user_id, :value => 0 %>
+          <% else %>
+            <%= rf.hidden_field :user_id, :value => current_user.id%>
+          <% end %>
+        </div>
+
+      <% end %>
+          <span class="btn"><%= f.submit "Uncork" %></span>
     <% end %>
-  </div>
+    </section>
   <% end %>
-  </div>
-  <% end %>
-  <div class="form-group submit-button"><%= f.submit "Uncork" %></div>
-<% end %>
 </div>
