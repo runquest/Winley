@@ -2,42 +2,42 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+  
 .outercontainer{
     
-  @include outer-container;
+    @include outer-container;
 
-  .search-bottle{
-  
-  @include outer-container;
-  @include span-columns(8);
- 
-  }
-
-  .outerbottle{
-
-  @include span-columns(4);
-  @include pad();
-
-  }
-
-  .search-bottle{
-    .bottlecard{
-    width: 153px;
+    .search-bottle{
+      .search {
+        width: 100%;
+        align : center;
+      }
+      @include span-columns(6);
+    
     }
-  }
+
+    .outerbottle{
+      @include span-columns(6);
+      @include pad();
+      display: inline-block;
+      margin-right: 2.12766%;
+    }
+
+    
 
   .search-bottle,.outerbottle{
 
     .bottle{
-    
+     
       @include display(flex);
       @include flex-wrap(wrap);
       @include justify-content(space-between);
+      width: 69%;
+      margin: 0 auto;
     }
 
     .bottlecard {
-
+        @include span-columns(2);
       $base-border-color: #F7D358;
       $base-border-radius: 3px !default;
       $base-background-color: orange !default;
@@ -54,8 +54,10 @@
       $card-image-background: #DF7401;
       $card-image-hover-background: lighten($card-image-background, 5%);
       $card-margin: 1em;
+      width: 153px;
+     
 
-      @include flex-basis(15em);
+      @include flex-basis(7em);
       @include flex-grow(1);
       @include transition (all 0.2s ease-in-out);
       background-color: $card-background;
@@ -63,7 +65,7 @@
       border: $card-border;
       box-shadow: 0 2px 4px darken($base-background-color, 10%);
       cursor: pointer;
-      margin: 0 $card-margin $base-spacing $card-margin;
+       margin: 0 $card-margin $base-spacing $card-margin;
       position: relative;
 
       .bottle-card-image {

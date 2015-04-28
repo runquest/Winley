@@ -1,6 +1,17 @@
 
 <h3>All Wine Bottles</h3>
 <div class= "outercontainer">
+   <div class="search-bottle">
+
+      <form class="search">
+      Search Wine Database:<br>
+      <input type="text" name="search" >
+      </form>
+      <div class="bottle">
+      </div>
+
+   </div>
+
    <div class="outerbottle">
      
     <% @bottles.each do |bottle| %>
@@ -13,24 +24,13 @@
        </div>
        <div class="bottle-card-copy">
          <%= bottle.vintage %>
-         <%= bottle.grape %>
-         <%= bottle.winery %>
-         <p><%= bottle.description%></p>
+         
        </div>
      </div>
       <% end %>
    </div>
 
-   <div class="search-bottle">
-
-   <form class="search">
-   Search Wine Database:<br>
-   <input type="text" name="search">
-   </form>
-   <div class="bottle">
-   </div>
-
-   </div>
+   
 </div>
 
 .....................................
