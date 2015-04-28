@@ -169,6 +169,7 @@ div.block {
 }
 
 section.review {
+  margin-top: 1em;
   border: 1px solid orange;
   width: 80%;
   padding: 1em;
@@ -182,4 +183,9 @@ div.show {
 
 div.big-number {
   font-size: 4em;
+}
+
+img.event-img {
+  width: 250px;
+  height: auto;
 }

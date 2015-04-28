@@ -3,16 +3,21 @@
 	<section class="main bottle">
 
 		<div class="block">
-			<img src="http://bit.ly/1OtrDxf" alt="event picture" class="event-img" >
+			<!-- <img src="http://bit.ly/1OtrDxf" alt="event picture" class="event-img" > -->
+			<img class="event-img" src="<%= @bottle.label_image %>" alt="wine bottle image">
 		</div>
 
 		<div class="block">
 			<h2><%= @bottle.name %></h2>
-			<%= link_to "Edit Bottle", edit_bottle_path(@bottle) %>
+			<%= link_to "Edit", edit_bottle_path(@bottle) %> | 
+			<%#= link_to "Delete", new_bottle_path %>
+			<%#= link_to "DELETE BOTTLE", bottles_destroy_path %>
+			<hr>
 			<ol>
 				<li><%= @bottle.grape %></li>
-				<li><%= @bottle.vintage %></li>
-				<li><%= @bottle.winery %></li>
+				<li><%= @bottle.year %></li>
+				<li><%= @bottle.winery %> winery</li>
+				<hr>
 				<li><%= @bottle.description %></li>
 			</ol>
 		</div>
