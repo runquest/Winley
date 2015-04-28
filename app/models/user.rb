@@ -27,7 +27,26 @@
   def full_name
     "#{fname} #{lname}"
   end
+
+  def favorite(current_user)
+    @user = current_user
+    reviews = @user.reviews.where(favorite: true)
+
+    bottle_ids = []
+
+    reviews.each do |review|
+      bottle_ids << review.bottle_id
+    end
+
+    favorite_bottles = []
+
+    bottle_ids.each do |bottle|
+      favorite_bottles << Bottle.find(bottle)
+    end
     
+    return favorite_bottles
+
+  end
 
 end
 

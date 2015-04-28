@@ -23,8 +23,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-  end
 
+    # favorite(current_user)
+  end
 
   def destroy
     @user = User.find(params[:id])
@@ -46,10 +47,31 @@ class UsersController < ApplicationController
     end
   end 
 
+  def favorite(current_user)
+    @user = current_user
+    reviews = @user.reviews.where(favorite: true)
+
+    bottle_ids = []
+
+    reviews.each do |review|
+      bottle_ids << review.bottle_id
+    end
+
+    favorite_bottles = []
+
+    bottle_ids.each do |bottle|
+      favorite_bottles << Bottle.find(bottle)
+    end
+    
+    return favorite_bottles
+
+  end
+
   protected
 
   def user_params
     params.require(:user).permit(:id, :email, :fname, :lname, :password, :password_confirmation, :avatar_url, :birthday, :description)
   end
+
 
 end
