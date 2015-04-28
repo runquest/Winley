@@ -21,7 +21,8 @@ class BottlesController < ApplicationController
       @review.save
       @review.user = current_user
       @bottle.reviews << @review
-      redirect_to bottle_path(@bottle), notice: "#{@bottle.name}!"
+      redirect_to bottle_path(@bottle)
+      flash[:notice] = "You just created #{@bottle.name}!"
     end
   end
 

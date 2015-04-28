@@ -5,9 +5,11 @@
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to user_path(user), notice: "Welcome back, #{user.fname}!"
+      redirect_to user_path(user)
+      flash[:notice] = "Welcome back, #{user.fname}!"
+
     else
-      flash.now[:alert] = "Log in failed..."
+      flash.now[:alert] = "Log in failed...Try again."
       render :new
     end
   end
