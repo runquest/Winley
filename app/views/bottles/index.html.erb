@@ -1,21 +1,17 @@
-
-
 <div class= "outercontainer">
-<div class="spacemaker">             </div>
-
+  <div class="spacemaker">             </div>
    <div class="search-bottle">
-
-      <form class="search">
-      Search Wine Database:<br>
-      <input type="text" name="search" >
-      </form>
-      <div class="bottle">
-      </div>
-
+    <h2>Search wine.com Database</h2>      
+    <form class="search">
+      <input type="text" name="search" class="search-field">
+      <%= submit_tag("Screw", :class=>"taste") %>
+    </form>
+    <div class="bottle">
+    </div>
    </div>
 
    <div class="outerbottle" style = "text-align: end">
-   <h1 >Collection of Mine!!!</h1>
+   <h2>Recent bottles in your collection</h2>
      
     <% @bottles.each do |bottle| %>
      <div class="bottlecard">
@@ -26,13 +22,9 @@
          <%= link_to bottle.name, bottle_path(bottle) %> 
        </div>
        <div class="bottle-card-copy">
-         <%= bottle.vintage %>
-         
+         <h3><%= bottle.year %></h>
        </div>
      </div>
       <% end %>
    </div>
-
-   
 </div>
-

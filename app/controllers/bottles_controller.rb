@@ -38,7 +38,7 @@ class BottlesController < ApplicationController
   def destroy
     @bottle = Bottle.find(params[:id])
     @bottle.destroy
-    redirect_to root
+    redirect_to bottles_path
   end
 
   def edit
