@@ -12,14 +12,26 @@
     }
 
     .search-bottle{
-      background-color: rgb(177, 50, 50);
+      // background-color: right: b(177, 50, 50);
       width: 42.93617%;
       margin-top: 2em;
       margin-left: 0em;
       height: 1800px;
+        // display: inline-block;
       .search {
-        width: 100%;
+        width: 80%;
         align : center;
+        margin: 1em;
+
+        .search-field {
+          width: 80%;
+          // background-color: red;
+        }
+      
+
+        .taste {
+          width: 80%;
+        }
       }
       @include span-columns(6);
     
@@ -79,8 +91,8 @@
 
       .bottle-card-image {
         overflow: hidden;
-        max-height: 150px;
-        max-width:150px;
+        // max-height: 150px;
+        // max-width:150px;
 
           img {
             @include transition (all 0.2s ease-in-out);
@@ -100,12 +112,16 @@
         font-weight: bold;
         line-height: 1em;
         padding: ($base-spacing / 3) ($base-spacing / 2);
+        text-align: center;
+
       }
 
       .bottle-card-copy {
         font-size: 0.9em;
+        text-align: center;
         line-height: 1.5em;
         padding: ($base-spacing / 2) ($base-spacing / 2);
+        background-color: orange;
 
         p {
           margin: 0 0 ($base-spacing / 2);

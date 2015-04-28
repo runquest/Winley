@@ -9,9 +9,8 @@
 
 		<div class="block">
 			<h2><%= @bottle.name %></h2>
-			<%= link_to "Edit", edit_bottle_path(@bottle) %> | 
-			<%#= link_to "Delete", new_bottle_path %>
-			<%#= link_to "DELETE BOTTLE", bottles_destroy_path %>
+			<%= link_to "edit", edit_bottle_path(@bottle) %> | 
+			<%= link_to "delete", bottle_path(@bottle), method: :delete, confirm: "You sure?" %>
 			<hr>
 			<ol>
 				<li><%= @bottle.grape %></li>

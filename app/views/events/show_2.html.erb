@@ -1,0 +1,226 @@
+<div class = "outer">
+	<div class= "triplet">
+		<h1>Welcome 
+		<div class="section">
+
+			<div class="cards">
+			  <div class="card">
+			    <div class="card-header">
+			      Your Events
+			    </div>
+			    <% if @user.events.all == [] %>
+			    <div class="card-copy">
+			    	<p>"no events created"</p>
+					<% else %>
+						<% @user.events.each do |event| %>
+			      <p><li><%= link_to event.title, event_path(event) %></li>
+			      <% end %>
+			      </p>
+			    </div>
+			    	
+					<% end %>
+			  </div>
+
+			  <div class="card">
+			    <div class="card-header">
+			      Favorite wines
+			    </div>
+			  	  <% if @user.bottles.all == [] %>
+					
+			    <div class="card-copy">
+			   	 <p><%= link_to "lets add some bottles +", new_bottle_path %></p>
+						<% else %>
+						<% @user.reviews.where(favorite: true).each do |review| %>
+						<p><li><%= Bottle.find(review.bottle_id).name %></li>
+						<% end %>
+						</p>
+			    </div>
+			  </div>
+
+			  <div class="card">
+			    <div class="card-header">
+			      Recommended Wines
+			    </div>
+			    	<% if @user.bottles.all == [] %>
+							
+			    <div class="card-copy">
+			    <p>"Woow.. the Wine Rack needs to be stocked"</p>
+						<% else %>
+			    	<% @user.reviews.where("my_rating > 2").each do |review| %>
+						<p><li><%= Bottle.find(review.my_rating).name %></li>
+						<% end %>
+					</p>
+			     	<% end %>
+			    </div>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class= "triplet">Bottles no 2
+		<div class="section">
+			<div class="cards">
+			  <div class="card">
+			    <div class="card-image">
+			      <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png" alt="">
+			    </div>
+		    <div class="card-header">
+		      First Card
+		    </div>
+		    <div class="card-copy">
+		      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, officiis sunt neque facilis culpa molestiae necessitatibus delectus veniam provident.</p>
+		    </div>
+		  </div>
+			  <div class="card">
+			    <div class="card-image">
+		      <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains-4.png" alt="">
+			    </div>
+			    <div class="card-header">
+			      Another Card
+			    </div>
+			    <div class="card-copy">
+			      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, officiis sunt neque facilis culpa molestiae necessitatibus delectus veniam provident.</p>
+			    </div>
+			  </div>
+
+			  <div class="card">
+			    <div class="card-image">
+			      <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains-3.png" alt="">
+			    </div>
+			    <div class="card-header">
+			      The Last Card
+			    </div>
+			    <div class="card-copy">
+			      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+			    </div>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class= "triplet"> 
+		 	<h1 >Collection of Mine with reviews!!!</h1>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<!-- <div id="user" class="flex-box" >
+
+
+	<div class="section">
+
+		<div class="icon-link">
+			<div class="svg">
+				<%= link_to image_tag("/assets/create_event.svg"), new_event_path %>
+				<%= link_to "Create an event", new_event_path %>
+			</div>
+		</div>
+
+		<div class="icon-link">
+			<div class="svg">
+				<%= link_to image_tag("/assets/add_bottle.svg"), new_bottle_path %>
+				<%= link_to "Add a bottle", new_bottle_path %>
+			</div>
+		</div>
+
+		<div class="icon-link">
+			<div class="svg">
+	      <%= link_to image_tag("/assets/search.svg"), bottles_path %>
+	      
+	      <%= link_to "Search", bottles_path %>
+	    </div>
+	  </div>
+	</div>
+	<hr>
+
+
+	
+
+
+		<div class="new">
+			<h2>MY EVENTS</h2>
+			<% if @user.events.all == [] %>
+				<p>"no events created"</p>
+			<% else %>
+				<% @user.events.each do |event| %>
+				<div class="new-item">
+					<img src="http://bit.ly/1OtrDxf" alt="event picture" class="event-img" >
+					<h3><%= link_to event.title, event_path(event) %></h3>
+					<p><%= event.description %></p>
+				</div>
+				<% end %>
+			<% end %>
+		</div>
+
+		<div class="new">
+			<h2>RECENT EVENT</h2>
+			<% if @user.events.all == [] %>
+				<p>"no events created"</p>
+			<% else %>
+				<ol>
+					<li><%= @user.events.last.title %></li>
+				</ol>
+			<% end %>
+
+
+			<h2>FAVORITES</h2>
+			<% if @user.bottles.all == [] %>
+					<p>"no bottles in collection"</p>
+			<% else %>
+				<ol>
+					<% @user.reviews.where(favorite: true).each do |review| %>
+						<li><%= Bottle.find(review.bottle_id).name %></li>
+					<% end %>
+				</ol>
+			<% end %>
+		</div>
+	</div>
+
+	<hr>
+
+		<div class="section">
+
+
+
+			<div class="new">
+
+
+				<h2>RECENT NEW BOTTLES</h2>
+				<% if @user.bottles.all == [] %>
+					<p>"no bottles created"</p>
+				<% else %>
+					<%@user.bottles.each do |bottle|  %>
+						<div class="new-item">
+							<img  class="event-img" src="http://bit.ly/1OtrDxf" alt="event picture">
+							<h3><%= link_to bottle.name, bottle_path(bottle) %></h3>
+							<p><%= bottle.description %></p>
+						</div>
+					<% end %>
+				<% end %>
+
+
+			</div>
+
+			<div class="new">
+				<h2>RECENT REVIEWS</h2>
+				<% if @user.reviews.all == [] %>
+					<p>"no reviews created"</p>
+				<% else %>
+						<% @user.reviews.each do |review| %>
+						<p><%= review.comment %></p>
+					<% end %>
+				<% end %>
+			</div>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+ -->
