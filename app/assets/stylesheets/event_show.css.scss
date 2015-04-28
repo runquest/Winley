@@ -1,0 +1,129 @@
+
+
+
+.side-image {  
+  $base-line-height: 1.5em !default;
+  $action-color:orange !default;
+  $base-link-color: $action-color !default;
+  $dark-gray: orange !default;
+  $large-screen: em(860) !default;
+  $base-font-color: $dark-gray !default;
+  $side-image-background-top: #F7D358;
+  $side-image-background-bottom: #F7D358;
+  $side-image-content-background: #F7D358;
+  $side-image-border: 1px solid darken(transparentize($side-image-background-bottom, 0.8), 30%);
+
+  background: $side-image-content-background;
+
+  @include media($large-screen) {
+    @include row(table);
+  }
+
+  .images-wrapper {
+    background-color: $side-image-background-top;
+    background-size: cover;
+    border-bottom: $side-image-border;
+    display: block;
+    min-height: 12em;
+    padding: 3em;
+
+    @include media($large-screen) {
+      @include span-columns(4);
+      background-position: bottom;
+      background-size: cover;
+      border-right: $side-image-border;
+    }
+  }
+
+  .side-image-content {
+    @include span-columns(12);
+    padding: 1em 1em 4em 1em;
+
+    @include media($large-screen) {
+      @include span-columns(8);
+      padding: 1em 1em 2em 2em;
+    }
+
+    h1 {
+      margin-bottom: 0.9em;
+    }
+
+    h4 {
+      background: #BBB;
+      color: white;
+      display: inline-block;
+      font-size: 0.75em;
+      font-weight: 800;
+      margin-bottom: 1em;
+      padding: 3px 8px;
+      text-transform: uppercase;
+    }
+
+    p {
+      color: $base-font-color;
+      line-height: $base-line-height;
+      margin-bottom: 3em;
+    }
+
+    button {
+      @include button(flat, $action-color);
+      padding: 0.7em 1em;
+    }
+  }
+
+  @include reset-display();
+}
+
+//expandable link
+
+.expander {  
+  $base-font-size: 1em !default;
+  $base-line-height: 1.5em !default;
+  $base-spacing: 1.5em !default;
+  $action-color: #477DCA !default;
+  $base-link-color: $action-color !default;
+  $dark-gray: #333 !default;
+  $light-gray: #DDD !default;
+  $base-font-color: $dark-gray !default;
+  $expander-arrow-width: 0.7em;
+  $expander-toggle-size: 1em;
+  $expander-toggle-arrow-size: $expander-toggle-size;
+  $expander-toggle-margin: 1em;
+
+  width: 60%;
+
+  .expander-trigger {
+    @include user-select(none);
+    border-bottom: 1px solid $light-gray;
+    color: $base-link-color;
+    cursor: pointer;
+    display: block;
+    font-size: $expander-toggle-size;
+    margin-bottom: $expander-toggle-size;
+    padding-bottom: $expander-toggle-size / 4;
+    text-decoration: none;
+
+    &:before {
+      font-size: $expander-arrow-width;
+      content: "\25BC";
+      margin-right: 0.5em;
+    }
+  }
+
+  .expander-content p {
+    color: $base-font-color;
+    line-height: $base-line-height;
+  }
+
+  .expander-hidden {
+    &:before {
+      font-size: $expander-arrow-width;
+      content: "\25BA";
+    }
+  }
+
+  .expander-hidden + .expander-content {
+    display: none;
+  }
+}
+

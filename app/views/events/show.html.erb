@@ -1,20 +1,82 @@
+<div class="side-image">
+  <div class="images-wrapper"><img src="<%= @event.event_image %>" alt="profile picture" class="event-image"></div>
+    <div class="side-image-content">
+      <h4><%= @event.date.strftime("%m/%d/%Y") %></h4>
+      <h2><%= @event.title %></h2>
+      <!-- expander starts -->
+			<div class="expander">
+			  <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">details of the event.</a>
+			  <div id="js-expander-content" class="expander-content">
+			    <p><%= @event.date.strftime("%m/%d/%Y") %></br><%= @event.venue %></br>
+			    <%= link_to "Add Bottle", edit_event_path(@event) %>	
+			    </p>
+			  </div>
+			</div>
+			<!-- expander ends -->
+
+      <p><%= @event.description %></p>
+      <button>Read more</button>
+  </div>
+</div>
+
+
+
+
+
 <div class="show">
 
-	<div class="event-info">
-		<section class="event"> 
-			<img src="<%= @event.event_image %>" alt="profile picture" class="event-image">
+	<div class="eventinfo">
+		<section class="event1"> 
+			<img class="imagefit" src="<%= @event.event_image %>" alt="profile picture" class="event-image">
 		</section>
 
-		<section class="event">
+		<div class="eventdetails">
 			<h2><%= @event.title %></h2>
 			<%= link_to "Edit Event", edit_event_path(@event) %><br>
-			<p><%= @event.venue %></p>
-			<p><%= @event.date.strftime("%m/%d/%Y") %></p>
-			<p>Currently in a flight <%= @event.flights.size %> bottles.</p>
-		</section>
+
+			<!-- expander starts -->
+			<div class="expander">
+			  <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">details of the event.</a>
+			  <div id="js-expander-content" class="expander-content">
+			    <p><%= @event.date.strftime("%m/%d/%Y") %></br><%= @event.venue %></br>
+			    <%= link_to "Add Bottle", edit_event_path(@event) %>	
+			    </p>
+			  </div>
+			</div>
+			<!-- expander ends -->
+
+      <p><%= @event.description %></p>
+		</div>
 	</div>
 
 		<hr>
+
+		<!-- all bottles cards for event  -->
+		<div> <p><%= link_to "Add Bottle", edit_event_path(@event) %>	</p></div>
+	<div class="outerbottle" style = "text-align: center">
+   <h3 >All Wine Bottles</h3>
+   <% if @event.flights.size > 0 %>
+		<% @event.flights.each do |flight| %>
+
+	     <div class="bottlecard">
+       <div class="bottle-card-image">
+         <img src="<%= flight.bottle.label_image %>">
+       </div>
+       <div class="bottle-card-header">
+          <%= link_to flight.bottle.name, edit_bottle_path(flight.bottle_id) %> 
+      
+       </div>
+       <div class="bottle-card-copy">
+       <%= link_to 'delete', {:controller => "events", :action => "delete_bottle", :flight_id => flight.id, :event_id => @event.id } %>
+       
+        <%= flight.bottle.year %>
+       </div>
+     </div>
+      <% end %>
+      <% end %>
+  </div>
+
+ 	<!-- ending cards -->
 
 	<% if @event.flights.size > 0 %>
 		<% @event.flights.each do |flight| %>
