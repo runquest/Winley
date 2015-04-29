@@ -62,6 +62,12 @@ class BottlesController < ApplicationController
       @review.update_attributes(review_params)
       redirect_to bottle_path(@bottle)
     end
+  end
+
+  def favorite
+    @user = current_user
+    
+
   end 
 
   protected

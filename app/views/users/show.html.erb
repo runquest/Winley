@@ -1,6 +1,24 @@
 <div id="user" class="flex-box" >
 
 
+--------------
+
+<h3>Favorite wines</h3>
+
+<% @user.reviews.where(favorite: false).limit(5).each do |review| %>
+	<p><%= Bottle.find(review.bottle_id).name %></p>
+<% end %>
+<%= link_to 'the entire list of favorites', bottles_favorite_path %>
+
+
+
+
+
+-----------------
+
+
+
+
 	<div class="section">
 
 		<div class="icon-link">
@@ -315,3 +333,11 @@
 	</div>
 </div>
  -->
+
+
+
+
+
+
+
+

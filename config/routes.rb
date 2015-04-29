@@ -4,11 +4,21 @@ Tasteswing::Application.routes.draw do
  get "welcome/index"
  get "welcome/about"
  get 'delete-bottle' => 'events#delete_bottle', as: :delete_bottle
+ # get 'favorite' => 'reviews#favorite', as: :favorite
+ get 'bottles/favorite'
 
  # get 'bottles/destroy'
 
  resources :users ,:events, :bottles
  resources :sessions, only: [:new, :create, :destroy]
+
+
+# favorite GET    /favorite(.:format)         reviews#favorite
+
+# In routes.rb
+
+# With render, redirect_to, tests, etc.
+# redirect_to favorite_path
 
 
 
