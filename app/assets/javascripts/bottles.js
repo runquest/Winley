@@ -7,6 +7,13 @@ $(function(){
 
   // perform ajax search
 
+    // Sliding menu
+  $('.sliding-panel-button,.sliding-panel-fade-screen,.sliding-panel-close').on('click touchstart',function (e) {
+    $('.sliding-panel-content,.sliding-panel-fade-screen').toggleClass('is-visible');
+    e.preventDefault();
+  });
+
+
   function getWineInfo(query) {
     var req = new XMLHttpRequest();
     var link = "http://services.wine.com/api/beta2/service.svc/JSON/catalog?search="+ query +"&apikey=b1af7f1d65f1e1ebdb2faf060ad8fadd"
