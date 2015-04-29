@@ -6,10 +6,17 @@
 	@include span-columns(4);
 			.imagefit{
 			width:100% ;
+			margin-right: 3em;
+			margin-left: 1em;
+			margin-bottom: 5em;
+			margin-top: 4em;
+			
 			}
 	}
 	.eventdetails{
-	@include span-columns(6);
+		@include span-columns(6);
+		margin-left: 8em;
+		margin-top: 3em;
 	}
 
 }
