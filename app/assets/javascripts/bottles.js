@@ -37,9 +37,9 @@ $(function(){
             .append(
               $('<div class="bottle-card-header">').text(bottleData.Name))
               .append($('<button>').text("+"))
-              .append(
-                $('<div class="bottle-card-copy">').text(('Price: $' + bottleData.PriceRetail)).css('weight', 'bold')
-              )
+              // .append(
+              //   $('<div class="bottle-card-copy">').text(('Price: $' + bottleData.PriceRetail)).css('weight', 'bold')
+              // )
           // Attach bottle data to the DOM element
           bottlecard.data('bottle', bottleData);
           $('.bottle').append(bottlecard);
