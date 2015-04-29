@@ -25,9 +25,9 @@
 </div>
 	</hr>
 
+		<% if current_user != nil %>
 	<section class="review-table">
 
-		<% if current_user != nil %>
 				<div class="block big-number">
 					<%= @bottle.reviews.take.my_rating %>
 				</div>
