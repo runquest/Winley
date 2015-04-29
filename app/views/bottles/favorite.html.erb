@@ -3,19 +3,19 @@
 
 	<h3>Favorite wines</h3>
 	<% @user.reviews.where(favorite: false).each do |review| %>
-		<li><%= Bottle.find(review.bottle_id).name %></li>
+		<li><%= link_to Bottle.find(review.bottle_id).name, bottle_path(review.bottle_id) %></li>
 	<% end %>
 	<hr>
 
 	<h3>Wines (not necessary favorite)</h3>
 	<h4>Rating of 5</h4>
 	<% @user.reviews.where(my_rating: 5).each do |review| %>
-		<li><%= Bottle.find(review.bottle_id).name %></li>
+		<li><%= link_to Bottle.find(review.bottle_id).name, bottle_path(review.bottle_id)  %></li>
 	<% end %>
 
 	<h4>Rating > 3</h4>
 	<% @user.reviews.where('my_rating > 3').each do |review| %>
-		<li><%= Bottle.find(review.bottle_id).name %></li>
+		<li><%= link_to Bottle.find(review.bottle_id).name, bottle_path(review.bottle_id)  %></li>
 	<% end %>
 
 

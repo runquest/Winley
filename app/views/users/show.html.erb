@@ -6,9 +6,9 @@
 <h3>Favorite wines</h3>
 
 <% @user.reviews.where(favorite: false).limit(5).each do |review| %>
-	<p><%= Bottle.find(review.bottle_id).name %></p>
+	<p><%= link_to Bottle.find(review.bottle_id).name, bottle_path(review.bottle_id)  %></p>
 <% end %>
-<%= link_to 'the entire list of favorites', bottles_favorite_path %>
+<em><%= link_to 'the entire list of favorites', bottles_favorite_path %></em>
 
 
 
