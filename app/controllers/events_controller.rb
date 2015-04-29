@@ -44,7 +44,7 @@ end
 
 def update
   @event = Event.find(params[:id])
-  current_user.events << @event if current_user
+  # current_user.events << @event if current_user
   if @event.update_attributes(event_params)
     redirect_to event_path
     flash[:notice] = "You just updated #{@event.title} event!"

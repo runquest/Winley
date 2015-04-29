@@ -1,7 +1,7 @@
 // Place all the styles related to the bottles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+ $hero-image:'/assets/plain-chalk.jpg';
   
 .outercontainer{
     
@@ -12,26 +12,14 @@
     }
 
     .search-bottle{
-      // background-color: right: b(177, 50, 50);
+       @include background(url($hero-image));
       width: 42.93617%;
       margin-top: 2em;
       margin-left: 0em;
       height: 1800px;
-        // display: inline-block;
       .search {
-        width: 80%;
+        width: 100%;
         align : center;
-        margin: 1em;
-
-        .search-field {
-          width: 80%;
-          // background-color: red;
-        }
-      
-
-        .taste {
-          width: 80%;
-        }
       }
       @include span-columns(6);
     
@@ -91,8 +79,8 @@
 
       .bottle-card-image {
         overflow: hidden;
-        // max-height: 150px;
-        // max-width:150px;
+        max-height: 150px;
+        max-width:150px;
 
           img {
             @include transition (all 0.2s ease-in-out);
@@ -112,16 +100,12 @@
         font-weight: bold;
         line-height: 1em;
         padding: ($base-spacing / 3) ($base-spacing / 2);
-        text-align: center;
-
       }
 
       .bottle-card-copy {
         font-size: 0.9em;
-        text-align: center;
         line-height: 1.5em;
         padding: ($base-spacing / 2) ($base-spacing / 2);
-        background-color: orange;
 
         p {
           margin: 0 0 ($base-spacing / 2);
@@ -185,7 +169,6 @@ div.block {
 }
 
 section.review {
-  margin-top: 1em;
   border: 1px solid orange;
   width: 80%;
   padding: 1em;
@@ -199,9 +182,4 @@ div.show {
 
 div.big-number {
   font-size: 4em;
-}
-
-img.event-img {
-  width: 250px;
-  height: auto;
 }

@@ -1,4 +1,205 @@
-<div id="user" class="flex-box">
+<div id="user" class="flex-box" >
+
+
+	<div class="section">
+
+		<div class="icon-link">
+			<div class="svg">
+				<%= link_to image_tag("/assets/create_event.svg"), new_event_path %>
+				<%= link_to "Create an event", new_event_path %>
+			</div>
+		</div>
+
+		<div class="icon-link">
+			<div class="svg">
+				<%= link_to image_tag("/assets/add_bottle.svg"), new_bottle_path %>
+				<%= link_to "Add a bottle", new_bottle_path %>
+			</div>
+		</div>
+
+		<div class="icon-link">
+			<div class="svg">
+	      <%= link_to image_tag("/assets/search.svg"), bottles_path %>
+	      
+	      <%= link_to "Search", bottles_path %>
+	    </div>
+	  </div>
+	</div>
+	</div>
+	<hr>
+	<h2>My Events </h2>
+<div class="outerbottle" style = "text-align: center">
+     <% if @user.events.all == [] %>
+<% else %>
+			<% @user.events.each do |event| %>
+	     <div class="bottlecard">
+
+       <div class="bottle-card-image">
+         <img src="<%= event.event_image%>">
+       </div>
+       <div class="bottle-card-header">
+        <%= link_to event.title, event_path(event) %>
+      
+       </div>
+       <div class="bottle-card-copy">
+      <%= event.description %>
+       </div>
+     </div>
+      <% end %>
+      <% end %>
+  </div>
+  <hr>
+<!--   <div class="outerbottle" style = "text-align: center">
+    <% if @user.bottles.all == [] %>
+					<p>"no bottles in collection"</p>
+			<% else %>
+				<% @user.reviews.where(favorite: true).each do |review| %>
+	     <div class="bottlecard">
+
+       <div class="bottle-card-image">
+         <img src="<%= Bottle.find(review.bottle_id).label_image %>">
+       </div>
+       <div class="bottle-card-header">
+       <%= Bottle.find(review.bottle_id).name %>
+      
+       </div>
+       <div class="bottle-card-copy">
+     <%= Bottle.find(review.bottle_id).year %>
+       </div>
+     </div>
+      <% end %>
+      <% end %>
+  </div>
+  <hr> -->
+  <h2>My Favorites </h2>
+
+    <div class="outerbottle" style = "text-align: center">
+    	<% if @user.bottles.all == [] %>
+					<p>"no bottles created"</p>
+				<% else %>
+					<%@user.bottles.each do |bottle|  %>
+	     <div class="bottlecard">
+
+       <div class="bottle-card-image">
+         <img src="<%= bottle.label_image %>">
+       </div>
+       <div class="bottle-card-header">
+       <%= link_to bottle.name, bottle_path(bottle) %>
+      
+       </div>
+       <div class="bottle-card-copy">
+     <%= bottle.year %>
+       </div>
+     </div>
+      <% end %>
+      <% end %>
+  </div>
+
+<!-- 
+................................
+  			<h2>RECENT NEW BOTTLES</h2>
+				<% if @user.bottles.all == [] %>
+					<p>"no bottles created"</p>
+				<% else %>
+					<%@user.bottles.each do |bottle|  %>
+						<div class="new-item">
+							<img  class="event-img" src="http://bit.ly/1OtrDxf" alt="event picture">
+							<h3><%= link_to bottle.name, bottle_path(bottle) %></h3>
+							<p><%= bottle.description %></p>
+						</div>
+					<% end %>
+				<% end %>
+.............................................
+
+	
+
+
+<div class = "cleanouter">
+	<div class= "triplet1">
+		<h1>Welcome </h1>
+		</div>
+		<div class= "triplet1">
+		<h1>Welcome </h1>
+		</div>
+		<div class= "triplet1">
+		<h1>Welcome </h1>
+		</div>
+		</div>
+
+
+		<div class = "cleanouter">
+	<div class= "triplet1">
+		<h1>Welcome </h1>
+		<div class="section">
+
+			<div class="cards">
+			  <div class="card">
+			    <div class="card-header">
+			      Your Events
+			    </div>
+			    <% if @user.events.all == [] %>
+			    <div class="card-copy">
+			    	<p>"no events created"</p>
+					<% else %>
+						<% @user.events.each do |event| %>
+			      <li><%= link_to event.title, event_path(event) %></li>
+			      <% end %>
+			    
+			    </div>
+			    	
+					<% end %>
+			  </div>
+
+			  <div class="card">
+			    <div class="card-header">
+			      Favorite wines
+			    </div>
+			  	  <% if @user.bottles.all == [] %>
+					
+			    <div class="card-copy">
+			   	 <p><%= link_to "lets add some bottles +", new_bottle_path %></p>
+						<% else %>
+						<% @user.reviews.where(favorite: true).each do |review| %>
+						<p><%= Bottle.find(review.bottle_id).name %></p>
+						<% end %>
+						
+						<% end %>
+			    </div>
+			  </div>
+
+			  <div class="card">
+			    <div class="card-header">
+			      Recommended Wines
+			    </div>
+			    	<% if @user.bottles.all == [] %>
+							
+			    <div class="card-copy">
+			    <p>"Woow.. the Wine Rack needs to be stocked"</p>
+						<% else %>
+			    	<% @user.reviews.where(favorite: true).each do |review| %>
+						<p><%= Bottle.find(review.my_rating).name %></p>
+						<% end %>
+					
+			     	<% end %>
+			    </div>
+			  </div>
+			</div>
+		</div>
+	
+	
+	<div class= "triplet1"> 
+		 	<h1>Collection of Mine with reviews!!!</h1>
+	</div>
+
+</div>
+
+
+
+
+
+
+ -->
+<!-- <div id="user" class="flex-box" >
 
 
 	<div class="section">
@@ -27,8 +228,8 @@
 	</div>
 	<hr>
 
-	<div class="section">
-		
+
+	
 
 
 		<div class="new">
@@ -113,3 +314,4 @@
 		</div>
 	</div>
 </div>
+ -->
