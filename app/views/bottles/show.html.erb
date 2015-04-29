@@ -27,9 +27,9 @@
 
 		<% if current_user != nil %>
 	<section class="review-table">
-
+				<%= @bottle.reviews.where(user_id: current_user.id).take.favorite %>
 				<div class="block big-number">
-					<%= @bottle.reviews.take.my_rating %>
+					<%= @bottle.reviews.where(user_id: current_user.id).take.my_rating %>
 				</div>
 
 				<div class="block">

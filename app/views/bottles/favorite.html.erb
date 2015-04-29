@@ -2,7 +2,7 @@
 
 
 	<h3>Favorite wines</h3>
-	<% @user.reviews.where(favorite: false).each do |review| %>
+	<% @user.reviews.where(favorite: true).each do |review| %>
 		<li><%= link_to Bottle.find(review.bottle_id).name, bottle_path(review.bottle_id) %></li>
 	<% end %>
 	<hr>
