@@ -49,15 +49,8 @@
             </div>
 
             <div class="form-group">
-              <%#= rf.label :favorite, "Favorite?" %><br>
-              <%#= rf.select :favorite, [true, false] %>
-
-            <%#= label_tag(:age_child, "I am younger than 21") %>
-            <%#= radio_button_tag(:favorite, true) %>
-            <%#= label_tag(:age_adult, "I'm over 21") %>
-            <%#= radio_button_tag(:favorite, false) %>
-
-
+              <h4> Favorite </h4>
+              <%= rf.check_box :favorite, {}, true %>
             </div>
           </div>
 

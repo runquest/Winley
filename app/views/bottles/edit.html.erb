@@ -44,24 +44,9 @@
               <%= rf.label :my_rating, "Rate bottle" %><br>
               <%= rf.select :my_rating, [1, 2, 3, 4, 5] %>
             </div>
-
-<!--             <div class="form-group">
-              <%#= rf.label :favorite, "Favorite?" %><br>
-              <%#= rf.select :favorite, [true, false] %>
-            </div> -->
-
-            <%#= check_box_tag(:favorite) %>
-            <%#= label_tag(:favorite, true) %>
-
-            <%#= label_tag(:age_child, "I am younger than 21") %>
-            <%#= radio_button_tag(:favorite, true) %>
-            <%#= label_tag(:age_adult, "I'm over 21") %>
-            <%#= radio_button_tag(:favorite, false) %>
-
-            <!-- check_box(object_name, method, options = {}, checked_value = "1", unchecked_value = "0") -->
           <div class="form-group">
-            <%= rf.label :favorite, "Favorite" %></br>
-            <%= rf.check_box :favorite, {}, false, true %>
+            <h4> Favorite </h4>
+            <%= rf.check_box :favorite, {}, true %>
           </div>
           </div>
 
