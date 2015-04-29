@@ -33,6 +33,7 @@
 		<div class="eventdetails">
 			<h2><%= @event.title %></h2>
 			<%= link_to "Modify event info", edit_event_path(@event) %><br>
+			<%= link_to "Cancel event", event_path(@event), method: :delete, confirm: "You sure?" %>
 
 			<!-- expander starts -->
 			<div class="expander">

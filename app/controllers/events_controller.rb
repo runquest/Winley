@@ -33,8 +33,11 @@ class EventsController < ApplicationController
 
  def destroy
   @event = Event.find(params[:id])
+  @user = current_user
   @event.destroy
-  redirect_to root
+  flash[:notice] = "You just updated #{@event.title} event!"
+  redirect_to user_path(@user)
+  # redirect_to events_path
 end
 
 def edit
@@ -44,7 +47,6 @@ end
 
 def update
   @event = Event.find(params[:id])
-  # current_user.events << @event if current_user
   if @event.update_attributes(event_params)
     redirect_to event_path
     flash[:notice] = "You just updated #{@event.title} event!"
