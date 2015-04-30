@@ -41,13 +41,13 @@ class BottlesController < ApplicationController
     redirect_to bottles_path
   end
 
-  def remove
-    b = Bottle.find(params[:id])
-    @user = current_user
-    @user.bottles.delete(b)
-    redirect_to user_path(@user)
-    # flash[:notice] = "Bottle has been removed"
-  end
+  # def remove
+  #   b = Bottle.find(params[:id])
+  #   @user = current_user
+  #   @user.bottles.delete(b)
+  #   redirect_to user_path(@user)
+  #   # flash[:notice] = "Bottle has been removed"
+  # end
 
   def edit
     if current_user == nil
@@ -59,17 +59,13 @@ class BottlesController < ApplicationController
   end
 
   def update
-    if current_user == nil
-      @bottle = Bottle.find(params[:id])
-      @bottle.update_attributes(bottle_params)
-      redirect_to bottle_path(@bottle)
-    else
+
       @bottle = Bottle.find(params[:id])
       @review = @bottle.reviews.where(user_id: current_user.id).take
       @bottle.update_attributes(bottle_params)
       @review.update_attributes(review_params)
       redirect_to bottle_path(@bottle)
-    end
+
   end
 
   def favorite
