@@ -31,7 +31,7 @@ class BottlesController < ApplicationController
       @bottle = Bottle.find(params[:id])
     else 
       @bottle = Bottle.find(params[:id])
-      @review = @bottle.reviews.where(user_id: current_user.id).take
+      @review = @bottle.reviews
     end
   end
   
@@ -39,6 +39,14 @@ class BottlesController < ApplicationController
     @bottle = Bottle.find(params[:id])
     @bottle.destroy
     redirect_to bottles_path
+  end
+
+  def remove
+    b = Bottle.find(params[:id])
+    @user = current_user
+    @user.bottles.delete(b)
+    redirect_to user_path(@user)
+    # flash[:notice] = "Bottle has been removed"
   end
 
   def edit

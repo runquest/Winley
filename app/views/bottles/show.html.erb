@@ -1,41 +1,57 @@
 <div class="show">
-<div class="show">
-	<section class="main bottle">
+	<div class="show">
+		<section class="main bottle">
 
-		<div class="block">
-			<!-- <img src="http://bit.ly/1OtrDxf" alt="event picture" class="event-img" > -->
-			<img class="imagefit" src="<%= @bottle.label_image %>" alt="wine bottle image">
-		</div>
+			<div class="block">
+				<!-- <img src="http://bit.ly/1OtrDxf" alt="event picture" class="event-img" > -->
+				<img class="imagefit" src="<%= @bottle.label_image %>" alt="wine bottle image">
+			</div>
 
-		<div class="block">
-			<h2><%= @bottle.name %></h2>
-			<%= link_to "edit", edit_bottle_path(@bottle) %> | 
-			<%= link_to "delete", bottle_path(@bottle), method: :delete, confirm: "You sure?" %>
-			<hr>
-			<ol>
-				<li><%= @bottle.grape %></li>
-				<li><%= @bottle.year %></li>
-				<li><%= @bottle.winery %> winery</li>
+			<div class="block">
+				<h2><%= @bottle.name %></h2>
+				<%= link_to "edit", edit_bottle_path(@bottle) %> | 
+				<%= link_to "delete", bottle_path(@bottle), method: :delete, confirm: "You sure?" %>
 				<hr>
-				<li><%= @bottle.description %></li>
-			</ol>
-		</div>
+				<ol>
+					<li><%= @bottle.grape %></li>
+					<li><%= @bottle.year %></li>
+					<li><%= @bottle.winery %> winery</li>
+					<hr>
+					<li><%= @bottle.description %></li>
+				</ol>
+			</div>
 
-	</section>
-</div>
+		</section>
+	</div>
 	</hr>
 
-		<% if current_user != nil %>
-	<section class="review-table">
-				<%= @bottle.reviews.where(user_id: current_user.id).take.favorite %>
-				<div class="block big-number">
-					<%= @bottle.reviews.where(user_id: current_user.id).take.my_rating %>
-				</div>
 
-				<div class="block">
-					<p><%= @bottle.reviews.where(user_id: current_user.id).take.comment %></p>
-				</div>
+
+	<section class="review-table">
+		<% if current_user != nil %>
+
+			<% if @bottle.reviews.where(user_id: current_user.id).take.favorite %>
+				<%= image_tag(("/assets/add_bottle.svg"), :class => "svg") %>
+				<% end %>
+		
+			<div class="block big-number">
+				<%= @bottle.reviews.where(user_id: current_user.id).take.my_rating %>
+			</div>
+
+			<div class="block">
+				<p><%= @bottle.reviews.where(user_id: current_user.id).take.comment %></p>
+			</div>
+
+			<hr>
+			<% @bottle.reviews.each do |review| %>
+				<%= review.comment %>
+			<% end %>
+
+		<% else %>
+			<% @bottle.reviews.each do |review| %>
+				<%= review.comment %>
+				<hr>
+			<% end %>
 		<% end %>
 	</section>
-
 </div>

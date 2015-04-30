@@ -81,7 +81,11 @@
        <div class="bottle-card-header">
        <%= link_to bottle.name, bottle_path(bottle) %>
        </div>
-        <%= link_to "Delete Bottle", bottle_path(bottle), method: :delete, confirm: "You sure?" %> 
+        <%#= link_to "Remove", remove_path(bottle) %>
+        <%= link_to "Remove", remove_path(bottle) %>
+
+
+
        <div class="bottle-card-copy">
      <%= bottle.year %>
        </div>
