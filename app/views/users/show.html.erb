@@ -1,6 +1,22 @@
 <div id="user" class="flex-box" >
 
 
+--------------
+
+<h3>Favorite wines</h3>
+
+<% @user.reviews.where(favorite: true).limit(5).each do |review| %>
+	<p><%= link_to Bottle.find(review.bottle_id).name, bottle_path(review.bottle_id)  %></p>
+<% end %>
+<em><%= link_to 'the entire list of favorites', bottles_favorite_path %></em>
+
+
+
+-----------------
+
+
+
+
 	<div class="section">
 
 		<div class="icon-link">
@@ -38,9 +54,9 @@
          <img src="<%= event.event_image%>">
        </div>
        <div class="bottle-card-header">
-        <%= link_to event.title, event_path(event) %>
-      
+        <%= link_to event.title, event_path(event) %><br>
        </div>
+     		<%= link_to "Cancel event", event_path(event), method: :delete, confirm: "You sure?" %> 
        <div class="bottle-card-copy">
       <%= event.description %>
        </div>
@@ -49,35 +65,14 @@
       <% end %>
   </div>
   <hr>
-<!--   <div class="outerbottle" style = "text-align: center">
-    <% if @user.bottles.all == [] %>
-					<p>"no bottles in collection"</p>
-			<% else %>
-				<% @user.reviews.where(favorite: true).each do |review| %>
-	     <div class="bottlecard">
 
-       <div class="bottle-card-image">
-         <img src="<%= Bottle.find(review.bottle_id).label_image %>">
-       </div>
-       <div class="bottle-card-header">
-       <%= Bottle.find(review.bottle_id).name %>
-      
-       </div>
-       <div class="bottle-card-copy">
-     <%= Bottle.find(review.bottle_id).year %>
-       </div>
-     </div>
-      <% end %>
-      <% end %>
-  </div>
-  <hr> -->
-  <h2>My Favorites </h2>
+  <h2>All User Bottles </h2>
 
     <div class="outerbottle" style = "text-align: center">
     	<% if @user.bottles.all == [] %>
 					<p>"no bottles created"</p>
 				<% else %>
-					<%@user.bottles.each do |bottle|  %>
+					<%@user.bottles.limit(5).each do |bottle|  %>
 	     <div class="bottlecard">
 
        <div class="bottle-card-image">
@@ -85,8 +80,12 @@
        </div>
        <div class="bottle-card-header">
        <%= link_to bottle.name, bottle_path(bottle) %>
-      
        </div>
+        <%#= link_to "Remove", remove_path(bottle) %>
+        <%= link_to "Remove", remove_path(bottle) %>
+
+
+
        <div class="bottle-card-copy">
      <%= bottle.year %>
        </div>
@@ -94,5 +93,3 @@
       <% end %>
       <% end %>
   </div>
-
-

@@ -49,8 +49,8 @@
             </div>
 
             <div class="form-group">
-              <%= rf.label :favorite, "Favorite?" %><br>
-              <%= rf.select :favorite, ["Add to Favorites list", "Just Add to my Library"] %>
+              <h4> Favorite </h4>
+              <%= rf.check_box :favorite, {}, true %>
             </div>
           </div>
 
