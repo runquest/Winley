@@ -27,39 +27,27 @@
 
 
 	<section class="review-table">
+
+		<% if current_user %>
+
+			<% if @bottle.reviews.where(user_id: current_user.id).take.favorite = true %>
+				<%= image_tag(("/assets/add_bottle.svg"), :class => "svg") %>
+			<% end %>
+			<div class="block big-number">
+				<%= @bottle.reviews.where(user_id: current_user.id).take.my_rating %>
+			</div>
+
+			<div class="block">
+				<p><%= @bottle.reviews.where(user_id: current_user.id).take.comment %></p>
+			</div>
+			<hr>
 		
-		<% if current_user != nil %>
 
-			<% if @bottle.reviews = [] %>
-
-				<h4>Add a review </h4>
-
-
-			<% else %>
-
-				<% if @bottle.reviews.where(user_id: current_user.id).take.favorite %>
-					<%= image_tag(("/assets/add_bottle.svg"), :class => "svg") %>
-				<% end %>
-			
-				<div class="block big-number">
-					<%= @bottle.reviews.where(user_id: current_user.id).take.my_rating %>
-				</div>
-
-				<div class="block">
-					<p><%= @bottle.reviews.where(user_id: current_user.id).take.comment %></p>
-				</div>
-
-				<hr>
-				<% @bottle.reviews.each do |review| %>
-					<%= review.comment %>
-				<% end %>
-			<% end %>
-
-		<% else %>
-			<% @bottle.reviews.each do |review| %>
-				<%= review.comment %>
-				<hr>
-			<% end %>
 		<% end %>
+
+		<% @bottle.reviews.each do |review| %>
+			<%= review.comment %>
+		<% end %>
+
 	</section>
 </div>

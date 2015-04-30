@@ -6,7 +6,7 @@ Tasteswing::Application.routes.draw do
  get 'delete-bottle' => 'events#delete_bottle', as: :delete_bottle
  # get 'favorite' => 'reviews#favorite', as: :favorite
  get 'bottles/favorite'
- get 'bottles/remove' => "bottles#remove", as: :remove
+ # get 'bottles/remove' => "bottles#remove", as: :remove
 
  # get 'bottles/destroy'
 
