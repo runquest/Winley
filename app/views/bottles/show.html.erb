@@ -1,10 +1,64 @@
 <div class="show">
+
+	<div class="eventinfo">
+		<section class="event1"> 
+			<img class="imagefit" src="<%= @bottle.label_image %>" alt="profile picture" class="event-image">
+		</section>
+
+		<div class="eventdetails">
+			<h2><%= @bottle.name %></h2>
+			
+
+			
+   
+   <p>  Grape:<%= @bottle.grape %><br>
+				Year:	<%= @bottle.year %><br>
+				Winery:<%= @bottle.winery %> <br>
+				Description:<%= @bottle.description %></p>
+<br>
+<h3>Reviews</h3>
+<% if current_user %>
+
+			<% if @bottle.reviews.where(user_id: current_user.id).take.favorite = true %>
+				<%= image_tag(("/assets/add_bottle.svg"), :class => "svg") %>
+			<% end %>
+				<p>Love it * Rating : <%= @bottle.reviews.where(user_id: current_user.id).take.my_rating %> * 
+				<% @bottle.reviews.each do |review| %>
+			<%= review.comment %>
+		<% end %>
+				</p>
+				
+		
+		<% end %>
+
+		
+			
+		</div>
+	</div>
+	<div> <p><%= link_to "edit", edit_bottle_path(@bottle) %> | 
+				<%= link_to "delete", bottle_path(@bottle), method: :delete, confirm: "You sure?" %>	</p></div>
+
+		<hr>
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
+......................................
+<div class="show">
 	<div class="show">
 		<section class="main bottle">
 
 			<div class="block">
-				<!-- <img src="http://bit.ly/1OtrDxf" alt="event picture" class="event-img" > -->
-				<img class="imagefit" src="<%= @bottle.label_image %>" alt="wine bottle image">
+				<img src="http://bit.ly/1OtrDxf" alt="event picture" class="event-img" > 
+				 <img class="imagefit" src="<%= @bottle.label_image %>" alt="wine bottle image">
 			</div>
 
 			<div class="block">
@@ -49,4 +103,4 @@
 		<% end %>
 			
 	</section>
-</div>
+</div> --> 

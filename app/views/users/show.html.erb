@@ -1,22 +1,5 @@
 <div id="user" class="flex-box" >
 
-
---------------
-
-<h3>Favorite wines</h3>
-
-<% @user.reviews.where(favorite: true).limit(5).each do |review| %>
-	<p><%= link_to Bottle.find(review.bottle_id).name, bottle_path(review.bottle_id)  %></p>
-<% end %>
-<em><%= link_to 'the entire list of favorites', bottles_favorite_path %></em>
-
-
-
------------------
-
-
-
-
 	<div class="section">
 
 		<div class="icon-link">
@@ -42,6 +25,57 @@
 	  </div>
 	</div>
 	</div>
+	<hr>
+
+<!--
+<h3>Favorite wines</h3>
+<% @user.reviews.where(favorite: true).limit(5).each do |review| %>
+	<p><%= link_to Bottle.find(review.bottle_id).name, bottle_path(review.bottle_id)  %></p>
+<% end %>
+<em><%= link_to 'the entire list of favorites', bottles_favorite_path %></em>
+ -->
+
+<div class="outerbottle" style = "text-align: center">
+
+	     <div class="bottlecard">
+       <div class="bottle-card-image">
+     			   <img src="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/matte-red-and-white-square-icons-culture/123077-matte-red-and-white-square-icon-culture-heart-solid-sc44.png">
+       </div>
+           		 
+       <div class="bottle-card-copy">
+      <% @user.reviews.where(favorite: true).each do |review| %>
+		<li><%= link_to Bottle.find(review.bottle_id).name, bottle_path(review.bottle_id) %></li>	
+	<% end %>
+       </div>
+     </div>
+
+      <div class="bottlecard">
+       <div class="bottle-card-image">
+     			   <img src="https://eatsmartblog.files.wordpress.com/2014/05/5starreviews-1.png">
+       </div>
+       <div class="bottle-card-copy"> 
+           <% @user.reviews.where(my_rating: 5).each do |review| %>
+       	   
+					<li><%= link_to Bottle.find(review.bottle_id).name, bottle_path(review.bottle_id)  %></li>
+					<% end %>		 
+       
+        </div>
+     </div>
+       <div class="bottlecard">
+       <div class="bottle-card-image">
+     			   <img src="http://3.bp.blogspot.com/-aheusxehvh0/UB_8G_uaL6I/AAAAAAAAAcU/hkxxhP2Lv78/s200/stars1.gif">
+       </div>
+       <div class="bottle-card-copy"> 
+          <% @user.reviews.where('my_rating > 3').each do |review| %>
+		<li><%= link_to Bottle.find(review.bottle_id).name, bottle_path(review.bottle_id)  %></li>
+	<% end %>
+       
+        </div>
+     </div>
+     
+  </div>
+
+
 	<hr>
 	<h2>My Events </h2>
 <div class="outerbottle" style = "text-align: center">
