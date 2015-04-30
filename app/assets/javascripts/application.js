@@ -12,5 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require expandable_section
+//= require bottles
+//= require bottles_new
+//= require modal
+//= require navbar
+//= require sliding-panel
+//= require_self.
+
 

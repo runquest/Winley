@@ -1,17 +1,5 @@
 $hero-image:'/assets/plain-chalk.jpg';
 
-.cleanouter {
-	@include outer-container;
-		.triplet1{
-		@include span-columns(4);
-		background:green;
-		@include pad();
-		}
-}
-
-
-
-
  .flex-box {
 	display: flex;
 	flex-direction: column;
