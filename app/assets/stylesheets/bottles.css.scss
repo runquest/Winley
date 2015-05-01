@@ -27,7 +27,7 @@
       // width: 42.93617%;
       margin-top: 2em;
       margin-left: 0em;
-      height: 1800px;
+      // height: 1800px;
 
       .search {
         // width: 100%;
@@ -43,7 +43,7 @@
     }
 
     .outerbottle{
-      @include span-columns(6);
+      @include span-columns(12);
       @include pad();
       display: inline-block;
       margin-right: 2.12766%;

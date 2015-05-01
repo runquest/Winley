@@ -1,9 +1,12 @@
-<h3>All Events</h3>
+<div class="events-index">
+
+	<h3>All Events</h3>
   <% @events.each do |event| %>
-		<%= event.venue %><br>
-		<%= event.date %><br>
-		<%= event.duration %><br>
-		<%= event.description%><br>
+  	<h1><%= event.title %></h1>
+		<h3><%= event.venue %></h3>
+		<p><small><%= event.date %></small><br>
+		<%= event.description%><br></p>
 		<hr>
   <% end %>
-</h1>=
+
+</div>

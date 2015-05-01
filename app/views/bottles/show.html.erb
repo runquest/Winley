@@ -8,99 +8,44 @@
 		<div class="eventdetails">
 			<h2><%= @bottle.name %></h2>
 			
-
-			
-   
-   <p>  Grape:<%= @bottle.grape %><br>
+ 			<p>Grape: <%= @bottle.grape %><br>
 				Year:	<%= @bottle.year %><br>
-				Winery:<%= @bottle.winery %> <br>
-				Description:<%= @bottle.description %></p>
-<br>
-<h3>Reviews</h3>
-<% if current_user %>
+				Winery: <%= @bottle.winery %> <br>
+				Description: <%= @bottle.description %></p>
 
-			<% if @bottle.reviews.where(user_id: current_user.id).take.favorite = true %>
-				<%= image_tag(("/assets/add_bottle.svg"), :class => "svg") %>
-			<% end %>
-				<p>Love it * Rating : <%= @bottle.reviews.where(user_id: current_user.id).take.my_rating %> * 
-				<% @bottle.reviews.each do |review| %>
-			<%= review.comment %>
-		<% end %>
-				</p>
-				
-		
-		<% end %>
-
-		
-			
-		</div>
-	</div>
-	<div> <p><%= link_to "edit", edit_bottle_path(@bottle) %> | 
-				<%= link_to "delete", bottle_path(@bottle), method: :delete, confirm: "You sure?" %>	</p></div>
-
-		<hr>
-
-
-
-
-
-
-
-
-
-<!-- 
-
-
-......................................
-<div class="show">
-	<div class="show">
-		<section class="main bottle">
-
-			<div class="block">
-				<img src="http://bit.ly/1OtrDxf" alt="event picture" class="event-img" > 
-				 <img class="imagefit" src="<%= @bottle.label_image %>" alt="wine bottle image">
-			</div>
-
-			<div class="block">
-				<h2><%= @bottle.name %></h2>
-				<%= link_to "edit", edit_bottle_path(@bottle) %> | 
-				<%= link_to "delete", bottle_path(@bottle), method: :delete, confirm: "You sure?" %>
-				<hr>
-				<ol>
-					<li><%= @bottle.grape %></li>
-					<li><%= @bottle.year %></li>
-					<li><%= @bottle.winery %> winery</li>
-					<hr>
-					<li><%= @bottle.description %></li>
-				</ol>
-			</div>
-
-		</section>
-	</div>
-	</hr>
-
-
-	<section class="review-table">
+		<br>
+		<h3>Reviews</h3>
 
 		<% if current_user %>
 
-			<% if @bottle.reviews.where(user_id: current_user.id).take.favorite = true %>
-				<%= image_tag(("/assets/add_bottle.svg"), :class => "svg") %>
+			<% if @bottle.reviews = [] %>
+				<% "no reviews created"%>
+			<% else %>
+
+				<% if @bottle.reviews.where(user_id: current_user.id).take.favorite = true %>
+					<%= image_tag(("/assets/add_bottle.svg"), :class => "svg") %>
+				<% end %>
+				<div class="block big-number">
+					<%= @bottle.reviews.where(user_id: current_user.id).take.my_rating %>
+				</div>
+
+				<div class="block">
+					<p><%= @bottle.reviews.where(user_id: current_user.id).take.comment %></p>
+				</div>
+				<hr>
+		<% end %>
+		<% end %>
+			<% @bottle.reviews.each do |review| %>
+				<%= review.comment %>
 			<% end %>
-			<div class="block big-number">
-				<%= @bottle.reviews.where(user_id: current_user.id).take.my_rating %>
-			</div>
 
-			<div class="block">
-				<p><%= @bottle.reviews.where(user_id: current_user.id).take.comment %></p>
-			</div>
-			<hr>
-		
-		<% end %>
+		</div>
+	</div>
 
-		<% @bottle.reviews.each do |review| %>
-			<%= review.comment %>
-		<% end %>
-			
-	</section>
-</div> --> 
+	<div> 
+		<p><%= link_to "edit", edit_bottle_path(@bottle) %> </p>
+	</div>
+	
+	<hr>
+
+</div>
