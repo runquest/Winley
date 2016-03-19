@@ -49,24 +49,24 @@ gem 'bcrypt-ruby'
 # gem 'debugger', group: [:development, :test]
 
 # populates database Populator
-gem 'populator'
-gem 'faker'
+# gem 'populator'
+# gem 'faker'
 
 
 gem 'better_errors'
 gem "binding_of_caller"
 
 # use Bourbon sass
-gem 'bourbon'
-gem 'neat'
-gem 'refills'
-gem 'bitters'
+# gem 'bourbon'
+# gem 'neat'
+# gem 'refills'
+# gem 'bitters'
 
 #to upload images
 # gem 'rmagick'
-gem 'mini_magick', '3.8.0'
-gem 'carrierwave'
-gem "paperclip", "~> 4.2"
+# gem 'mini_magick', '3.8.0'
+# gem 'carrierwave'
+# gem "paperclip", "~> 4.2"
 
 # source 'https://rubygems.org'
 
@@ -74,7 +74,7 @@ gem "paperclip", "~> 4.2"
 # # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 # gem 'rails', '4.2.4'
 # # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
 # # Use SCSS for stylesheets
 # gem 'sass-rails', '~> 5.0'
 # # Use Uglifier as compressor for JavaScript assets
