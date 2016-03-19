@@ -1,5 +1,9 @@
 class Flight < ActiveRecord::Base
-	belongs_to :event, inverse_of: :flights
-	belongs_to :bottle
+
+  belongs_to :bottle, inverse_of: :flights
+  validates :bottle, presence: true
+
+  belongs_to :event, inverse_of: :flights
+  validates :event, presence: true
 
 end

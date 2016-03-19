@@ -1,6 +1,6 @@
 <%= link_to "Back to bottle", bottle_path(@bottle) %><br/>
 
-<h2>Write a review of <em><%= @bottle.name %></em>.</h2>
+<h2>Update Review<em><%= @bottle.name %></em>.</h2>
 
 <%= form_for([@bottle, @review]) do |f| %>
   <% if @review.errors.any? %>

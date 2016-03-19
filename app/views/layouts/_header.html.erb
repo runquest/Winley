@@ -1,76 +1,27 @@
-<header class="navigation" role="banner">
-  <div class="navigation-wrapper">
-    <!-- <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a> -->
-    <nav role="navigation">
-      <ul id="js-navigation-menu" class="navigation-menu show">
-        <% if current_user %>           
-          <!-- sliding toggle bar -->
-          <li class="nav-link">
-            <button type="button" class="js-menu-trigger sliding-panel-button">
-              <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/menu-white.png" alt="Menu Icon">
-            </button>
-          </li>   
-              
-            <!-- end of sliding toggle bar -->
-        <% else %>
-          <ul id="index-navigation">
-            <li class="nav-link">
-              <%= link_to "TASTE SWING",  welcome_index_path %>
-            </li>       
-            <li class="nav-link">
-              <label for="modal-1">
-                <a>LOG IN</a>
-              </label>
-            </li>
-            <li class="nav-link">
-             <%= link_to "SIGN UP",  new_user_path %>
-            </li>
-          </ul>
-        <% end %>
-      </ul>
-    </nav>
-  </div>
-  
-  <!-- sliding nav bar -->
-  <nav class="js-menu sliding-panel-content">
-    <ul>
-      <li><%= link_to "Create event", new_event_path %></li>
-      <li><%= link_to "All events", events_path %></li>
-      <li><%= link_to "Add bottle", new_bottle_path %></li>
-      <li><%= link_to "Search bottles", bottles_path %></li>
-      <li><%= link_to "Favorite bottles", bottles_favorite_path %></li>
-      <% if current_user %>
-        <li><%= link_to "Log out", session_path("current"), method: :delete %></li>
-        <li><%= link_to "Dashboard", user_path(current_user) %></li>
+<header>
+  <% if current_user %>   
+    You are logged in as <%= current_user.fname %><br/>
+    <%= link_to "Log out", session_path("current"), method: :delete %>
+    <%= link_to "Dashboard", user_path(current_user) %>       
+  <% else %>
+    <%= link_to "HOME",  welcome_index_path %>
+    <%= link_to "SIGN UP",  new_user_path %>
+  <% end %>
+  <br/>
+  <hr/>
+  <%= link_to "HOME",  welcome_index_path %>
+  <%= link_to "Add bottle", new_bottle_path %>
+    Add event 
+  <%= link_to "Search bottles", bottles_path %>
+  <hr/>
+  <% if !current_user %>
+      <%= form_tag sessions_path do %>
+        <%= label_tag "email" %>
+        <%= text_field_tag "email" %>
+        <%= label_tag :password %>
+        <%= password_field_tag :password %>
+        <%= submit_tag "Log In" %>
       <% end %>
-    </ul>
-
-  </nav>
-  <div class="js-menu-screen sliding-panel-fade-screen"></div>
-
- <!-- sliding nav bar -->
-   <div class="modal">
-
-    <input class="modal-state" id="modal-1" type="checkbox" />
-    <div class="modal-fade-screen">
-      <div class="modal-inner">
-        <div class="modal-close" for="modal-1"></div>
-          <%= form_tag sessions_path do %>
-            <h1>Log in</h1>
-            <div>
-              <%= label_tag "email" %><br/>
-              <%= text_field_tag "email" %>
-            </div>
-            <div>
-              <%= label_tag :password %><br/>
-              <%= password_field_tag :password %>
-            </div>
-            <div>
-              <%= submit_tag "Log In" %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>   
+      <hr/>
+  <% end %> 
 </header>

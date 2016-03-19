@@ -1,40 +1,11 @@
-<div class= "outercontainer">
-  <div class="search-bottle">
-    <div id="search-form">
-      <form class="search">
-        <h2>SEARCH WINE !!!!!!!!!!!!!</h2>      
-        <input type="text" name="search" class="search-field">
-        <%= submit_tag("Unscrew", :class=>"taste") %>
-      </form>
-    </div>
-    <div class="bottle"></div>
-  </div>
-
-  <hr>
-
-  <h2>All Bottles </h2>
-
-  <div class="outerbottle" style = "text-align: center">
-    <div class="search-bottle">
-<!--       <div class="bottle"> -->
-        <% if Bottle.all == [] %>
-          <p>"no bottles in database"</p>
-        <% else %>
-          <% Bottle.all.each do |bottle|  %>
-            <div class="bottlecard">
-              <div class="bottle-card-image">
-                <img src="<%= bottle.label_image %>">
-              </div>
-              <div class="bottle-card-header">
-                <%= link_to bottle.name, bottle_path(bottle) %>
-              </div>
-              <div class="bottle-card-copy">
-                <%= bottle.year %>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-<!--       </div> -->
-    </div>
-  </div>
-</div>
+<h2>All Bottles </h2>
+<% if Bottle.all == [] %>
+  <p>"no bottles in database"</p>
+<% else %>
+  <% Bottle.all.each do |bottle|  %>
+    <%= link_to bottle.name, bottle_path(bottle) %><br>
+  <% end %>
+<% end %>
+<hr/>
+<h3>Search form</h3>
+<h3>Filtering</h3>

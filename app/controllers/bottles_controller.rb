@@ -1,86 +1,102 @@
 class BottlesController < ApplicationController
 
-	def index
+  before_filter :restrict_access, :except => [:show, :index]
+
+  def index
     @bottles = Bottle.all
+  end
+
+  def show
+   @bottle = Bottle.find(params[:id])     
   end
 
   def new
     @bottle = Bottle.new
-    @review = Review.new
+  end
+
+  def edit
+    @bottle = Bottle.find(params[:id])
   end
 
   def create
     @bottle = Bottle.new(bottle_params)
+    
     if current_user == nil
       @bottle.save
       redirect_to bottle_path(@bottle)
       flash[:notice] = "You just created #{@bottle.name}!"
     else
       @bottle.save
-      @review = Review.new(review_params)
-      @review.save
-      @review.user = current_user
+      @review = @bottle.reviews.build(my_rating: 1, user_id: current_user.id)
       @bottle.reviews << @review
       redirect_to bottle_path(@bottle)
       flash[:notice] = "You just created #{@bottle.name}!"
     end
   end
 
-  def show
-    if current_user == nil
-      @bottle = Bottle.find(params[:id])
-    else 
-      @bottle = Bottle.find(params[:id])
-      @review = @bottle.reviews
-    end
-  end
-  
   def destroy
     @bottle = Bottle.find(params[:id])
     @bottle.destroy
-    redirect_to bottles_path
-  end
-
-  # def remove
-  #   b = Bottle.find(params[:id])
-  #   @user = current_user
-  #   @user.bottles.delete(b)
-  #   redirect_to user_path(@user)
-  #   # flash[:notice] = "Bottle has been removed"
-  # end
-
-  def edit
-    if current_user == nil
-      @bottle = Bottle.find(params[:id])
-    else
-      @bottle = Bottle.find(params[:id])
-      @review = @bottle.reviews.where(user_id: current_user.id).take
-    end
+    flash[:notice] = "You just deleted #{@bottle.name}!"
+    redirect_to root_path
   end
 
   def update
-
-      @bottle = Bottle.find(params[:id])
-      @review = @bottle.reviews.where(user_id: current_user.id).take
-      @bottle.update_attributes(bottle_params)
-      @review.update_attributes(review_params)
-      redirect_to bottle_path(@bottle)
-
+    @bottle = Bottle.find(params[:id])
+    if @bottle.update_attributes(bottle_params)
+      redirect_to bottle_path
+      flash[:notice] = "You just updated #{@bottle.name}!"
+    else
+      render :edit
+    end
   end
 
-  def favorite
-    @user = current_user
-    
+  def add_to_library
+    @bottle = Bottle.find(params[:id])
+    @review = @bottle.reviews.build(my_rating: 1, user_id: current_user.id)
+    @bottle.reviews << @review
+    redirect_to bottle_path(@bottle)
+  end
 
-  end 
+  def remove_from_library
+    @bottle = Bottle.find(params[:id])
+    current_user.bottles.delete(@bottle)
+    redirect_to bottle_path(@bottle)
+  end
+
+  # Calculates an average rating for the bottle
+  def average_rating
+    @bottle = Bottle.find(params[:id])
+    @reviews = @bottle.reviews
+
+    my_total_rating = 1
+    @reviews.each do |review|
+      my_total_rating += review.my_rating
+    end
+
+    number_of_reviews = 1
+    if @reviews.count >= 1
+      number_of_reviews = @reviews.count
+      my_total_rating -= 1
+    end
+
+      my_average_rating = my_total_rating / number_of_reviews
+    return my_average_rating
+  end
+
+  helper_method :average_rating
 
   protected
 
   def bottle_params
-    params.require(:bottle).permit(:name, :grape, :vintage, :year, :winery, :description, :label_image, :more_url )
-  end
-
-  def review_params
-    params.require(:review).permit(:user_id, :bottle_id, :my_rating, :comment, :favorite)
+    params.require(:bottle).permit(:winery_id, :name, :grape, :vintage, :label_image, :more_url, :description)
   end
 end
+
+
+
+
+
+
+
+

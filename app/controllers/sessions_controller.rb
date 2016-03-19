@@ -10,7 +10,6 @@
 
     else
       flash.now[:alert] = "Log in failed...Try again."
-      render :new
     end
   end
 

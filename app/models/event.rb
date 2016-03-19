@@ -1,24 +1,17 @@
 class Event < ActiveRecord::Base
-    has_many :attendances
-	has_many :users, :through => :attendances
-    has_many :bottles, :through => :flights
-    has_many :flights
 
-    accepts_nested_attributes_for :flights, :allow_destroy => true
+  validates :title, presence: true
 
+  validates :venue, presence: true
 
-    validates :title, 
-    presence: true
+  validates :date, presence: true
 
-    validates :venue,
-    presence: true
+  validates :duration, presence: true
 
-    validates :date,
-    presence: true
+  has_many :attendances, inverse_of: :event, dependent: :destroy
 
-    # validates :duration, numericality: { only_integer: true }
-    
-    validates :description,
-    presence: true
+  has_many :flights, inverse_of: :event, dependent: :destroy
+
+  belongs_to :user, inverse_of: :events
 
 end

@@ -1,51 +1,35 @@
-<div class="show">
+<h2><%= @bottle.name %></h2>
 
-	<div class="eventinfo">
-		<section class="event1"> 
-			<img class="imagefit" src="<%= @bottle.label_image %>" alt="profile picture" class="event-image">
-		</section>
+<% if current_user %>
+	<%if current_user.bottles.include?(@bottle) %>
+		<p><%= link_to "remove from my library", remove_from_library_path(@bottle) %><br>
+	<% else %>
+		<p><%= link_to "add to my library", add_to_library_path(@bottle) %><br>
+	<%end%>
+<% end %>
 
-		<div class="eventdetails">
-			<h2><%= @bottle.name %></h2>
-			
- 			<p>Grape: <%= @bottle.grape %><br>
-				Year:	<%= @bottle.year %><br>
-				Winery: <%= @bottle.winery %> <br>
-				Description: <%= @bottle.description %></p>
+Grape: <%= @bottle.grape %><br>
+Winery: <%= @bottle.winery.name %> <br>
+Region: <%= @bottle.winery.region.name %> <br>
+Description: <%= @bottle.description %><br><br>
 
-		<br>
-		<h3>Reviews</h3>
+Average rating: <%= average_rating %><br>
 
-		<% if current_user %>
-
-			<% if @bottle.reviews = [] %>
-				<% "no reviews created"%>
-			<% else %>
-
-				<% if @bottle.reviews.where(user_id: current_user.id).take.favorite = true %>
-					<%= image_tag(("/assets/add_bottle.svg"), :class => "svg") %>
-				<% end %>
-				<div class="block big-number">
-					<%= @bottle.reviews.where(user_id: current_user.id).take.my_rating %>
-				</div>
-
-				<div class="block">
-					<p><%= @bottle.reviews.where(user_id: current_user.id).take.comment %></p>
-				</div>
-				<hr>
+<h3>Reviews</h3>
+<%if @bottle.reviews.any? %>
+	<% @bottle.reviews.each do |review| %>
+		<p><%= review.user.fname %></p>
+		<p><%= review.my_rating %></p>
+		<p><%= review.comment %></p>
+		<% if review.user == current_user %>
+			<%= link_to "Edit", edit_bottle_review_path(@bottle, review) %>
+			<%= link_to "Delete", bottle_review_path(@bottle, review), method: 'delete' %>
 		<% end %>
-		<% end %>
-			<% @bottle.reviews.each do |review| %>
-				<%= review.comment %>
-			<% end %>
-
-		</div>
-	</div>
-
-	<div> 
-		<p><%= link_to "edit", edit_bottle_path(@bottle) %> </p>
-	</div>
-	
-	<hr>
-
-</div>
+		<hr/>
+	<% end%>
+<% else %>
+	<p>No reviews.</p>
+	<%if current_user %>
+		<%= link_to "Add review", new_bottle_review_path(@bottle) %>
+	<% end %>
+<% end %>

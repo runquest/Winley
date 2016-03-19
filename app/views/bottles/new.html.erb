@@ -1,4 +1,3 @@
-<div class="form">
 <h2>Add New Bottle of Wine</h2>
 <%= form_for @bottle do |f| %>
   <% if @bottle.errors.any? %>
@@ -11,64 +10,36 @@
       </ul>
     </div>
   <% end %>
+
+  <div class="form-group">
+    <%= f.label "winery_id" , "Winery ID"%><br>
+    <%= f.collection_select(:winery_id, Winery.all, :id, :name) %>
+  </div>
   <div class="form-group">
     <%= f.label "name" , "Bottle name"%><br>
-    <%= f.text_field "name" %>
+    <%= f.text_field :name, autofocus: true, placeholder: "Bottle name", :required => 'required' %>
   </div>
   <div class="form-group">
     <%= f.label "grape", "Grape" %><br>
-    <%= f.text_field "grape" %>
+    <%= f.text_field "grape", autofocus: true, placeholder: "Grape", :required => 'required' %>
   </div>
-  <div class="form-group">
-    <%= f.label "year", "Vintage (Year)" %><br>
-    <%= f.select :year, [1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014 ]%>
-  </div>
-  <div class="form-group">
-    <%= f.label "winery" ,"Winery"%><br>
-    <%= f.text_field "winery" %>
+    <div class="form-group">
+    <%= f.label "vintage", "Vintage" %><br>
+
+    <%= f.select :vintage, (Time.zone.now.year - 100)..(Time.zone.now.year + 1), :required => 'required' %>
   </div>
   <div class="form-group">
     <%= f.label "label_image", "Label image" %><br>
-    <%= f.text_field "label_image" %>
+    <%= f.text_field "label_image", autofocus: true, placeholder: "Upload image (url for now)" %>
+  </div>
+  <div class="form-group">
+    <%= f.label "more_url", "More URL" %><br>
+    <%= f.text_field "more_url", autofocus: true, placeholder: "More information (url)" %>
   </div>
   <div class="form-group">
     <%= f.label "description", "Bottle Label (Story)" %><br>
-    <%= f.text_area "description" %>
+    <%= f.text_area "description", autofocus: true, placeholder: "Story", autofocus: true, placeholder: "Story on the label" %>
   </div>
-     <hr>
-    <% if current_user != nil %>
-
-      <%= fields_for :review, @review do |rf| %>
-
-        <section class="review-table">
-          <h2>Add Review</h2  >
-          <div class="small-entry">
-            <div class="form-group">
-              <%= rf.label :my_rating, "Rate bottle" %><br>
-              <%= rf.select :my_rating, [1, 2, 3, 4, 5] %>
-            </div>
-
-            <div class="form-group">
-              <h4> Favorite </h4>
-              <%= rf.check_box :favorite, {}, true %>
-            </div>
-          </div>
-
-        <div>
-          <%= rf.label :comment, 'Comments' %><br>
-          <%= rf.text_area :comment %>
-        </div>
-
-        <div>
-          <% if current_user == nil %>
-            <% rf.hidden_field :user_id, :value => 0 %>
-          <% else %>
-            <%= rf.hidden_field :user_id, :value => current_user.id%>
-          <% end %>
-        </div>
-
-      <% end %>
-    <% end %>
           <span class="btn"><%= f.submit "Uncork" %></span>
     </section>
   <% end %>

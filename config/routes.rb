@@ -1,34 +1,27 @@
-Tasteswing::Application.routes.draw do
-
- root 'welcome#index'
- get "welcome/index"
- get "welcome/about"
- get 'delete-bottle' => 'events#delete_bottle', as: :delete_bottle
- # get 'favorite' => 'reviews#favorite', as: :favorite
- get 'bottles/favorite'
- # get 'bottles/remove' => "bottles#remove", as: :remove
-
- # get 'bottles/destroy'
-
- resources :users ,:events, :bottles
- resources :sessions, only: [:new, :create, :destroy]
-
-
-# favorite GET    /favorite(.:format)         reviews#favorite
-
-# In routes.rb
-
-# With render, redirect_to, tests, etc.
-# redirect_to favorite_path
-
-
-
- 
+Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+
+root 'welcome#index'
+ get "welcome/index"
+ get 'delete-bottle' => 'events#delete_bottle', as: :delete_bottle
+ # get 'favorite' => 'reviews#favorite', as: :favorite
+ get 'bottles/favorite'
+
+ get 'add-to-library/:id' => 'bottles#add_to_library', as: :add_to_library
+ get 'remove-from-library/:id' => 'bottles#remove_from_library', as: :remove_from_library
+ # get 'bottles/remove' => "bottles#remove", as: :remove
+
+ # get 'bottles/destroy'
+ resources :bottles do
+  resources :reviews
+ end
+ resources :users, :regions, :wineries
+ resources :sessions, only: [:new, :create, :destroy]
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -64,7 +57,7 @@ Tasteswing::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

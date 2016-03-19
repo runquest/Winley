@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_filter :restrict_access, :except => [:new, :create]
+
   def new
     @user = User.new
   end
@@ -14,8 +16,6 @@ class UsersController < ApplicationController
       render :new
     end
   end
-
-  # before_filter :restrict_access
 
   def index
     @user = User.all
@@ -70,8 +70,7 @@ class UsersController < ApplicationController
   protected
 
   def user_params
-    params.require(:user).permit(:id, :email, :fname, :lname, :password, :password_confirmation, :avatar_url, :birthday, :description)
+    params.require(:user).permit(:email, :fname, :lname, :password, :password_confirmation, :avatar_url, :birthday, :description)
   end
-
 
 end

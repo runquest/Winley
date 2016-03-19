@@ -1,22 +1,20 @@
-<div class="outer">
-  <!-- adding background image and adding Title -->
-  <div class="hero">
-    <div class="hero-inner">
-      <div class="hero-copy">
-        <h1>Taste swing</h1>
-          <div class="icon-svg">
-            <%= link_to image_tag("/assets/create_event.svg"), new_event_path %>
-            <%= link_to "Create an event", new_event_path %>
-          </div>
-          <div class="icon-svg">
-            <%= link_to image_tag("/assets/add_bottle.svg"), new_bottle_path %>
-            <%= link_to "Add new bottle", new_bottle_path %>
-          </div>
-          <div class="icon-svg">
-            <%= link_to image_tag("/assets/search.svg"), bottles_path %>
-            <%= link_to "Search", bottles_path %>
-          </div>
-      </div>
-    </div>
-  </div>
-</div>
+<h3>Wine</h3>
+  <%= link_to "Add new bottle", new_bottle_path %>
+  <%= link_to "Search", bottles_path %>
+<h3>Regions</h3>
+  <% if Region.all == [] %>
+    <p>"no regions in database"</p>
+  <% else %>
+    <% Region.all.each do |region|  %>
+      <%= region.name %>
+    <% end %>
+  <% end %>
+<h3>Wineries</h3>
+  <% if Winery.all == [] %>
+    <p>"no wineries in database"</p>
+  <% else %>
+    <% Winery.all.each do |winery|  %>
+      <%= winery.name %>
+    <% end %>
+  <% end %>
+<h3>Events</h3>

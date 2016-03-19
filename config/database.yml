@@ -6,7 +6,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: tasteswing
+  database: winenotes_development
   pool: 5
   username:
   password:
@@ -17,7 +17,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: tasteswing_test
+  database: winenotes_test
   pool: 5
   username:
   password:
@@ -25,7 +25,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: tasteswing
+  database: winenotes_production
   pool: 5
   username:
   password:

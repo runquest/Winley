@@ -67,7 +67,3 @@ protected
 def event_params
   params.require(:event).permit(:title, :venue, :date, :duration, :event_image, :description, bottle_ids:[], flights_attributes:[:bottle_id])
 end
-
-
-
-end
