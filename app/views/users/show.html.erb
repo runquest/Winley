@@ -33,10 +33,10 @@
 
 <h3>My Events</h3>
 <% if @user.events.any? %>
-  <p>User has evewwasdfsants.</p>
+  <p>User has created these events.</p>
 
   <% @user.events.each do |event| %>
-    <%= link_to event.name, event_path(event.id)  %><br/>
+    <%= link_to event.title, event_path(event.id)  %><br/>
   <% end %>
 <% else %>
   <p>User has no events.</p>

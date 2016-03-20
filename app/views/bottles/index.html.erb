@@ -1,11 +1,16 @@
 <h2>All Bottles </h2>
-<% if Bottle.all == [] %>
-  <p>"no bottles in database"</p>
-<% else %>
-  <% Bottle.all.each do |bottle|  %>
+<h3>Search form</h3>
+<%= form_tag bottles_path, :method => 'get' do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search" %>
+<% end %>
+<% if @bottles.any? %>
+  <% @bottles.each do |bottle|  %>
     <%= link_to bottle.name, bottle_path(bottle) %><br>
   <% end %>
+<% else %>
+    <p>"no bottles in database"</p>
 <% end %>
 <hr/>
-<h3>Search form</h3>
+
 <h3>Filtering</h3>

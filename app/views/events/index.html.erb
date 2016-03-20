@@ -1,12 +1,7 @@
-<div class="events-index">
-
-	<h3>All Events</h3>
-  <% @events.each do |event| %>
-  	<h1><%= event.title %></h1>
-		<h3><%= event.venue %></h3>
-		<p><small><%= event.date %></small><br>
-		<%= event.description%><br></p>
-		<hr>
-  <% end %>
-
-</div>
+<h3>All Events</h3>
+<% @events.each do |event| %>
+  <h3><%= event.title %></h3>
+  <h4><%= event.venue %></h4>
+  <p><%= event.date %><br>
+  <%= event.description%><br>
+<% end %>

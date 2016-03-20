@@ -3,7 +3,7 @@ class BottlesController < ApplicationController
   before_filter :restrict_access, :except => [:show, :index]
 
   def index
-    @bottles = Bottle.all
+    @bottles = Bottle.search(params[:search])
   end
 
   def show

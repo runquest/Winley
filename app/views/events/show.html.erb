@@ -1,79 +1,30 @@
-<!-- <div class="side-image">
-  <div class="images-wrapper"><img src="<%= @event.event_image %>" alt="profile picture" class="event-image"></div>
-    <div class="side-image-content">
-      <h4><%= @event.date.strftime("%m/%d/%Y") %></h4>
-      <h2><%= @event.title %></h2>
-      <!-- expander starts -->
-			<!-- <div class="expander">
-			  <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">details of the event.</a>
-			  <div id="js-expander-content" class="expander-content">
-			    <p><%= @event.date.strftime("%m/%d/%Y") %></br><%= @event.venue %></br>
-			    <%= link_to "Add Bottle", edit_event_path(@event) %>	
-			    </p>
-			  </div>
-			</div> -->
-			<!-- expander ends -->
-<!-- 
-      <p><%= @event.description %></p>
-      <button>Read more</button>
-  </div>
-</div> --> 
+<h2><%= @event.title %></h2>
+<%= link_to "Modify event info", edit_event_path(@event) %>
+<%= link_to "Cancel event", event_path(@event), method: :delete, confirm: "You sure?" %><br>
+Event date: <%= @event.date.strftime("%m/%d/%Y") %></br>
+Event venue: <%= @event.venue %></br>
+Event organizer: <%= @event.user.fname %><br/>
+Event description: <%= @event.description %><br>
+<br>
+<h3>Add bottle to event</h3>
+<%= form_tag add_bottle_to_event_path, :method => :post do %>
+  <ul>
+  <% for bottle in Bottle.where.not(id: @event.bottles.ids) do %>
+    <li>
+      <%= check_box_tag "bottle_ids[]", bottle.id %>
+      <%= link_to bottle.name, bottle_path(bottle.id) %>
+    </li>
+  <% end %>
+  </ul>
+  <%= submit_tag "Add bottle to event" %>
+<% end %>
+
+<h3>Taste Flights</h3>
+
+<% if @event.bottles.any? %>
+  <% @event.bottles.each do |bottle| %>
+    <%= link_to bottle.name, bottle_path(bottle.id) %>  <%=link_to "remove", remove_bottle_from_event_path(@event, :bottle_id => bottle.id), :method => :post%><br>
+  <% end %>
+<% end %>
 
 
-
-
-
-<div class="show">
-
-	<div class="eventinfo">
-		<section class="event1"> 
-			<img class="imagefit" src="<%= @event.event_image %>" alt="profile picture" class="event-image">
-		</section>
-
-		<div class="eventdetails">
-			<h2><%= @event.title %></h2>
-			<%= link_to "Modify event info", edit_event_path(@event) %><br>
-			<%= link_to "Cancel event", event_path(@event), method: :delete, confirm: "You sure?" %>
-
-			<!-- expander starts -->
-			<div class="expander">
-			  <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">details of the event.</a>
-			  <div id="js-expander-content" class="expander-content">
-			    <p><%= @event.date.strftime("%m/%d/%Y") %></br><%= @event.venue %></br>
-			    <%= link_to "Add Bottle", edit_event_path(@event) %>	
-			    </p>
-			  </div>
-			</div>
-			<!-- expander ends -->
-
-      <p><%= @event.description %></p>
-		</div>
-	</div>
-	<div> <p><%= link_to "Add a Bottle +", edit_event_path(@event) %>	</p></div>
-		<hr>
-
-		<!-- all bottles cards for event  -->
-	
-	<div class="outerbottle" style = "text-align: center">
-    <% if @event.flights.size > 0 %>
-		<% @event.flights.each do |flight| %>
-
-	     <div class="bottlecard">
-       <div class="bottle-card-image">
-         <img src="<%= flight.bottle.label_image %>">
-       </div>
-       <div class="bottle-card-header">
-          <%= link_to flight.bottle.name, bottle_path(flight.bottle_id) %> 
-      
-       </div>
-       <div class="bottle-card-copy">
-       <%= link_to 'delete', {:controller => "events", :action => "delete_bottle", :flight_id => flight.id, :event_id => @event.id } %>
-       
-        <%= flight.bottle.year %>
-       </div>
-     </div>
-      <% end %>
-      <% end %>
-  </div>
-
- 	<!-- ending cards -->

@@ -42,6 +42,17 @@ ActiveRecord::Schema.define(version: 20160308211805) do
   add_index "bottles", ["winery_id", "name", "grape", "vintage"], name: "ui_bottles", unique: true, using: :btree
   add_index "bottles", ["winery_id"], name: "i_bottles_on_winery_id", using: :btree
 
+  create_table "bottles_events", force: :cascade do |t|
+    t.integer  "bottle_id",  null: false
+    t.integer  "event_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "bottles_events", ["bottle_id", "event_id"], name: "ui_flights", unique: true, using: :btree
+  add_index "bottles_events", ["bottle_id"], name: "i_flights_on_bottle_id", using: :btree
+  add_index "bottles_events", ["event_id"], name: "i_flights_on_event_id", using: :btree
+
   create_table "events", force: :cascade do |t|
     t.integer  "user_id",                 null: false
     t.string   "title",       limit: 100, null: false
@@ -57,17 +68,6 @@ ActiveRecord::Schema.define(version: 20160308211805) do
   add_index "events", ["title", "date"], name: "ui_events", unique: true, using: :btree
   add_index "events", ["user_id"], name: "i_events_on_user_id", using: :btree
   add_index "events", ["venue", "date"], name: "ui2_events", unique: true, using: :btree
-
-  create_table "flights", force: :cascade do |t|
-    t.integer  "bottle_id",  null: false
-    t.integer  "event_id",   null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "flights", ["bottle_id", "event_id"], name: "ui_flights", unique: true, using: :btree
-  add_index "flights", ["bottle_id"], name: "i_flights_on_bottle_id", using: :btree
-  add_index "flights", ["event_id"], name: "i_flights_on_event_id", using: :btree
 
   create_table "regions", force: :cascade do |t|
     t.string   "name",        limit: 63, null: false
@@ -121,9 +121,9 @@ ActiveRecord::Schema.define(version: 20160308211805) do
   add_foreign_key "attendances", "events", name: "fk_attendances_on_event_id", on_delete: :cascade
   add_foreign_key "attendances", "users", name: "fk_attendances_on_user_id", on_delete: :cascade
   add_foreign_key "bottles", "wineries", name: "fk_bottles_on_winery_id"
+  add_foreign_key "bottles_events", "bottles", name: "fk_flights_on_bottle_id", on_delete: :cascade
+  add_foreign_key "bottles_events", "events", name: "fk_flights_on_event_id", on_delete: :cascade
   add_foreign_key "events", "users", name: "fk_events_on_user_id"
-  add_foreign_key "flights", "bottles", name: "fk_flights_on_bottle_id", on_delete: :cascade
-  add_foreign_key "flights", "events", name: "fk_flights_on_event_id", on_delete: :cascade
   add_foreign_key "reviews", "bottles", name: "fk_reviews_on_bottle_id", on_delete: :cascade
   add_foreign_key "reviews", "users", name: "fk_reviews_on_user_id", on_delete: :cascade
   add_foreign_key "wineries", "regions", name: "fk_wineries_on_region_id"
