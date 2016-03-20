@@ -14,11 +14,9 @@ class User < ActiveRecord::Base
 
   has_many :events, inverse_of: :user
   has_many :reviews
+  has_many :reviews, inverse_of: :user, dependent: :destroy
   has_many :bottles, through: :reviews
   has_many :flights, through: :events
-
-  has_many :reviews, inverse_of: :user, dependent: :destroy
-
   has_many :attendances, inverse_of: :user, dependent: :destroy
 
   def full_name

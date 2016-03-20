@@ -18,3 +18,10 @@
     <% end %>
   <% end %>
 <h3>Events</h3>
+<% if Event.all == [] %>
+  <p>"no events in database"</p>
+<% else %>
+  <% Event.all.each do |event|  %>
+    <%= event.title %>
+  <% end %>
+<% end %>

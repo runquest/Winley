@@ -19,7 +19,7 @@ root 'welcome#index'
  resources :bottles do
   resources :reviews
  end
- resources :users, :regions, :wineries
+ resources :users, :regions, :wineries, :events
  resources :sessions, only: [:new, :create, :destroy]
 
 

@@ -10,7 +10,7 @@ class Event < ActiveRecord::Base
 
   has_many :attendances, inverse_of: :event, dependent: :destroy
 
-  has_many :flights, inverse_of: :event, dependent: :destroy
+  has_and_belongs_to_many :bottles, inverse_of: :event, dependent: :destroy
 
   belongs_to :user, inverse_of: :events
 

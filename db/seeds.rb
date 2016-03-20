@@ -35,3 +35,9 @@ Region.create(name: 'Burgundy', location: 'France', description: 'Burgundy is on
 
 User.create(email: "test@wine.com", fname: "Test", lname: "Wine", password: "testwine", password_confirmation: "testwine", avatar_url: "https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png", description: "Wine tasting enthusiast.")
 User.create(email: "aiste@aiste.ca", fname: "Aiste", lname: "Ulo", password: "aktyvai", password_confirmation: "aktyvai", avatar_url: "https://cdn3.iconfinder.com/data/icons/users-6/100/654854-user-women-512.png", description: "TBD")
+
+Event.create(title: 'Wedding Shower', venue: 'Hotel', date: 'Fri, Nov 26, 11', duration: 60, user_id: 1, description: 'Great event')
+Event.create(title: 'New wines presentation', venue: 'New country', date: 'Sat, Mar 26, 16', duration: 60, user_id: 1, description: 'You cannot miss')
+Event.create(title: 'Aiste\'s birthday', venue: 'Hotel', date: 'Sun, May 26, 16', duration: 60, user_id: 1, description: 'You have to be here')
+Event.create(title: 'Solice', venue: 'Far far land', date: 'Mon, Aug 26, 12', duration: 90, user_id: 2, description: 'Lots of delicious wine')
+Event.create(title: 'Christmas sales', venue: 'Some winery', date: 'Tue, Jul 26, 11', duration: 120, user_id: 2, description: 'Taste it yourself')
