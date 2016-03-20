@@ -20,34 +20,37 @@ class EventsController < ApplicationController
    @event = Event.find(params[:id])     
   end
 
- def destroy
-  @event = Event.find(params[:id])
-  @user = current_user
-  @event.destroy
-  flash[:notice] = "You just updated #{@event.title} event!"
-  redirect_to user_path(@user)
-end
-
-def edit
-  @event = Event.find(params[:id])
-end
-
-def update
-  @event = Event.find(params[:id])
-  if @event.update_attributes(event_params)
-    redirect_to event_path(@event)
+  def destroy
+    @event = Event.find(params[:id])
+    @user = current_user
+    @event.destroy
     flash[:notice] = "You just updated #{@event.title} event!"
-  else
-    render :edit
+    redirect_to user_path(@user)
   end
-end 
 
-# def delete_bottle
-#   e = Event.find(params[:event_id])
-#   f = Flight.find(params[:flight_id]).destroy
-#   # e.bottles.find(params[:bottle_id]).destroy
-#   redirect_to event_path(e)
-# end
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    if @event.update_attributes(event_params)
+      redirect_to event_path(@event)
+      flash[:notice] = "You just updated #{@event.title} event!"
+    else
+      render :edit
+    end
+  end 
+
+  def add_bottle_to_event
+    @event = Event.find(params[:id])
+
+    params[:bottle_ids].each do |id|
+      @event.bottles << Bottle.find(id)
+    end
+
+    redirect_to event_path(@event)
+  end
 
   protected
 

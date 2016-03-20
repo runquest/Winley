@@ -5,10 +5,26 @@ Event date: <%= @event.date.strftime("%m/%d/%Y") %></br>
 Event venue: <%= @event.venue %></br>
 Event organizer: <%= @event.user.fname %><br/>
 Event description: <%= @event.description %><br>
+<br>
+<h3>"Add bottle to event"</h3>
 
-<%= link_to "Add Bottle", edit_event_path(@event) %>	
-<!-- <#% if @event.flights.size > 0 %#> -->
-<!-- <#% @event.flights.each do |flight| %#> -->
-<%#= link_to flight.bottle.name, bottle_path(flight.bottle_id) %> 
-<!-- <#%= link_to 'delete', {:controller => "events", :action => "delete_bottle", :flight_id => flight.id, :event_id => @event.id } %#> -->
-<%#= flight.bottle.year %>
+<%= form_tag add_bottle_to_event_path, :method => :post do %>
+  <ul>
+  <% for bottle in Bottle.where.not(id: @event.bottles.ids) do %>
+    <li>
+      <%= check_box_tag "bottle_ids[]", bottle.id %>
+      <%= bottle.name %>
+    </li>
+  <% end %>
+  </ul>
+  <%= submit_tag "Add bottle to event" %>
+
+<% end %>
+
+<h3>Taste Flights</h3>
+
+<% if @event.bottles.any? %>
+  <% @event.bottles.each do |bottle| %>
+    <%= bottle.name %>
+  <% end %>
+<% end %>

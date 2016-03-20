@@ -13,6 +13,7 @@ root 'welcome#index'
 
  get 'add-to-library/:id' => 'bottles#add_to_library', as: :add_to_library
  get 'remove-from-library/:id' => 'bottles#remove_from_library', as: :remove_from_library
+ post 'add_bottle_to_event/:id' => 'events#add_bottle_to_event', as: :add_bottle_to_event
  # get 'bottles/remove' => "bottles#remove", as: :remove
 
  # get 'bottles/destroy'
