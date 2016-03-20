@@ -6,25 +6,25 @@ Event venue: <%= @event.venue %></br>
 Event organizer: <%= @event.user.fname %><br/>
 Event description: <%= @event.description %><br>
 <br>
-<h3>"Add bottle to event"</h3>
-
+<h3>Add bottle to event</h3>
 <%= form_tag add_bottle_to_event_path, :method => :post do %>
   <ul>
   <% for bottle in Bottle.where.not(id: @event.bottles.ids) do %>
     <li>
       <%= check_box_tag "bottle_ids[]", bottle.id %>
-      <%= bottle.name %>
+      <%= link_to bottle.name, bottle_path(bottle.id) %>
     </li>
   <% end %>
   </ul>
   <%= submit_tag "Add bottle to event" %>
-
 <% end %>
 
 <h3>Taste Flights</h3>
 
 <% if @event.bottles.any? %>
   <% @event.bottles.each do |bottle| %>
-    <%= bottle.name %>
+    <%= link_to bottle.name, bottle_path(bottle.id) %>  <%=link_to "remove", remove_bottle_from_event_path(@event, :bottle_id => bottle.id), :method => :post%><br>
   <% end %>
 <% end %>
+
+

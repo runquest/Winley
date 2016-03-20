@@ -33,3 +33,12 @@ Average rating: <%= average_rating %><br>
 		<%= link_to "Add review", new_bottle_review_path(@bottle) %>
 	<% end %>
 <% end %>
+
+<h3>Events this bottle is presented</h3>
+<% if @bottle.events.any? %>
+	<% @bottle.events.each do |event| %>
+		<p><%= link_to event.title, event_path(event.id) %></p>
+	<% end %>
+<% else %>
+	<p>No known events</p>
+<% end %>

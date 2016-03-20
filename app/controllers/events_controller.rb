@@ -52,6 +52,12 @@ class EventsController < ApplicationController
     redirect_to event_path(@event)
   end
 
+  def remove_bottle_from_event
+    @event = Event.find(params[:id])
+    @event.bottles.delete(params[:bottle_id])
+    redirect_to event_path(@event)
+  end
+
   protected
 
   def event_params
