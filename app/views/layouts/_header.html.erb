@@ -1,27 +1,38 @@
 <header>
-  <% if current_user %>   
-    You are logged in as <%= current_user.fname %><br/>
-    <%= link_to "Log out", session_path("current"), method: :delete %>
-    <%= link_to "Dashboard", user_path(current_user) %>       
-  <% else %>
-    <%= link_to "HOME",  welcome_index_path %>
-    <%= link_to "SIGN UP",  new_user_path %>
-  <% end %>
-  <br/>
-  <hr/>
-  <%= link_to "HOME",  welcome_index_path %>
-  <%= link_to "Add bottle", new_bottle_path %>
-  <%= link_to "Add event", new_event_path %> 
-  <%= link_to "Search bottles", bottles_path %>
-  <hr/>
-  <% if !current_user %>
-      <%= form_tag sessions_path do %>
-        <%= label_tag "email" %>
-        <%= text_field_tag "email" %>
-        <%= label_tag :password %>
-        <%= password_field_tag :password %>
-        <%= submit_tag "Log In" %>
-      <% end %>
-      <hr/>
-  <% end %> 
+  <div class="grey lighten-2">
+    <div class="container">
+      <div class="row">
+        <% if current_user %>   
+          You are logged in as <%= current_user.fname %><br/>
+          <%= link_to "Log out", session_path("current"), method: :delete %>
+          <%= link_to "Dashboard", user_path(current_user) %>       
+        <% else %>
+          <span class="col s2 grey darken-3 center"><%= link_to "HOME",  welcome_index_path %></span> 
+          <span class="col s2 grey darken-2 center"><%= link_to "SIGN UP",  new_user_path %></span>
+          <span class="col s2 grey darken-1 center"><i class="material-icons"><%= link_to "Search bottles", bottles_path %></i>
+        <% end %>
+      </div>
+      <div class="row">
+        <!-- <%#= link_to "HOME",  welcome_index_path %> -->
+        <!-- <%#= link_to "Add bottle", new_bottle_path %> -->
+        <!-- <%#= link_to "Add event", new_event_path %>  -->
+        <!-- <%#= link_to "Search bottles", bottles_path %> -->
+      </div>
+      <% if !current_user %>
+        <div class="row valign">
+          <%= form_tag sessions_path do %>
+            <div class="input-field col s4">
+              <%= label_tag "email" %><%= text_field_tag "email" %>
+            </div>
+            <div class="input-field col s4">
+              <%= label_tag :password %> <%= password_field_tag :password %>
+            </div>
+            <div class="waves-effect waves-light btn col s4">
+              <%= submit_tag "Log In" %>
+            </div>
+          <% end %>
+        </div>
+      <% end %> 
+    </div>
+  </div>
 </header>

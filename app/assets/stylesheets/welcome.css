@@ -1,0 +1,9 @@
+div#welcome {
+  background-image: url('/assets/bg_winery.jpg');
+  height: 100vh;
+  /*background-color: red;*/
+}
+
+#welcome.card-image {
+  height: 10px;
+}

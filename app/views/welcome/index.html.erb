@@ -1,27 +1,20 @@
-<h3>Wine</h3>
-  <%= link_to "Add new bottle", new_bottle_path %>
-  <%= link_to "Search", bottles_path %>
-<h3>Regions</h3>
-  <% if Region.all == [] %>
-    <p>"no regions in database"</p>
-  <% else %>
-    <% Region.all.each do |region|  %>
-      <%= region.name %>
-    <% end %>
-  <% end %>
-<h3>Wineries</h3>
-  <% if Winery.all == [] %>
-    <p>"no wineries in database"</p>
-  <% else %>
-    <% Winery.all.each do |winery|  %>
-      <%= winery.name %>
-    <% end %>
-  <% end %>
-<h3>Events</h3>
-<% if Event.all == [] %>
-  <p>"no events in database"</p>
-<% else %>
-  <% Event.all.each do |event|  %>
-    <%= event.title %>
-  <% end %>
-<% end %>
+<div id="welcome">
+  <div class="container valign-wrapper">
+    <div class="row z-depth-2 valign">
+      <div class="col s4">
+              <%= link_to image_tag("/assets/search.svg"), bottles_path %>
+        <%= link_to "Search", bottles_path %>
+      </div>
+      <div class="col s4">
+              <%= link_to image_tag("/assets/search.svg"), bottles_path %>
+        <%= link_to "Search", bottles_path %>
+      </div>
+      <div class="col s4">
+          <div class="card-image">
+            <%= link_to image_tag("/assets/search.svg"), bottles_path %>
+            <%= link_to "Search", bottles_path %>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
